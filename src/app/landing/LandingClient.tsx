@@ -261,19 +261,34 @@ export function LandingClient() {
             </p>
             <div className="mt-7 grid grid-cols-2 gap-3 text-center text-sm font-black text-white sm:grid-cols-4">
               {[
-                ['24/7', 'Sempre attivi'],
-                ['↗', 'Intervento rapido'],
-                ['BG', 'Bergamo e provincia'],
-                ['★', 'Recensioni verificate'],
-              ].map(([icon, item]) => (
+                [
+                  '/images/landing-assets/trust-sempre-attivi.webp',
+                  'Sempre attivi',
+                ],
+                [
+                  '/images/landing-assets/trust-intervento-rapido.webp',
+                  'Intervento rapido',
+                ],
+                [
+                  '/images/landing-assets/trust-bergamo-provincia.webp',
+                  'Bergamo e provincia',
+                ],
+                [
+                  '/images/landing-assets/trust-recensioni-verificate.webp',
+                  'Recensioni verificate',
+                ],
+              ].map(([image, item]) => (
                 <div
                   key={item}
-                  className="flex min-h-28 flex-col items-center justify-center rounded-3xl border border-orange-300/30 bg-white/[0.12] p-4 shadow-xl shadow-black/20 backdrop-blur"
+                  className="flex min-h-36 flex-col items-center justify-center rounded-3xl border border-orange-300/30 bg-white/[0.14] p-4 shadow-xl shadow-black/20 backdrop-blur"
                 >
-                  <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#F59E0B] text-lg font-black text-slate-950">
-                    {icon}
-                  </span>
-                  <span className="mt-3 leading-tight">{item}</span>
+                  <img
+                    src={image}
+                    alt=""
+                    className="h-20 w-20 object-contain"
+                    loading="eager"
+                  />
+                  <span className="mt-2 leading-tight">{item}</span>
                 </div>
               ))}
             </div>
@@ -423,64 +438,51 @@ export function LandingClient() {
           <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {[
               [
-                'hook',
+                '/images/landing-assets/servizio-soccorso-stradale.webp',
                 'Soccorso stradale',
                 'Supporto urgente quando il veicolo non può proseguire.',
               ],
               [
-                'tow',
+                '/images/landing-assets/servizio-recupero-auto.webp',
                 'Recupero auto',
                 'Carico e trasporto verso officina, deposito o carrozzeria.',
               ],
               [
-                'warn',
+                '/images/landing-assets/servizio-auto-in-panne.webp',
                 'Auto in panne',
                 'Gestione di guasti improvvisi, spie accese e motore fermo.',
               ],
               [
-                'cross',
+                '/images/landing-assets/servizio-incidente-stradale.webp',
                 'Incidente stradale',
                 'Rimozione ordinata del mezzo dopo un sinistro.',
               ],
               [
-                'battery',
+                '/images/landing-assets/servizio-batteria-scarica.webp',
                 'Batteria scarica',
                 'Valutazione rapida e traino se il veicolo non riparte.',
               ],
               [
-                'moto',
+                '/images/landing-assets/servizio-recupero-moto.webp',
                 'Recupero moto',
                 'Fissaggio attento per scooter, moto e due ruote ferme.',
               ],
               [
-                'route',
+                '/images/landing-assets/servizio-trasporto-veicoli.webp',
                 'Trasporto veicoli',
                 'Spostamenti programmati o urgenti in città e provincia.',
               ],
-            ].map(([icon, service, description]) => (
+            ].map(([image, service, description]) => (
               <div
                 key={service}
-                className="group flex min-h-40 gap-4 rounded-3xl border border-orange-200 bg-white p-5 text-slate-950 shadow-xl shadow-orange-950/10 transition hover:-translate-y-1 hover:border-[#EA580C]"
+                className="group flex min-h-44 gap-4 rounded-3xl border border-orange-200 bg-white p-5 text-slate-950 shadow-xl shadow-orange-950/10 transition hover:-translate-y-1 hover:border-[#EA580C]"
               >
-                <span className="relative flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-slate-950 shadow-lg shadow-slate-950/20 transition group-hover:bg-[#EA580C]">
-                  <span
-                    className={`block ${
-                      icon === 'hook'
-                        ? 'h-8 w-7 rounded-b-full border-b-[5px] border-l-[5px] border-[#FBBF24]'
-                        : icon === 'tow'
-                          ? 'h-7 w-9 rounded border-4 border-[#FBBF24] before:absolute before:bottom-3 before:left-4 before:h-2 before:w-2 before:rounded-full before:bg-[#FBBF24] after:absolute after:bottom-3 after:right-4 after:h-2 after:w-2 after:rounded-full after:bg-[#FBBF24]'
-                          : icon === 'warn'
-                            ? 'h-0 w-0 border-x-[14px] border-b-[26px] border-x-transparent border-b-[#FBBF24]'
-                            : icon === 'cross'
-                              ? 'h-8 w-8 before:absolute before:left-1/2 before:top-4 before:h-8 before:w-2 before:-translate-x-1/2 before:-translate-y-1/2 before:bg-[#FBBF24] after:absolute after:left-1/2 after:top-4 after:h-2 after:w-8 after:-translate-x-1/2 after:-translate-y-1/2 after:bg-[#FBBF24]'
-                              : icon === 'battery'
-                                ? 'h-7 w-10 rounded border-4 border-[#FBBF24] after:absolute after:right-2 after:top-7 after:h-3 after:w-1.5 after:bg-[#FBBF24]'
-                                : icon === 'moto'
-                                  ? 'h-10 w-12 before:absolute before:bottom-4 before:left-3 before:h-4 before:w-4 before:rounded-full before:border-4 before:border-[#FBBF24] after:absolute after:bottom-4 after:right-3 after:h-4 after:w-4 after:rounded-full after:border-4 after:border-[#FBBF24]'
-                                  : 'h-1.5 w-10 rounded-full bg-[#FBBF24] before:absolute before:right-4 before:top-6 before:h-4 before:w-4 before:rotate-45 before:border-r-4 before:border-t-4 before:border-[#FBBF24]'
-                    }`}
-                  />
-                </span>
+                <img
+                  src={image}
+                  alt=""
+                  className="h-24 w-24 shrink-0 object-contain transition duration-300 group-hover:scale-105"
+                  loading="lazy"
+                />
                 <span>
                   <span className="block text-lg font-black leading-tight">
                     {service}
