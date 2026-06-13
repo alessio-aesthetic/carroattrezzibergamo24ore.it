@@ -209,13 +209,11 @@ export function LandingClient() {
     <main className="min-h-screen bg-[#F8FAFC] pb-24 text-slate-950">
       <header className="border-b border-slate-200 bg-white/95 shadow-sm shadow-slate-950/5 backdrop-blur">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
-          <div className="rounded-2xl bg-[#111827] px-3 py-2 shadow-lg shadow-slate-950/10">
-            <img
-              src="/images/logo-bergamo-24ore.png"
-              alt="Carroattrezzi Bergamo 24 Ore"
-              className="h-14 w-auto max-w-[210px] object-contain sm:h-16 sm:max-w-[300px]"
-            />
-          </div>
+          <img
+            src="/images/logo-bergamo-24ore.png"
+            alt="Carroattrezzi Bergamo 24 Ore"
+            className="h-16 w-auto max-w-[230px] object-contain sm:h-20 sm:max-w-[340px]"
+          />
           <div className="hidden items-center gap-4 sm:flex">
             <div className="text-right">
               <p className="text-xs font-black uppercase tracking-[0.18em] text-[#EA580C]">
@@ -424,22 +422,73 @@ export function LandingClient() {
           </div>
           <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              ['⚡', 'Soccorso stradale'],
-              ['↗', 'Recupero auto'],
-              ['!', 'Auto in panne'],
-              ['+', 'Incidente stradale'],
-              ['BAT', 'Batteria scarica'],
-              ['2R', 'Recupero moto'],
-              ['→', 'Trasporto veicoli'],
-            ].map(([icon, service]) => (
+              [
+                'hook',
+                'Soccorso stradale',
+                'Supporto urgente quando il veicolo non può proseguire.',
+              ],
+              [
+                'tow',
+                'Recupero auto',
+                'Carico e trasporto verso officina, deposito o carrozzeria.',
+              ],
+              [
+                'warn',
+                'Auto in panne',
+                'Gestione di guasti improvvisi, spie accese e motore fermo.',
+              ],
+              [
+                'cross',
+                'Incidente stradale',
+                'Rimozione ordinata del mezzo dopo un sinistro.',
+              ],
+              [
+                'battery',
+                'Batteria scarica',
+                'Valutazione rapida e traino se il veicolo non riparte.',
+              ],
+              [
+                'moto',
+                'Recupero moto',
+                'Fissaggio attento per scooter, moto e due ruote ferme.',
+              ],
+              [
+                'route',
+                'Trasporto veicoli',
+                'Spostamenti programmati o urgenti in città e provincia.',
+              ],
+            ].map(([icon, service, description]) => (
               <div
                 key={service}
-                className="group flex min-h-32 items-center gap-4 rounded-3xl border border-orange-200 bg-white p-5 font-black text-slate-950 shadow-xl shadow-orange-950/10 transition hover:-translate-y-1 hover:border-[#EA580C]"
+                className="group flex min-h-40 gap-4 rounded-3xl border border-orange-200 bg-white p-5 text-slate-950 shadow-xl shadow-orange-950/10 transition hover:-translate-y-1 hover:border-[#EA580C]"
               >
-                <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-slate-950 text-sm font-black text-[#FBBF24] shadow-lg shadow-slate-950/20 transition group-hover:bg-[#EA580C] group-hover:text-white">
-                  {icon}
+                <span className="relative flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-slate-950 shadow-lg shadow-slate-950/20 transition group-hover:bg-[#EA580C]">
+                  <span
+                    className={`block ${
+                      icon === 'hook'
+                        ? 'h-8 w-7 rounded-b-full border-b-[5px] border-l-[5px] border-[#FBBF24]'
+                        : icon === 'tow'
+                          ? 'h-7 w-9 rounded border-4 border-[#FBBF24] before:absolute before:bottom-3 before:left-4 before:h-2 before:w-2 before:rounded-full before:bg-[#FBBF24] after:absolute after:bottom-3 after:right-4 after:h-2 after:w-2 after:rounded-full after:bg-[#FBBF24]'
+                          : icon === 'warn'
+                            ? 'h-0 w-0 border-x-[14px] border-b-[26px] border-x-transparent border-b-[#FBBF24]'
+                            : icon === 'cross'
+                              ? 'h-8 w-8 before:absolute before:left-1/2 before:top-4 before:h-8 before:w-2 before:-translate-x-1/2 before:-translate-y-1/2 before:bg-[#FBBF24] after:absolute after:left-1/2 after:top-4 after:h-2 after:w-8 after:-translate-x-1/2 after:-translate-y-1/2 after:bg-[#FBBF24]'
+                              : icon === 'battery'
+                                ? 'h-7 w-10 rounded border-4 border-[#FBBF24] after:absolute after:right-2 after:top-7 after:h-3 after:w-1.5 after:bg-[#FBBF24]'
+                                : icon === 'moto'
+                                  ? 'h-10 w-12 before:absolute before:bottom-4 before:left-3 before:h-4 before:w-4 before:rounded-full before:border-4 before:border-[#FBBF24] after:absolute after:bottom-4 after:right-3 after:h-4 after:w-4 after:rounded-full after:border-4 after:border-[#FBBF24]'
+                                  : 'h-1.5 w-10 rounded-full bg-[#FBBF24] before:absolute before:right-4 before:top-6 before:h-4 before:w-4 before:rotate-45 before:border-r-4 before:border-t-4 before:border-[#FBBF24]'
+                    }`}
+                  />
                 </span>
-                <span className="text-lg leading-tight">{service}</span>
+                <span>
+                  <span className="block text-lg font-black leading-tight">
+                    {service}
+                  </span>
+                  <span className="mt-2 block text-sm font-semibold leading-6 text-slate-600">
+                    {description}
+                  </span>
+                </span>
               </div>
             ))}
           </div>
@@ -480,7 +529,7 @@ export function LandingClient() {
 
       <section className="bg-white py-16 text-slate-950">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+          <div>
             <div>
               <p className="text-sm font-black uppercase tracking-[0.18em] text-[#EA580C]">
                 fiducia immediata
@@ -489,10 +538,6 @@ export function LandingClient() {
                 Clienti che hanno risolto
               </h2>
             </div>
-            <p className="max-w-xl text-base leading-7 text-slate-700">
-              Testimonianze brevi, concrete, orientate alla cosa più importante:
-              essere richiamati e togliere il veicolo dal problema.
-            </p>
           </div>
           <div className="mt-8 grid gap-4 md:grid-cols-3">
             {[
@@ -526,9 +571,14 @@ export function LandingClient() {
         </div>
       </section>
 
-      <section className="bg-[#111111] py-14">
+      <section className="bg-[#FFF7ED] py-16 text-slate-950">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-black">Domande frequenti</h2>
+          <p className="text-sm font-black uppercase tracking-[0.18em] text-[#EA580C]">
+            risposte rapide
+          </p>
+          <h2 className="mt-3 text-3xl font-black sm:text-4xl">
+            Domande frequenti
+          </h2>
           <div className="mt-8 grid gap-4 md:grid-cols-2">
             {[
               [
@@ -550,10 +600,10 @@ export function LandingClient() {
             ].map(([question, answer]) => (
               <div
                 key={question}
-                className="rounded-3xl border border-white/10 bg-white/[0.06] p-6"
+                className="rounded-3xl border border-orange-200 bg-white p-6 shadow-xl shadow-orange-950/10"
               >
                 <h3 className="text-xl font-black">{question}</h3>
-                <p className="mt-3 leading-7 text-slate-300">{answer}</p>
+                <p className="mt-3 leading-7 text-slate-700">{answer}</p>
               </div>
             ))}
           </div>
