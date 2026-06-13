@@ -206,17 +206,25 @@ export function LandingClient() {
   }
 
   return (
-    <main className="min-h-screen bg-[#080808] pb-24 text-white">
-      <header className="border-b border-white/10 bg-[#080808]/95">
+    <main className="min-h-screen bg-[#F8FAFC] pb-24 text-slate-950">
+      <header className="border-b border-slate-200 bg-white/95 shadow-sm shadow-slate-950/5 backdrop-blur">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
-          <img
-            src="/images/logo-bergamo-24ore.png"
-            alt="Carroattrezzi Bergamo 24 Ore"
-            className="h-16 w-auto max-w-[220px] object-contain sm:h-20 sm:max-w-[320px]"
-          />
-          <PhoneButton className="hidden py-3 sm:inline-flex">
-            {site.phone}
-          </PhoneButton>
+          <div className="rounded-2xl bg-[#111827] px-3 py-2 shadow-lg shadow-slate-950/10">
+            <img
+              src="/images/logo-bergamo-24ore.png"
+              alt="Carroattrezzi Bergamo 24 Ore"
+              className="h-14 w-auto max-w-[210px] object-contain sm:h-16 sm:max-w-[300px]"
+            />
+          </div>
+          <div className="hidden items-center gap-4 sm:flex">
+            <div className="text-right">
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-[#EA580C]">
+                Centrale operativa
+              </p>
+              <p className="text-xl font-black text-slate-950">{site.phone}</p>
+            </div>
+            <PhoneButton className="py-3">Chiama Ora</PhoneButton>
+          </div>
         </div>
       </header>
 
@@ -253,18 +261,21 @@ export function LandingClient() {
             <p className="mt-6 text-3xl font-black text-[#FBBF24]">
               {site.phone}
             </p>
-            <div className="mt-6 grid grid-cols-2 gap-3 text-sm font-bold text-slate-100 sm:grid-cols-4">
+            <div className="mt-7 grid grid-cols-2 gap-3 text-center text-sm font-black text-white sm:grid-cols-4">
               {[
-                '24/7',
-                'Intervento rapido',
-                'Bergamo e provincia',
-                'Recensioni verificate',
-              ].map((item) => (
+                ['24/7', 'Sempre attivi'],
+                ['↗', 'Intervento rapido'],
+                ['BG', 'Bergamo e provincia'],
+                ['★', 'Recensioni verificate'],
+              ].map(([icon, item]) => (
                 <div
                   key={item}
-                  className="rounded-2xl border border-white/10 bg-white/[0.08] p-4"
+                  className="flex min-h-28 flex-col items-center justify-center rounded-3xl border border-orange-300/30 bg-white/[0.12] p-4 shadow-xl shadow-black/20 backdrop-blur"
                 >
-                  {item}
+                  <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#F59E0B] text-lg font-black text-slate-950">
+                    {icon}
+                  </span>
+                  <span className="mt-3 leading-tight">{item}</span>
                 </div>
               ))}
             </div>
@@ -367,7 +378,7 @@ export function LandingClient() {
         </div>
       </section>
 
-      <section className="bg-[#111111] py-14">
+      <section className="bg-white py-14 text-slate-950">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-black">Come funziona</h2>
           <div className="mt-8 grid gap-4 md:grid-cols-3">
@@ -387,41 +398,55 @@ export function LandingClient() {
             ].map(([title, text]) => (
               <div
                 key={title}
-                className="rounded-3xl border border-white/10 bg-white/[0.06] p-6"
+                className="rounded-3xl border border-slate-200 bg-[#F8FAFC] p-6 shadow-sm"
               >
                 <h3 className="text-xl font-black">{title}</h3>
-                <p className="mt-3 leading-7 text-slate-300">{text}</p>
+                <p className="mt-3 leading-7 text-slate-700">{text}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-14">
+      <section className="bg-gradient-to-b from-[#FFF7ED] to-white py-16 text-slate-950">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-black">Servizi disponibili subito</h2>
-          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="max-w-3xl">
+            <p className="text-sm font-black uppercase tracking-[0.18em] text-[#EA580C]">
+              interventi urgenti
+            </p>
+            <h2 className="mt-3 text-3xl font-black sm:text-4xl">
+              Servizi disponibili subito
+            </h2>
+            <p className="mt-3 text-lg leading-8 text-slate-700">
+              Indica il problema nel form o al telefono: il recupero parte con
+              informazioni più precise e meno passaggi inutili.
+            </p>
+          </div>
+          <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              'Soccorso stradale',
-              'Recupero auto',
-              'Auto in panne',
-              'Incidente stradale',
-              'Batteria scarica',
-              'Recupero moto',
-              'Trasporto veicoli',
-            ].map((service) => (
+              ['⚡', 'Soccorso stradale'],
+              ['↗', 'Recupero auto'],
+              ['!', 'Auto in panne'],
+              ['+', 'Incidente stradale'],
+              ['BAT', 'Batteria scarica'],
+              ['2R', 'Recupero moto'],
+              ['→', 'Trasporto veicoli'],
+            ].map(([icon, service]) => (
               <div
                 key={service}
-                className="rounded-2xl border border-orange-300/45 bg-[#F59E0B] p-5 font-black text-slate-950 shadow-lg shadow-orange-950/20"
+                className="group flex min-h-32 items-center gap-4 rounded-3xl border border-orange-200 bg-white p-5 font-black text-slate-950 shadow-xl shadow-orange-950/10 transition hover:-translate-y-1 hover:border-[#EA580C]"
               >
-                {service}
+                <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-slate-950 text-sm font-black text-[#FBBF24] shadow-lg shadow-slate-950/20 transition group-hover:bg-[#EA580C] group-hover:text-white">
+                  {icon}
+                </span>
+                <span className="text-lg leading-tight">{service}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-[#111111] py-14">
+      <section className="bg-slate-950 py-14 text-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-black">Zone servite</h2>
           <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
@@ -453,9 +478,22 @@ export function LandingClient() {
         </div>
       </section>
 
-      <section className="py-14">
+      <section className="bg-white py-16 text-slate-950">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-black">Clienti che hanno risolto</h2>
+          <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+            <div>
+              <p className="text-sm font-black uppercase tracking-[0.18em] text-[#EA580C]">
+                fiducia immediata
+              </p>
+              <h2 className="mt-3 text-3xl font-black sm:text-4xl">
+                Clienti che hanno risolto
+              </h2>
+            </div>
+            <p className="max-w-xl text-base leading-7 text-slate-700">
+              Testimonianze brevi, concrete, orientate alla cosa più importante:
+              essere richiamati e togliere il veicolo dal problema.
+            </p>
+          </div>
           <div className="mt-8 grid gap-4 md:grid-cols-3">
             {[
               [
