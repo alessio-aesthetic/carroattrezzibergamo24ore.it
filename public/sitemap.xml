@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://carroattrezzibergamo24ore.it/</loc></url>
+  
+  <url><loc>https://carroattrezzibergamo24ore.it/landing/</loc></url>
   <url><loc>https://carroattrezzibergamo24ore.it/servizi/soccorso-stradale-24-ore/</loc></url>
   <url><loc>https://carroattrezzibergamo24ore.it/servizi/traino-auto/</loc></url>
   <url><loc>https://carroattrezzibergamo24ore.it/servizi/recupero-auto-incidentata/</loc></url>
@@ -26,3 +27,4 @@
   <url><loc>https://carroattrezzibergamo24ore.it/zone/nembro/</loc></url>
   <url><loc>https://carroattrezzibergamo24ore.it/zone/grassobbio/</loc></url>
 </urlset>
+
