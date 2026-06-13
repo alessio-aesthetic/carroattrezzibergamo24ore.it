@@ -16,16 +16,10 @@ const TRACKING_KEYS = [
 type TrackingKey = (typeof TRACKING_KEYS)[number]
 type TrackingData = Record<TrackingKey, string>
 
-const fallbackWhatsappNumber = site.whatsapp
-const whatsappNumber =
-  process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || fallbackWhatsappNumber
 const n8nWebhookUrl =
   process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL ||
   'https://alessiothrasos.app.n8n.cloud/webhook/landing-carroattrezzi-bergamo'
 const telHref = `tel:${site.tel}`
-const whatsappLocationHref = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-  'Ciao, ho bisogno di un carroattrezzi a Bergamo. Posso inviare la mia posizione qui su WhatsApp.',
-)}`
 
 function conversione_click_telefono() {
   console.log('conversione_click_telefono')
@@ -37,12 +31,6 @@ function conversione_invio_posizione() {
   console.log('conversione_invio_posizione')
   // TODO Google Ads: inserisci qui ID conversione invio posizione.
   // window.gtag?.('event', 'conversion', { send_to: 'AW-XXXX/POSIZIONE' })
-}
-
-function conversione_click_whatsapp() {
-  console.log('conversione_click_whatsapp')
-  // TODO Google Ads: inserisci qui ID conversione click WhatsApp.
-  // window.gtag?.('event', 'conversion', { send_to: 'AW-XXXX/WHATSAPP' })
 }
 
 function getStoredTracking(): TrackingData {
@@ -69,18 +57,6 @@ function PhoneButton({
       className={`inline-flex items-center justify-center rounded-2xl bg-[#F59E0B] px-7 py-4 text-base font-black text-slate-950 shadow-[0_18px_50px_rgba(245,158,11,0.35)] transition hover:bg-[#FBBF24] ${className}`}
     >
       {children}
-    </Link>
-  )
-}
-
-function WhatsappButton({ className = '' }: { className?: string }) {
-  return (
-    <Link
-      href={whatsappLocationHref}
-      onClick={conversione_click_whatsapp}
-      className={`inline-flex items-center justify-center rounded-2xl border border-white/20 bg-white/10 px-6 py-4 text-base font-black text-white backdrop-blur transition hover:bg-white/15 ${className}`}
-    >
-      Invia Posizione su WhatsApp
     </Link>
   )
 }
@@ -147,7 +123,7 @@ export function LandingClient() {
     if (!navigator.geolocation) {
       setStatus('error')
       setMessage(
-        'Il browser non supporta la posizione. Puoi inviarla direttamente su WhatsApp.',
+        'Il browser non supporta la posizione. Puoi chiamare subito e comunicare dove ti trovi.',
       )
       return
     }
@@ -199,14 +175,14 @@ export function LandingClient() {
         } catch {
           setStatus('error')
           setMessage(
-            'Non siamo riusciti a inviare la richiesta dal sito. Puoi chiamare subito o inviare la posizione su WhatsApp.',
+            'Non siamo riusciti a inviare la richiesta dal sito. Puoi chiamare subito o riprovare tra qualche secondo.',
           )
         }
       },
       () => {
         setStatus('error')
         setMessage(
-          'Non vuoi condividere la posizione dal sito? Puoi inviarla direttamente su WhatsApp.',
+          'Posizione non concessa. Puoi chiamare subito e comunicare dove ti trovi.',
         )
       },
       { enableHighAccuracy: true, timeout: 12000, maximumAge: 0 },
@@ -406,11 +382,6 @@ export function LandingClient() {
                 }`}
               >
                 {message}
-                {status === 'error' ? (
-                  <div className="mt-3">
-                    <WhatsappButton className="w-full bg-[#111827] text-white hover:bg-[#1F2937]" />
-                  </div>
-                ) : null}
               </div>
             ) : null}
           </div>
@@ -619,7 +590,7 @@ export function LandingClient() {
               ],
               [
                 'Cosa succede se rifiuto la posizione?',
-                'Puoi inviarla direttamente su WhatsApp oppure chiamare e comunicare il punto in cui ti trovi.',
+                'Puoi riprovare dal modulo oppure chiamare e comunicare il punto in cui ti trovi.',
               ],
               [
                 'Posso scegliere dove portare l’auto?',
@@ -645,11 +616,10 @@ export function LandingClient() {
             Chiama o invia la posizione: ti aiutiamo a organizzare il recupero
             nel modo più rapido e chiaro possibile.
           </p>
-          <div className="mt-8 grid gap-3 sm:flex sm:justify-center">
+          <div className="mt-8 flex justify-center">
             <PhoneButton className="bg-slate-950 text-white hover:bg-slate-900">
               Chiama {site.phone}
             </PhoneButton>
-            <WhatsappButton />
           </div>
         </div>
       </section>
