@@ -22,7 +22,7 @@ const whatsappNumber =
 const n8nWebhookUrl = process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL || ''
 const telHref = `tel:${site.tel}`
 const whatsappLocationHref = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-  'Ciao, ho bisogno di un carroattrezzi a Bergamo. Ti invio la mia posizione.',
+  'Ciao, ho bisogno di un carroattrezzi a Bergamo. Posso inviare la mia posizione qui su WhatsApp.',
 )}`
 
 function conversione_click_telefono() {
@@ -85,6 +85,8 @@ function WhatsappButton({ className = '' }: { className?: string }) {
 
 export function LandingClient() {
   const [phone, setPhone] = useState('')
+  const [vehicleType, setVehicleType] = useState('')
+  const [highway, setHighway] = useState('')
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>(
     'idle',
   )
@@ -121,6 +123,18 @@ export function LandingClient() {
       return
     }
 
+    if (!vehicleType) {
+      setStatus('error')
+      setMessage('Seleziona il tipo di mezzo prima di inviare la richiesta.')
+      return
+    }
+
+    if (!highway) {
+      setStatus('error')
+      setMessage('Indica se ti trovi in autostrada: aiuta a gestire meglio il recupero.')
+      return
+    }
+
     if (!navigator.geolocation) {
       setStatus('error')
       setMessage(
@@ -139,6 +153,9 @@ export function LandingClient() {
         const googleMapsLink = `https://www.google.com/maps?q=${latitudine},${longitudine}`
         const payload = {
           telefono_cliente: cleanPhone,
+          tipo_mezzo: vehicleType,
+          in_autostrada: highway === 'si',
+          posizione_stradale: highway === 'si' ? 'Autostrada' : 'Strada ordinaria',
           latitudine,
           longitudine,
           google_maps_link: googleMapsLink,
@@ -262,8 +279,8 @@ export function LandingClient() {
               Invia la posizione al carroattrezzi
             </h2>
             <p className="mt-3 text-base leading-7 text-slate-700">
-              Inserisci il telefono, consenti la posizione e inviamo subito i
-              dati utili per ricontattarti.
+              Inserisci telefono, mezzo e posizione: inviamo subito i dati utili
+              al carroattrezzi per richiamarti con le informazioni giuste.
             </p>
             <label className="mt-6 block text-sm font-black">
               Telefono obbligatorio
@@ -275,6 +292,49 @@ export function LandingClient() {
               placeholder="Es. 333 123 4567"
               className="mt-2 w-full rounded-2xl border border-slate-300 px-5 py-4 text-lg font-bold outline-none ring-orange-300 transition focus:ring-4"
             />
+            <label className="mt-5 block text-sm font-black">
+              Tipo di mezzo
+            </label>
+            <select
+              value={vehicleType}
+              onChange={(event) => setVehicleType(event.target.value)}
+              className="mt-2 w-full rounded-2xl border border-slate-300 bg-white px-5 py-4 text-lg font-bold outline-none ring-orange-300 transition focus:ring-4"
+            >
+              <option value="">Seleziona il mezzo</option>
+              <option value="Auto">Auto</option>
+              <option value="Moto o scooter">Moto o scooter</option>
+              <option value="Furgone">Furgone</option>
+              <option value="SUV o 4x4">SUV o 4x4</option>
+              <option value="Altro veicolo">Altro veicolo</option>
+            </select>
+            <fieldset className="mt-5">
+              <legend className="text-sm font-black">Sei in autostrada?</legend>
+              <div className="mt-2 grid grid-cols-2 gap-3">
+                {[
+                  ['no', 'No'],
+                  ['si', 'Sì'],
+                ].map(([value, label]) => (
+                  <label
+                    key={value}
+                    className={`flex cursor-pointer items-center justify-center rounded-2xl border px-4 py-4 text-base font-black transition ${
+                      highway === value
+                        ? 'border-[#EA580C] bg-orange-50 text-[#9A3412]'
+                        : 'border-slate-300 bg-white text-slate-800'
+                    }`}
+                  >
+                    <input
+                      type="radio"
+                      name="highway"
+                      value={value}
+                      checked={highway === value}
+                      onChange={(event) => setHighway(event.target.value)}
+                      className="sr-only"
+                    />
+                    {label}
+                  </label>
+                ))}
+              </div>
+            </fieldset>
             <button
               type="button"
               onClick={submitPosition}
@@ -350,7 +410,7 @@ export function LandingClient() {
             ].map((service) => (
               <div
                 key={service}
-                className="rounded-2xl border border-orange-300/15 bg-orange-400/10 p-5 font-black text-orange-100"
+                className="rounded-2xl border border-orange-300/45 bg-[#F59E0B] p-5 font-black text-slate-950 shadow-lg shadow-orange-950/20"
               >
                 {service}
               </div>
@@ -411,13 +471,13 @@ export function LandingClient() {
             ].map(([text, author]) => (
               <figure
                 key={author}
-                className="rounded-3xl border border-white/10 bg-white/[0.06] p-6"
+                className="rounded-3xl border border-orange-300/30 bg-white p-6 text-slate-950 shadow-xl shadow-black/25"
               >
-                <p className="text-[#FBBF24]">★★★★★</p>
-                <blockquote className="mt-4 leading-7 text-slate-200">
+                <p className="text-[#EA580C]">★★★★★</p>
+                <blockquote className="mt-4 leading-7 text-slate-800">
                   “{text}”
                 </blockquote>
-                <figcaption className="mt-4 font-black text-white">
+                <figcaption className="mt-4 font-black text-slate-950">
                   {author}
                 </figcaption>
               </figure>
