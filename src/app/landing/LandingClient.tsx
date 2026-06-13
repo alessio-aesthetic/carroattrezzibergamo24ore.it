@@ -245,8 +245,8 @@ export function LandingClient() {
               Carroattrezzi Bergamo 24 Ore
             </h1>
             <p className="mt-6 max-w-2xl text-xl font-semibold leading-8 text-slate-200">
-              Auto ferma? Richiedi subito soccorso stradale rapido a Bergamo e
-              provincia.
+              Auto ferma? Richiedi subito un soccorso stradale rapido a Bergamo
+              e provincia.
             </p>
             <div className="mt-8 grid gap-3 sm:flex">
               <PhoneButton className="w-full text-lg sm:w-auto">
@@ -271,7 +271,7 @@ export function LandingClient() {
               {[
                 [
                   '/images/landing-assets/trust-sempre-attivi.webp',
-                  'Sempre attivi',
+                  'Attivi 24/7',
                 ],
                 [
                   '/images/landing-assets/trust-intervento-rapido.webp',
