@@ -341,40 +341,24 @@ export function LandingClient() {
               <option value="SUV o 4x4">SUV o 4x4</option>
               <option value="Altro veicolo">Altro veicolo</option>
             </select>
-            <fieldset className="mt-5">
-              <legend className="text-sm font-black">
-                Problema principale
-              </legend>
-              <div className="mt-2 grid gap-2 sm:grid-cols-2">
-                {[
-                  ['Batteria scarica', '🔋 Batteria scarica'],
-                  ['Guasto meccanico', '🚗 Guasto meccanico'],
-                  ['Gomma forata', '🛞 Gomma forata'],
-                  ['Incidente', '💥 Incidente'],
-                  ['Carburante esaurito', '⛽ Carburante esaurito'],
-                  ['Altro', '❓ Altro'],
-                ].map(([value, label]) => (
-                  <label
-                    key={value}
-                    className={`flex cursor-pointer items-center rounded-2xl border px-4 py-3 text-sm font-black transition ${
-                      mainProblem === value
-                        ? 'border-[#EA580C] bg-orange-50 text-[#9A3412]'
-                        : 'border-slate-300 bg-white text-slate-800'
-                    }`}
-                  >
-                    <input
-                      type="radio"
-                      name="mainProblem"
-                      value={value}
-                      checked={mainProblem === value}
-                      onChange={(event) => setMainProblem(event.target.value)}
-                      className="sr-only"
-                    />
-                    {label}
-                  </label>
-                ))}
-              </div>
-            </fieldset>
+            <label className="mt-5 block text-sm font-black">
+              Problema principale
+            </label>
+            <select
+              value={mainProblem}
+              onChange={(event) => setMainProblem(event.target.value)}
+              className="mt-2 w-full rounded-2xl border border-slate-300 bg-white px-5 py-4 text-lg font-bold outline-none ring-orange-300 transition focus:ring-4"
+            >
+              <option value="">Seleziona il problema</option>
+              <option value="Batteria scarica">🔋 Batteria scarica</option>
+              <option value="Guasto meccanico">🚗 Guasto meccanico</option>
+              <option value="Gomma forata">🛞 Gomma forata</option>
+              <option value="Incidente">💥 Incidente</option>
+              <option value="Carburante esaurito">
+                ⛽ Carburante esaurito
+              </option>
+              <option value="Altro">❓ Altro</option>
+            </select>
             <fieldset className="mt-5">
               <legend className="text-sm font-black">Sei in autostrada?</legend>
               <div className="mt-2 grid grid-cols-2 gap-3">
