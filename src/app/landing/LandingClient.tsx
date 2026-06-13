@@ -19,7 +19,9 @@ type TrackingData = Record<TrackingKey, string>
 const fallbackWhatsappNumber = site.whatsapp
 const whatsappNumber =
   process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || fallbackWhatsappNumber
-const n8nWebhookUrl = process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL || ''
+const n8nWebhookUrl =
+  process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL ||
+  'https://alessiothrasos.app.n8n.cloud/webhook/landing-carroattrezzi-bergamo'
 const telHref = `tel:${site.tel}`
 const whatsappLocationHref = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
   'Ciao, ho bisogno di un carroattrezzi a Bergamo. Posso inviare la mia posizione qui su WhatsApp.',
