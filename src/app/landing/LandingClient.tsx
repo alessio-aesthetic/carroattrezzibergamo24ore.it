@@ -88,6 +88,7 @@ function WhatsappButton({ className = '' }: { className?: string }) {
 export function LandingClient() {
   const [phone, setPhone] = useState('')
   const [vehicleType, setVehicleType] = useState('')
+  const [mainProblem, setMainProblem] = useState('')
   const [highway, setHighway] = useState('')
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>(
     'idle',
@@ -131,6 +132,12 @@ export function LandingClient() {
       return
     }
 
+    if (!mainProblem) {
+      setStatus('error')
+      setMessage('Seleziona il problema principale prima di inviare la richiesta.')
+      return
+    }
+
     if (!highway) {
       setStatus('error')
       setMessage('Indica se ti trovi in autostrada: aiuta a gestire meglio il recupero.')
@@ -156,6 +163,7 @@ export function LandingClient() {
         const payload = {
           telefono_cliente: cleanPhone,
           tipo_mezzo: vehicleType,
+          problema_principale: mainProblem,
           in_autostrada: highway === 'si',
           posizione_stradale: highway === 'si' ? 'Autostrada' : 'Strada ordinaria',
           latitudine,
@@ -333,6 +341,40 @@ export function LandingClient() {
               <option value="SUV o 4x4">SUV o 4x4</option>
               <option value="Altro veicolo">Altro veicolo</option>
             </select>
+            <fieldset className="mt-5">
+              <legend className="text-sm font-black">
+                Problema principale
+              </legend>
+              <div className="mt-2 grid gap-2 sm:grid-cols-2">
+                {[
+                  ['Batteria scarica', '🔋 Batteria scarica'],
+                  ['Guasto meccanico', '🚗 Guasto meccanico'],
+                  ['Gomma forata', '🛞 Gomma forata'],
+                  ['Incidente', '💥 Incidente'],
+                  ['Carburante esaurito', '⛽ Carburante esaurito'],
+                  ['Altro', '❓ Altro'],
+                ].map(([value, label]) => (
+                  <label
+                    key={value}
+                    className={`flex cursor-pointer items-center rounded-2xl border px-4 py-3 text-sm font-black transition ${
+                      mainProblem === value
+                        ? 'border-[#EA580C] bg-orange-50 text-[#9A3412]'
+                        : 'border-slate-300 bg-white text-slate-800'
+                    }`}
+                  >
+                    <input
+                      type="radio"
+                      name="mainProblem"
+                      value={value}
+                      checked={mainProblem === value}
+                      onChange={(event) => setMainProblem(event.target.value)}
+                      className="sr-only"
+                    />
+                    {label}
+                  </label>
+                ))}
+              </div>
+            </fieldset>
             <fieldset className="mt-5">
               <legend className="text-sm font-black">Sei in autostrada?</legend>
               <div className="mt-2 grid grid-cols-2 gap-3">
