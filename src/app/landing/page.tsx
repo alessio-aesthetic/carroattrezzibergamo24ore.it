@@ -45,7 +45,7 @@ export default function LandingPage() {
         name: 'Posso inviare la posizione GPS dal telefono?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Sì, dalla pagina puoi inviare la posizione GPS o usare WhatsApp se preferisci condividere la posizione direttamente in chat.',
+          text: 'Si, dalla pagina puoi inviare la posizione GPS compilando il mini form. Se preferisci parlare con una persona, puoi chiamare direttamente.',
         },
       },
       {
