@@ -196,7 +196,7 @@ export function LandingClient() {
           <img
             src="/images/logo-bergamo-24ore.png"
             alt="Carroattrezzi Bergamo 24 Ore"
-            className="h-[4.5rem] w-auto max-w-[250px] object-contain sm:h-[5.5rem] sm:max-w-[365px]"
+            className="h-20 w-auto max-w-[275px] object-contain sm:h-24 sm:max-w-[390px]"
           />
           <div className="hidden items-center gap-4 sm:flex">
             <div className="text-right">
