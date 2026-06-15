@@ -289,8 +289,9 @@ export function LandingClient() {
               Invia la posizione al carroattrezzi
             </h2>
             <p className="mt-3 text-base leading-7 text-slate-700">
-              Inserisci telefono, mezzo e posizione: inviamo subito i dati utili
-              al carroattrezzi per richiamarti con le informazioni giuste.
+              Inserisci telefono, mezzo e posizione: invieremo subito i dati utili
+              al carroattrezzi disponibile più vicino. Riceverai una conferma via WhatsApp 
+              e sarai ricontattato in pochi secondi per confermare il soccorso. 
             </p>
             <label className="mt-6 block text-sm font-black">
               Telefono obbligatorio
