@@ -68,10 +68,10 @@ export default function ZonePage({ params }: { params: { slug: string } }) {
                   Chiama {site.phone}
                 </Link>
                 <Link
-                  href={`https://wa.me/${site.whatsapp}`}
+                  href="/landing/"
                   className="rounded-full border border-slate-300 bg-white px-6 py-3 text-center text-sm font-bold text-slate-950"
                 >
-                  WhatsApp
+                  Invia posizione
                 </Link>
               </div>
             </div>

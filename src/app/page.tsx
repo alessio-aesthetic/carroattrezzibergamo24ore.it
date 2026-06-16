@@ -4,15 +4,13 @@ import { ConsentBanner } from '@/components/ConsentBanner'
 import { Container } from '@/components/Container'
 import { faqs, services, site, zones } from '@/data/site'
 
-const whatsappUrl = `https://wa.me/${site.whatsapp}`
-
 function Brand() {
   return (
     <Link href="/" className="flex items-center gap-3">
       <img
-        src="/images/logo-bergamo.svg"
+        src="/images/logo-bergamo-24ore.png"
         alt="Carroattrezzi Bergamo 24 Ore"
-        className="h-12 w-auto sm:h-14"
+        className="h-14 w-auto sm:h-16"
       />
     </Link>
   )
@@ -35,13 +33,13 @@ function PhoneLink({
   )
 }
 
-function WhatsAppLink({ className = '' }: { className?: string }) {
+function LandingLink({ className = '', children = 'Invia posizione' }: { className?: string; children?: React.ReactNode }) {
   return (
     <Link
-      href={whatsappUrl}
+      href="/landing/"
       className={`inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-bold text-slate-950 transition hover:border-[#1D4ED8] hover:text-[#1D4ED8] ${className}`}
     >
-      WhatsApp
+      {children}
     </Link>
   )
 }
@@ -66,7 +64,7 @@ function Header() {
           </a>
         </nav>
         <div className="hidden items-center gap-3 lg:flex">
-          <WhatsAppLink className="py-2.5" />
+          <LandingLink className="py-2.5" />
           <PhoneLink className="py-2.5" />
         </div>
         <PhoneLink className="px-5 lg:hidden">Chiama</PhoneLink>
@@ -111,7 +109,7 @@ function Hero() {
           </div>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <PhoneLink />
-            <WhatsAppLink />
+            <LandingLink>Invia posizione</LandingLink>
           </div>
         </div>
         <div className="relative">
@@ -414,10 +412,10 @@ function FinalCta() {
             Chiama {site.phone}
           </Link>
           <Link
-            href={whatsappUrl}
+            href="/landing/"
             className="inline-flex items-center justify-center rounded-full border border-white/60 px-7 py-4 text-sm font-bold text-white transition hover:bg-white/10"
           >
-            Scrivi su WhatsApp
+            Invia posizione
           </Link>
         </div>
       </Container>
