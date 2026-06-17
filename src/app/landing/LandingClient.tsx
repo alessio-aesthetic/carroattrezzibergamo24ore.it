@@ -21,6 +21,12 @@ const n8nWebhookUrl =
   'https://alessiothrasos.app.n8n.cloud/webhook/landing-carroattrezzi-bergamo'
 const telHref = `tel:${site.tel}`
 
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void
+  }
+}
+
 function conversione_click_telefono() {
   console.log('conversione_click_telefono')
   // TODO Google Ads: inserisci qui ID conversione click telefono.
@@ -29,8 +35,11 @@ function conversione_click_telefono() {
 
 function conversione_invio_posizione() {
   console.log('conversione_invio_posizione')
-  // TODO Google Ads: inserisci qui ID conversione invio posizione.
-  // window.gtag?.('event', 'conversion', { send_to: 'AW-XXXX/POSIZIONE' })
+  window.gtag?.('event', 'conversion', {
+    send_to: 'AW-972513984/xR7FCIn67sAcEMDF3cBD',
+    value: 1.0,
+    currency: 'EUR',
+  })
 }
 
 function getStoredTracking(): TrackingData {
