@@ -264,10 +264,21 @@ export function LandingClient() {
             <h2 className="mt-3 text-3xl font-black">
               Invia la posizione al carroattrezzi
             </h2>
-            <p className="mt-3 rounded-3xl border border-orange-200 bg-white/90 p-4 text-base font-black leading-7 text-slate-950 shadow-[0_16px_36px_rgba(124,45,18,0.10)]">
-              Dopo il completamento del form troveremo il carroattrezzi più
-              vicino a te in meno di 40 secondi.
-            </p>
+            <div className="relative mt-4 overflow-hidden rounded-[1.65rem] bg-[#111827] p-1 shadow-[0_24px_58px_rgba(17,24,39,0.32),0_12px_32px_rgba(234,88,12,0.28)]">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,rgba(251,191,36,0.34),transparent_34%),radial-gradient(circle_at_88%_15%,rgba(234,88,12,0.42),transparent_30%)]" />
+              <div className="relative rounded-[1.45rem] border border-white/15 bg-linear-to-br from-[#1f2937]/96 via-[#111827]/96 to-[#431407]/96 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.18)]">
+                <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[#FBBF24]">
+                  priorità immediata
+                </p>
+                <p className="mt-2 text-xl font-black leading-tight text-white sm:text-2xl">
+                  Dopo il completamento del form troveremo il carroattrezzi più
+                  vicino a te{' '}
+                  <span className="text-[#FBBF24]">
+                    in meno di 40 secondi.
+                  </span>
+                </p>
+              </div>
+            </div>
             <label className="mt-6 block text-sm font-black">
               Telefono obbligatorio
             </label>
