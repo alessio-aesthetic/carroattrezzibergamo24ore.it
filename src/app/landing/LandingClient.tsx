@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
@@ -222,7 +222,7 @@ export function LandingClient() {
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(248,113,22,0.22),transparent_36%),linear-gradient(135deg,#080808_0%,#171717_52%,#2A1206_100%)]" />
         <div className="relative mx-auto grid max-w-7xl gap-9 px-4 py-10 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:px-8 lg:py-16">
-          <div>
+          <div className="order-2 lg:order-1">
             <p className="inline-flex rounded-full border border-orange-300/25 bg-orange-400/10 px-4 py-2 text-sm font-black uppercase tracking-[0.18em] text-orange-200">
               Emergenza stradale 24/7
             </p>
@@ -252,44 +252,11 @@ export function LandingClient() {
             <p className="mt-6 text-3xl font-black text-[#FBBF24]">
               {site.phone}
             </p>
-            <div className="mt-7 grid grid-cols-2 gap-3 text-center text-sm font-black text-white sm:grid-cols-4">
-              {[
-                [
-                  '/images/landing-assets/trust-sempre-attivi.webp',
-                  'Attivi 24/7',
-                ],
-                [
-                  '/images/landing-assets/trust-intervento-rapido.webp',
-                  'Intervento rapido',
-                ],
-                [
-                  '/images/landing-assets/trust-bergamo-provincia.webp',
-                  'Bergamo e provincia',
-                ],
-                [
-                  '/images/landing-assets/trust-recensioni-verificate.webp',
-                  'Recensioni verificate',
-                ],
-              ].map(([image, item]) => (
-                <div
-                  key={item}
-                  className="flex min-h-36 flex-col items-center justify-center rounded-3xl border border-orange-300/30 bg-white/[0.14] p-4 shadow-xl shadow-black/20 backdrop-blur"
-                >
-                  <img
-                    src={image}
-                    alt=""
-                    className="h-20 w-20 object-contain"
-                    loading="eager"
-                  />
-                  <span className="mt-2 leading-tight">{item}</span>
-                </div>
-              ))}
-            </div>
           </div>
 
           <div
             id="posizione"
-            className="rounded-[2rem] border border-white/10 bg-white p-5 text-slate-950 shadow-2xl shadow-orange-950/30 sm:p-7"
+            className="order-1 rounded-[2rem] border border-white/80 bg-linear-to-b from-white via-white to-orange-50 p-4 text-slate-950 shadow-[0_42px_100px_rgba(0,0,0,0.42),0_18px_50px_rgba(234,88,12,0.24),inset_0_1px_0_rgba(255,255,255,1)] ring-1 ring-orange-200/70 sm:p-7 lg:order-2"
           >
             <p className="text-sm font-black uppercase tracking-[0.18em] text-[#EA580C]">
               richiesta veloce
@@ -297,10 +264,9 @@ export function LandingClient() {
             <h2 className="mt-3 text-3xl font-black">
               Invia la posizione al carroattrezzi
             </h2>
-            <p className="mt-3 text-base leading-7 text-slate-700">
-              Inserisci telefono, mezzo e posizione: invieremo subito i dati utili
-              al carroattrezzi disponibile più vicino. Riceverai una conferma via WhatsApp 
-              e sarai ricontattato in pochi secondi per confermare il soccorso. 
+            <p className="mt-3 rounded-3xl border border-orange-200 bg-white/90 p-4 text-base font-black leading-7 text-slate-950 shadow-[0_16px_36px_rgba(124,45,18,0.10)]">
+              Dopo il completamento del form troveremo il carroattrezzi più
+              vicino a te in meno di 40 secondi.
             </p>
             <label className="mt-6 block text-sm font-black">
               Telefono obbligatorio
@@ -336,14 +302,12 @@ export function LandingClient() {
               className="mt-2 w-full rounded-2xl border border-slate-300 bg-white px-5 py-4 text-lg font-bold outline-none ring-orange-300 transition focus:ring-4"
             >
               <option value="">Seleziona il problema</option>
-              <option value="Batteria scarica">🔋 Batteria scarica</option>
-              <option value="Guasto meccanico">🚗 Guasto meccanico</option>
-              <option value="Gomma forata">🛞 Gomma forata</option>
-              <option value="Incidente">💥 Incidente</option>
-              <option value="Carburante esaurito">
-                ⛽ Carburante esaurito
-              </option>
-              <option value="Altro">❓ Altro</option>
+              <option value="Batteria scarica">Batteria scarica</option>
+              <option value="Guasto meccanico">Guasto meccanico</option>
+              <option value="Gomma forata">Gomma forata</option>
+              <option value="Incidente">Incidente</option>
+              <option value="Carburante esaurito">Carburante esaurito</option>
+              <option value="Altro">Altro</option>
             </select>
             <fieldset className="mt-5">
               <legend className="text-sm font-black">Sei in autostrada?</legend>
@@ -439,7 +403,7 @@ export function LandingClient() {
             </h2>
             <p className="mt-3 text-lg leading-8 text-slate-700">
               Indica il problema nel form o al telefono: il recupero parte con
-              informazioni più precise e meno passaggi inutili.
+              informazioni piÃ¹ precise e meno passaggi inutili.
             </p>
           </div>
           <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -447,7 +411,7 @@ export function LandingClient() {
               [
                 '/images/landing-assets/servizio-soccorso-stradale.webp',
                 'Soccorso stradale',
-                'Supporto urgente quando il veicolo non può proseguire.',
+                'Supporto urgente quando il veicolo non puÃ² proseguire.',
               ],
               [
                 '/images/landing-assets/servizio-recupero-auto.webp',
@@ -477,7 +441,7 @@ export function LandingClient() {
               [
                 '/images/landing-assets/servizio-trasporto-veicoli.webp',
                 'Trasporto veicoli',
-                'Spostamenti programmati o urgenti in città e provincia.',
+                'Spostamenti programmati o urgenti in cittÃ  e provincia.',
               ],
             ].map(([image, service, description]) => (
               <div
@@ -510,7 +474,7 @@ export function LandingClient() {
           <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
             {[
               'Bergamo centro',
-              'Città Alta',
+              'CittÃ  Alta',
               'Borgo Palazzo',
               'Longuelo',
               'Redona',
@@ -567,9 +531,9 @@ export function LandingClient() {
                 key={author}
                 className="rounded-3xl border border-orange-300/30 bg-white p-6 text-slate-950 shadow-xl shadow-black/25"
               >
-                <p className="text-[#EA580C]">★★★★★</p>
+                <p className="text-[#EA580C]">â˜…â˜…â˜…â˜…â˜…</p>
                 <blockquote className="mt-4 leading-7 text-slate-800">
-                  “{text}”
+                  â€œ{text}â€
                 </blockquote>
                 <figcaption className="mt-4 font-black text-slate-950">
                   {author}
@@ -596,15 +560,15 @@ export function LandingClient() {
               ],
               [
                 'Posso mandare la posizione senza telefonare?',
-                'Sì. Inserisci il telefono, premi il bottone della posizione e consenti il GPS dal browser.',
+                'SÃ¬. Inserisci il telefono, premi il bottone della posizione e consenti il GPS dal browser.',
               ],
               [
                 'Cosa succede se rifiuto la posizione?',
                 'Puoi riprovare dal modulo oppure chiamare e comunicare il punto in cui ti trovi.',
               ],
               [
-                'Posso scegliere dove portare l’auto?',
-                'Sì. Puoi indicare officina, carrozzeria, deposito o un indirizzo concordato.',
+                'Posso scegliere dove portare lâ€™auto?',
+                'SÃ¬. Puoi indicare officina, carrozzeria, deposito o un indirizzo concordato.',
               ],
             ].map(([question, answer]) => (
               <div
@@ -624,7 +588,7 @@ export function LandingClient() {
           <h2 className="text-4xl font-black">Hai bisogno ora?</h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg font-semibold text-orange-50">
             Chiama o invia la posizione: ti aiutiamo a organizzare il recupero
-            nel modo più rapido e chiaro possibile.
+            nel modo piÃ¹ rapido e chiaro possibile.
           </p>
           <div className="mt-8 flex justify-center">
             <PhoneButton className="bg-slate-950 text-white hover:bg-slate-900">
