@@ -281,18 +281,6 @@ export function LandingClient() {
                 </p>
               </div>
             </div>
-            <div className="mt-3 grid gap-1 text-xs font-bold leading-5 text-slate-700">
-              {[
-                'Richiesta gratuita e senza impegno',
-                'Nessun obbligo di accettare il servizio',
-                'Nessun pagamento online',
-              ].map((item) => (
-                <div key={item} className="flex items-center gap-2">
-                  <span className="size-1.5 rounded-full bg-[#EA580C]" />
-                  <span>{item}</span>
-                </div>
-              ))}
-            </div>
             <label className="mt-4 block text-sm font-black">
               Telefono
             </label>
@@ -374,6 +362,9 @@ export function LandingClient() {
                   : 'Rileva posizione e invia richiesta'}
               </span>
             </button>
+            <p className="mt-3 text-center text-xs font-black uppercase tracking-[0.12em] text-slate-700">
+              Richiesta gratuita e senza impegno
+            </p>
             {message ? (
               <div
                 className={`mt-4 rounded-2xl p-4 text-sm font-bold leading-6 ${
