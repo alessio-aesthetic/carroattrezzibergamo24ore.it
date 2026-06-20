@@ -287,7 +287,7 @@ export function LandingClient() {
               onChange={(event) => setPhone(event.target.value)}
               inputMode="tel"
               placeholder="Es. 333 123 4567"
-              className="mt-2 w-full rounded-2xl border border-orange-100 bg-linear-to-b from-white to-orange-50/50 px-5 py-4 text-lg font-bold text-slate-950 shadow-[inset_0_2px_8px_rgba(15,23,42,0.06),0_14px_32px_rgba(124,45,18,0.10)] outline-none ring-orange-300 transition focus:border-[#EA580C] focus:ring-4"
+              className="mt-2 w-full rounded-2xl border-2 border-slate-300 bg-white px-5 py-4 text-lg font-black text-slate-950 shadow-[0_18px_42px_rgba(15,23,42,0.18),inset_0_1px_0_rgba(255,255,255,1)] outline-none ring-orange-300 transition placeholder:text-slate-500 focus:border-[#EA580C] focus:bg-orange-50/30 focus:ring-4"
             />
             <label className="mt-5 block text-sm font-black">
               Tipo di mezzo
@@ -295,7 +295,7 @@ export function LandingClient() {
             <select
               value={vehicleType}
               onChange={(event) => setVehicleType(event.target.value)}
-              className="mt-2 w-full rounded-2xl border border-orange-100 bg-linear-to-b from-white to-orange-50/50 px-5 py-4 text-lg font-bold text-slate-950 shadow-[inset_0_2px_8px_rgba(15,23,42,0.06),0_14px_32px_rgba(124,45,18,0.10)] outline-none ring-orange-300 transition focus:border-[#EA580C] focus:ring-4"
+              className="mt-2 w-full rounded-2xl border-2 border-slate-300 bg-white px-5 py-4 text-lg font-black text-slate-950 shadow-[0_18px_42px_rgba(15,23,42,0.18),inset_0_1px_0_rgba(255,255,255,1)] outline-none ring-orange-300 transition focus:border-[#EA580C] focus:bg-orange-50/30 focus:ring-4"
             >
               <option value="">Seleziona il mezzo</option>
               <option value="Auto">Auto</option>
@@ -310,7 +310,7 @@ export function LandingClient() {
             <select
               value={mainProblem}
               onChange={(event) => setMainProblem(event.target.value)}
-              className="mt-2 w-full rounded-2xl border border-orange-100 bg-linear-to-b from-white to-orange-50/50 px-5 py-4 text-lg font-bold text-slate-950 shadow-[inset_0_2px_8px_rgba(15,23,42,0.06),0_14px_32px_rgba(124,45,18,0.10)] outline-none ring-orange-300 transition focus:border-[#EA580C] focus:ring-4"
+              className="mt-2 w-full rounded-2xl border-2 border-slate-300 bg-white px-5 py-4 text-lg font-black text-slate-950 shadow-[0_18px_42px_rgba(15,23,42,0.18),inset_0_1px_0_rgba(255,255,255,1)] outline-none ring-orange-300 transition focus:border-[#EA580C] focus:bg-orange-50/30 focus:ring-4"
             >
               <option value="">Seleziona il problema</option>
               <option value="Batteria scarica">Batteria scarica</option>
@@ -331,8 +331,8 @@ export function LandingClient() {
                     key={value}
                     className={`flex cursor-pointer items-center justify-center rounded-2xl border px-4 py-4 text-base font-black transition ${
                       highway === value
-                        ? 'border-[#EA580C] bg-linear-to-b from-orange-50 to-white text-[#9A3412] shadow-[0_14px_30px_rgba(234,88,12,0.20),inset_0_1px_0_rgba(255,255,255,0.9)]'
-                        : 'border-orange-100 bg-linear-to-b from-white to-slate-50 text-slate-800 shadow-[0_10px_24px_rgba(15,23,42,0.08),inset_0_1px_0_rgba(255,255,255,0.9)] hover:border-orange-200'
+                        ? 'border-[#EA580C] bg-orange-50 text-[#9A3412] shadow-[0_16px_34px_rgba(234,88,12,0.26),inset_0_1px_0_rgba(255,255,255,1)]'
+                        : 'border-slate-300 bg-white text-slate-900 shadow-[0_14px_30px_rgba(15,23,42,0.16),inset_0_1px_0_rgba(255,255,255,1)] hover:border-[#EA580C]'
                     }`}
                   >
                     <input
