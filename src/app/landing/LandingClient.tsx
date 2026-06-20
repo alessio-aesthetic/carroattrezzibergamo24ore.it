@@ -352,11 +352,19 @@ export function LandingClient() {
               type="button"
               onClick={submitPosition}
               disabled={status === 'loading'}
-              className="mt-4 w-full rounded-2xl bg-linear-to-r from-[#EA580C] via-[#F97316] to-[#FBBF24] px-5 py-5 text-lg font-black text-white shadow-[0_22px_46px_rgba(234,88,12,0.34),inset_0_1px_0_rgba(255,255,255,0.35)] transition hover:-translate-y-0.5 hover:shadow-[0_30px_62px_rgba(234,88,12,0.44)] disabled:cursor-wait disabled:opacity-70"
+              className="group relative mt-5 w-full overflow-hidden rounded-[1.35rem] bg-linear-to-r from-[#DC2626] via-[#EA580C] to-[#FBBF24] px-5 py-5 text-lg font-black text-white shadow-[0_28px_70px_rgba(234,88,12,0.48),0_10px_26px_rgba(127,29,29,0.24),inset_0_1px_0_rgba(255,255,255,0.45)] ring-2 ring-orange-200/70 transition hover:-translate-y-1 hover:shadow-[0_36px_88px_rgba(234,88,12,0.62),0_14px_34px_rgba(127,29,29,0.30)] disabled:cursor-wait disabled:opacity-70"
             >
-              {status === 'loading'
-                ? 'Invio in corso...'
-                : 'Rileva posizione e invia richiesta'}
+              <span className="absolute inset-0 bg-linear-to-r from-white/0 via-white/25 to-white/0 opacity-0 transition group-hover:opacity-100" />
+              <span className="relative block text-xl leading-tight">
+                {status === 'loading'
+                  ? 'Invio in corso...'
+                  : 'Trova subito il carroattrezzi più vicino'}
+              </span>
+              {status !== 'loading' ? (
+                <span className="relative mt-1 block text-sm font-black text-orange-50">
+                  invia posizione e richiesta in pochi secondi
+                </span>
+              ) : null}
             </button>
             {message ? (
               <div
