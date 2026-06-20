@@ -277,6 +277,18 @@ export function LandingClient() {
                     tempi di attesa e costi dell&apos;intervento.
                   </span>
                 </p>
+                <div className="mt-4 grid gap-2 text-sm font-bold text-orange-50/90">
+                  {[
+                    'Richiesta gratuita e senza impegno',
+                    'Nessun obbligo di accettare il servizio',
+                    'Nessun pagamento online',
+                  ].map((item) => (
+                    <div key={item} className="flex items-center gap-2">
+                      <span className="size-1.5 rounded-full bg-[#FBBF24]" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
             <label className="mt-6 block text-sm font-black">
