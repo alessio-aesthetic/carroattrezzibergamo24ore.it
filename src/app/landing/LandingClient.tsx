@@ -280,14 +280,14 @@ export function LandingClient() {
               </div>
             </div>
             <label className="mt-6 block text-sm font-black">
-              Telefono obbligatorio
+              Telefono
             </label>
             <input
               value={phone}
               onChange={(event) => setPhone(event.target.value)}
               inputMode="tel"
               placeholder="Es. 333 123 4567"
-              className="mt-2 w-full rounded-2xl border border-slate-300 px-5 py-4 text-lg font-bold outline-none ring-orange-300 transition focus:ring-4"
+              className="mt-2 w-full rounded-2xl border border-orange-100 bg-linear-to-b from-white to-orange-50/50 px-5 py-4 text-lg font-bold text-slate-950 shadow-[inset_0_2px_8px_rgba(15,23,42,0.06),0_14px_32px_rgba(124,45,18,0.10)] outline-none ring-orange-300 transition focus:border-[#EA580C] focus:ring-4"
             />
             <label className="mt-5 block text-sm font-black">
               Tipo di mezzo
@@ -295,7 +295,7 @@ export function LandingClient() {
             <select
               value={vehicleType}
               onChange={(event) => setVehicleType(event.target.value)}
-              className="mt-2 w-full rounded-2xl border border-slate-300 bg-white px-5 py-4 text-lg font-bold outline-none ring-orange-300 transition focus:ring-4"
+              className="mt-2 w-full rounded-2xl border border-orange-100 bg-linear-to-b from-white to-orange-50/50 px-5 py-4 text-lg font-bold text-slate-950 shadow-[inset_0_2px_8px_rgba(15,23,42,0.06),0_14px_32px_rgba(124,45,18,0.10)] outline-none ring-orange-300 transition focus:border-[#EA580C] focus:ring-4"
             >
               <option value="">Seleziona il mezzo</option>
               <option value="Auto">Auto</option>
@@ -310,7 +310,7 @@ export function LandingClient() {
             <select
               value={mainProblem}
               onChange={(event) => setMainProblem(event.target.value)}
-              className="mt-2 w-full rounded-2xl border border-slate-300 bg-white px-5 py-4 text-lg font-bold outline-none ring-orange-300 transition focus:ring-4"
+              className="mt-2 w-full rounded-2xl border border-orange-100 bg-linear-to-b from-white to-orange-50/50 px-5 py-4 text-lg font-bold text-slate-950 shadow-[inset_0_2px_8px_rgba(15,23,42,0.06),0_14px_32px_rgba(124,45,18,0.10)] outline-none ring-orange-300 transition focus:border-[#EA580C] focus:ring-4"
             >
               <option value="">Seleziona il problema</option>
               <option value="Batteria scarica">Batteria scarica</option>
@@ -331,8 +331,8 @@ export function LandingClient() {
                     key={value}
                     className={`flex cursor-pointer items-center justify-center rounded-2xl border px-4 py-4 text-base font-black transition ${
                       highway === value
-                        ? 'border-[#EA580C] bg-orange-50 text-[#9A3412]'
-                        : 'border-slate-300 bg-white text-slate-800'
+                        ? 'border-[#EA580C] bg-linear-to-b from-orange-50 to-white text-[#9A3412] shadow-[0_14px_30px_rgba(234,88,12,0.20),inset_0_1px_0_rgba(255,255,255,0.9)]'
+                        : 'border-orange-100 bg-linear-to-b from-white to-slate-50 text-slate-800 shadow-[0_10px_24px_rgba(15,23,42,0.08),inset_0_1px_0_rgba(255,255,255,0.9)] hover:border-orange-200'
                     }`}
                   >
                     <input
@@ -352,7 +352,7 @@ export function LandingClient() {
               type="button"
               onClick={submitPosition}
               disabled={status === 'loading'}
-              className="mt-4 w-full rounded-2xl bg-[#EA580C] px-5 py-5 text-lg font-black text-white shadow-xl shadow-orange-700/25 transition hover:bg-[#C2410C] disabled:cursor-wait disabled:opacity-70"
+              className="mt-4 w-full rounded-2xl bg-linear-to-r from-[#EA580C] via-[#F97316] to-[#FBBF24] px-5 py-5 text-lg font-black text-white shadow-[0_22px_46px_rgba(234,88,12,0.34),inset_0_1px_0_rgba(255,255,255,0.35)] transition hover:-translate-y-0.5 hover:shadow-[0_30px_62px_rgba(234,88,12,0.44)] disabled:cursor-wait disabled:opacity-70"
             >
               {status === 'loading'
                 ? 'Invio in corso...'
