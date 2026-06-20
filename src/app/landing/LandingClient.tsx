@@ -352,7 +352,7 @@ export function LandingClient() {
               type="button"
               onClick={submitPosition}
               disabled={status === 'loading'}
-              className="group relative mt-5 w-full overflow-hidden rounded-[1.35rem] border-2 border-[#9A3412] bg-[#EA580C] px-5 py-5 text-lg font-black text-white shadow-[0_28px_70px_rgba(234,88,12,0.42),0_10px_0_#9A3412,inset_0_2px_0_rgba(255,255,255,0.35),inset_0_-8px_18px_rgba(154,52,18,0.28)] transition hover:-translate-y-1 hover:bg-[#F97316] hover:shadow-[0_36px_88px_rgba(234,88,12,0.52),0_12px_0_#9A3412,inset_0_2px_0_rgba(255,255,255,0.42),inset_0_-8px_18px_rgba(154,52,18,0.30)] active:translate-y-1 active:shadow-[0_16px_42px_rgba(234,88,12,0.38),0_4px_0_#9A3412,inset_0_2px_0_rgba(255,255,255,0.3)] disabled:cursor-wait disabled:opacity-70"
+              className="group relative mt-5 w-full overflow-hidden rounded-[1.35rem] border border-[#C2410C] bg-[#EA580C] px-5 py-5 text-lg font-black text-white shadow-[0_22px_54px_rgba(234,88,12,0.34),0_8px_20px_rgba(67,20,7,0.18),inset_0_1px_0_rgba(255,255,255,0.38),inset_0_-10px_22px_rgba(124,45,18,0.22)] transition hover:-translate-y-0.5 hover:bg-[#F97316] hover:shadow-[0_28px_66px_rgba(234,88,12,0.42),0_10px_24px_rgba(67,20,7,0.22),inset_0_1px_0_rgba(255,255,255,0.42),inset_0_-10px_22px_rgba(124,45,18,0.24)] active:translate-y-0 active:shadow-[0_14px_34px_rgba(234,88,12,0.30),0_5px_14px_rgba(67,20,7,0.18),inset_0_1px_0_rgba(255,255,255,0.35),inset_0_-6px_16px_rgba(124,45,18,0.20)] disabled:cursor-wait disabled:opacity-70"
             >
               <span className="absolute inset-x-4 top-2 h-px rounded-full bg-white/55" />
               <span className="relative block text-xl leading-tight">
