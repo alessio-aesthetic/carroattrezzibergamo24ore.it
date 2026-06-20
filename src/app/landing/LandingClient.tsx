@@ -279,21 +279,21 @@ export function LandingClient() {
                     tempi di attesa ed i costi dell&apos;intervento.
                   </span>
                 </p>
-                <div className="mt-4 grid gap-2 text-sm font-bold text-orange-50/90">
-                  {[
-                    'Richiesta gratuita e senza impegno',
-                    'Nessun obbligo di accettare il servizio',
-                    'Nessun pagamento online',
-                  ].map((item) => (
-                    <div key={item} className="flex items-center gap-2">
-                      <span className="size-1.5 rounded-full bg-[#FBBF24]" />
-                      <span>{item}</span>
-                    </div>
-                  ))}
-                </div>
               </div>
             </div>
-            <label className="mt-6 block text-sm font-black">
+            <div className="mt-3 grid gap-1 text-xs font-bold leading-5 text-slate-700">
+              {[
+                'Richiesta gratuita e senza impegno',
+                'Nessun obbligo di accettare il servizio',
+                'Nessun pagamento online',
+              ].map((item) => (
+                <div key={item} className="flex items-center gap-2">
+                  <span className="size-1.5 rounded-full bg-[#EA580C]" />
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+            <label className="mt-4 block text-sm font-black">
               Telefono
             </label>
             <input
