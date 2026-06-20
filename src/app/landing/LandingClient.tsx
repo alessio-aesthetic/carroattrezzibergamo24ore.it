@@ -223,20 +223,30 @@ export function LandingClient() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(248,113,22,0.22),transparent_36%),linear-gradient(135deg,#080808_0%,#171717_52%,#2A1206_100%)]" />
         <div className="relative mx-auto grid max-w-7xl gap-9 px-4 py-10 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:px-8 lg:py-16">
           <div className="order-2 lg:order-1">
-            <p className="inline-flex rounded-full border border-orange-300/25 bg-orange-400/10 px-4 py-2 text-sm font-black uppercase tracking-[0.18em] text-orange-200">
-              Emergenza stradale 24/7
+            <p className="inline-flex rounded-full border border-orange-300/25 bg-orange-400/10 px-4 py-2 text-sm font-black uppercase tracking-[0.18em] text-orange-200 shadow-[0_12px_34px_rgba(234,88,12,0.18)]">
+              Soccorso stradale immediato
             </p>
             <h1 className="mt-6 max-w-4xl text-5xl font-black tracking-tight text-white sm:text-6xl lg:text-7xl">
-              Carroattrezzi Bergamo 24 Ore
+              Auto ferma a Bergamo? Scegli il modo più rapido per ripartire.
             </h1>
-            <p className="mt-6 max-w-2xl text-xl font-semibold leading-8 text-slate-200">
-              Auto ferma? Richiedi subito un soccorso stradale rapido a Bergamo
-              e provincia.
-            </p>
+            <div className="mt-6 max-w-2xl space-y-4 text-lg font-semibold leading-8 text-slate-200 sm:text-xl">
+              <p>
+                Compila il form: ci aiuta a capire subito{' '}
+                <strong className="font-black text-white">
+                  dove si trova il veicolo
+                </strong>
+                , qual è il problema e quale carroattrezzi può intervenire con
+                meno attesa.
+              </p>
+              <p>
+                Preferisci parlare subito con una persona?{' '}
+                <span className="font-black text-[#FBBF24] underline decoration-[#FBBF24]/60 underline-offset-4">
+                  Chiama ora
+                </span>{' '}
+                e comunica posizione, mezzo e destinazione.
+              </p>
+            </div>
             <div className="mt-8 grid gap-3 sm:flex">
-              <PhoneButton className="w-full text-lg sm:w-auto">
-                Chiama Ora
-              </PhoneButton>
               <button
                 type="button"
                 onClick={() => {
@@ -244,14 +254,22 @@ export function LandingClient() {
                     .getElementById('posizione')
                     ?.scrollIntoView({ behavior: 'smooth', block: 'center' })
                 }}
-                className="inline-flex w-full items-center justify-center rounded-2xl border border-white/20 bg-white px-7 py-4 text-lg font-black text-slate-950 transition hover:bg-slate-100 sm:w-auto"
+                className="inline-flex w-full items-center justify-center rounded-2xl bg-white px-7 py-4 text-lg font-black text-slate-950 shadow-[0_18px_46px_rgba(255,255,255,0.18)] transition hover:-translate-y-0.5 hover:bg-slate-100 sm:w-auto"
               >
-                Invia Posizione
+                Invia posizione dal form
               </button>
+              <PhoneButton className="w-full border border-orange-300/30 bg-[#F59E0B] text-lg shadow-[0_20px_54px_rgba(245,158,11,0.36)] sm:w-auto">
+                Chiama subito
+              </PhoneButton>
             </div>
-            <p className="mt-6 text-3xl font-black text-[#FBBF24]">
-              {site.phone}
-            </p>
+            <div className="mt-6 inline-flex flex-col rounded-3xl border border-white/10 bg-white/[0.08] px-5 py-4 shadow-2xl shadow-black/20 backdrop-blur">
+              <span className="text-xs font-black uppercase tracking-[0.18em] text-orange-200">
+                chiamata diretta
+              </span>
+              <span className="mt-1 text-3xl font-black text-[#FBBF24]">
+                {site.phone}
+              </span>
+            </div>
           </div>
 
           <div
