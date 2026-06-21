@@ -437,7 +437,7 @@ export function LandingClient() {
             </h2>
             <p className="mt-3 text-lg leading-8 text-slate-700">
               Indica il problema nel form o al telefono: il recupero parte con
-              informazioni piÃ¹ precise e meno passaggi inutili.
+              informazioni più precise e meno passaggi inutili.
             </p>
           </div>
           <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -445,7 +445,7 @@ export function LandingClient() {
               [
                 '/images/landing-assets/servizio-soccorso-stradale.webp',
                 'Soccorso stradale',
-                'Supporto urgente quando il veicolo non puÃ² proseguire.',
+                'Supporto urgente quando il veicolo non può proseguire.',
               ],
               [
                 '/images/landing-assets/servizio-recupero-auto.webp',
@@ -475,7 +475,7 @@ export function LandingClient() {
               [
                 '/images/landing-assets/servizio-trasporto-veicoli.webp',
                 'Trasporto veicoli',
-                'Spostamenti programmati o urgenti in cittÃ  e provincia.',
+                'Spostamenti programmati o urgenti in città e provincia.',
               ],
             ].map(([image, service, description]) => (
               <div
@@ -508,7 +508,7 @@ export function LandingClient() {
           <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
             {[
               'Bergamo centro',
-              'CittÃ  Alta',
+              'Città Alta',
               'Borgo Palazzo',
               'Longuelo',
               'Redona',
@@ -565,9 +565,9 @@ export function LandingClient() {
                 key={author}
                 className="rounded-3xl border border-orange-300/30 bg-white p-6 text-slate-950 shadow-xl shadow-black/25"
               >
-                <p className="text-[#EA580C]">â˜…â˜…â˜…â˜…â˜…</p>
+                <p className="text-[#EA580C]">★★★★★</p>
                 <blockquote className="mt-4 leading-7 text-slate-800">
-                  â€œ{text}â€
+                  “{text}”
                 </blockquote>
                 <figcaption className="mt-4 font-black text-slate-950">
                   {author}
@@ -594,15 +594,15 @@ export function LandingClient() {
               ],
               [
                 'Posso mandare la posizione senza telefonare?',
-                'SÃ¬. Inserisci il telefono, premi il bottone della posizione e consenti il GPS dal browser.',
+                'Sì. Inserisci il telefono, premi il bottone della posizione e consenti il GPS dal browser.',
               ],
               [
                 'Cosa succede se rifiuto la posizione?',
                 'Puoi riprovare dal modulo oppure chiamare e comunicare il punto in cui ti trovi.',
               ],
               [
-                'Posso scegliere dove portare lâ€™auto?',
-                'SÃ¬. Puoi indicare officina, carrozzeria, deposito o un indirizzo concordato.',
+                'Posso scegliere dove portare l’auto?',
+                'Sì. Puoi indicare officina, carrozzeria, deposito o un indirizzo concordato.',
               ],
             ].map(([question, answer]) => (
               <div
@@ -622,7 +622,7 @@ export function LandingClient() {
           <h2 className="text-4xl font-black">Hai bisogno ora?</h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg font-semibold text-orange-50">
             Chiama o invia la posizione: ti aiutiamo a organizzare il recupero
-            nel modo piÃ¹ rapido e chiaro possibile.
+            nel modo più rapido e chiaro possibile.
           </p>
           <div className="mt-8 flex justify-center">
             <PhoneButton className="bg-slate-950 text-white hover:bg-slate-900">
