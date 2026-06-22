@@ -53,7 +53,7 @@ function getStoredTracking(): TrackingData {
 }
 
 function PhoneButton({
-  children = 'Chiama Ora',
+  children = '📞 Chiama Ora - Risposta Immediata',
   className = '',
 }: {
   children?: React.ReactNode
@@ -63,7 +63,7 @@ function PhoneButton({
     <Link
       href={telHref}
       onClick={conversione_click_telefono}
-      className={`inline-flex items-center justify-center rounded-2xl bg-[#F59E0B] px-7 py-4 text-base font-black text-slate-950 shadow-[0_18px_50px_rgba(245,158,11,0.35)] transition hover:bg-[#FBBF24] ${className}`}
+      className={`call-cta-pulse inline-flex items-center justify-center rounded-2xl border-2 border-[#FFE8A3] bg-[#FFD000] px-8 py-5 text-center text-base font-black text-slate-950 shadow-[0_22px_58px_rgba(255,208,0,0.44),inset_0_-5px_0_rgba(146,64,14,0.22),inset_0_1px_0_rgba(255,255,255,0.85)] transition hover:-translate-y-0.5 hover:bg-[#FFE45C] active:translate-y-0 ${className}`}
     >
       {children}
     </Link>
@@ -214,7 +214,7 @@ export function LandingClient() {
               </p>
               <p className="text-xl font-black text-slate-950">{site.phone}</p>
             </div>
-            <PhoneButton className="py-3">Chiama Ora</PhoneButton>
+            <PhoneButton className="py-3.5 text-sm shadow-[0_16px_40px_rgba(255,208,0,0.34),inset_0_-4px_0_rgba(146,64,14,0.2)]" />
           </div>
         </div>
       </header>
@@ -246,7 +246,8 @@ export function LandingClient() {
                 e comunica posizione, mezzo e destinazione.
               </p>
             </div>
-            <div className="mt-8 grid gap-3 sm:flex">
+            <div className="mt-8 grid gap-3 sm:flex sm:items-center">
+              <PhoneButton className="w-full px-8 py-5 text-lg sm:w-auto sm:text-xl lg:px-10 lg:py-6 lg:text-2xl" />
               <button
                 type="button"
                 onClick={() => {
@@ -254,13 +255,10 @@ export function LandingClient() {
                     .getElementById('posizione')
                     ?.scrollIntoView({ behavior: 'smooth', block: 'center' })
                 }}
-                className="inline-flex w-full items-center justify-center rounded-2xl bg-white px-7 py-4 text-lg font-black text-slate-950 shadow-[0_18px_46px_rgba(255,255,255,0.18)] transition hover:-translate-y-0.5 hover:bg-slate-100 sm:w-auto"
+                className="inline-flex w-full items-center justify-center rounded-2xl bg-white px-7 py-4 text-base font-black text-slate-950 shadow-[0_18px_46px_rgba(255,255,255,0.18)] transition hover:-translate-y-0.5 hover:bg-slate-100 sm:w-auto"
               >
                 Invia posizione dal form
               </button>
-              <PhoneButton className="w-full border border-orange-300/30 bg-[#F59E0B] text-lg shadow-[0_20px_54px_rgba(245,158,11,0.36)] sm:w-auto">
-                Chiama subito
-              </PhoneButton>
             </div>
             <div className="mt-6 inline-flex flex-col rounded-3xl border border-white/10 bg-white/[0.08] px-5 py-4 shadow-2xl shadow-black/20 backdrop-blur">
               <span className="text-xs font-black uppercase tracking-[0.18em] text-orange-200">
@@ -632,24 +630,39 @@ export function LandingClient() {
         </div>
       </section>
 
-      <div className="fixed inset-x-0 bottom-0 z-50 border-t border-white/10 bg-[#080808]/95 p-3 backdrop-blur md:hidden">
-        <div className="grid grid-cols-2 gap-3">
-          <PhoneButton className="rounded-xl px-3 py-4 text-sm">
-            Chiama Ora
-          </PhoneButton>
-          <button
-            type="button"
-            onClick={() => {
-              document
-                .getElementById('posizione')
-                ?.scrollIntoView({ behavior: 'smooth', block: 'center' })
-            }}
-            className="rounded-xl border border-white/20 bg-white px-3 py-4 text-sm font-black text-slate-950"
-          >
-            Invia Posizione
-          </button>
-        </div>
+      <div className="fixed inset-x-0 bottom-0 z-50 border-t border-yellow-300/30 bg-[#080808]/96 p-3 shadow-[0_-20px_70px_rgba(0,0,0,0.45)] backdrop-blur md:hidden">
+        <PhoneButton className="w-full rounded-2xl px-4 py-5 text-base leading-tight" />
       </div>
+      <style jsx global>{`
+        @keyframes callCtaPulse {
+          0%,
+          100% {
+            transform: scale(1);
+            box-shadow:
+              0 22px 58px rgba(255, 208, 0, 0.44),
+              inset 0 -5px 0 rgba(146, 64, 14, 0.22),
+              inset 0 1px 0 rgba(255, 255, 255, 0.85);
+          }
+          50% {
+            transform: scale(1.025);
+            box-shadow:
+              0 28px 76px rgba(255, 208, 0, 0.62),
+              0 0 0 8px rgba(255, 208, 0, 0.1),
+              inset 0 -5px 0 rgba(146, 64, 14, 0.22),
+              inset 0 1px 0 rgba(255, 255, 255, 0.85);
+          }
+        }
+
+        .call-cta-pulse {
+          animation: callCtaPulse 2.2s ease-in-out infinite;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .call-cta-pulse {
+            animation: none;
+          }
+        }
+      `}</style>
     </main>
   )
 }
