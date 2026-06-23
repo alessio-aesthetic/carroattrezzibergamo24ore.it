@@ -278,7 +278,7 @@ export function LandingClient() {
               richiesta veloce
             </p>
             <h2 className="mt-3 text-3xl font-black">
-              Compila il form: ti rispondiamo istantaneamente!
+              Compila il form: ti chiamiamo istantaneamente!
             </h2>
             <div className="relative mt-4 overflow-hidden rounded-[1.65rem] bg-[#111827] p-1 shadow-[0_24px_58px_rgba(17,24,39,0.32),0_12px_32px_rgba(234,88,12,0.28)]">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,rgba(251,191,36,0.34),transparent_34%),radial-gradient(circle_at_88%_15%,rgba(234,88,12,0.42),transparent_30%)]" />
