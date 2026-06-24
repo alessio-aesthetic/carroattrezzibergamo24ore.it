@@ -81,7 +81,7 @@ const vehicles = ['Auto', 'Moto o scooter', 'Furgone', 'SUV o 4x4', 'Camper', 'A
 const fuels = ['Benzina', 'Diesel', 'GPL', 'Metano', 'Elettrica', 'Ibrida', 'Non lo so']
 
 const assistantMessages = [
-  "Riceverai una chiamata istantanea dopo l'invio del form. Il carroattrezzi avrà già posizione, veicolo e dettagli dell’intervento, così risparmi tempo e non dovrai ripetere tutto a voce.",
+  "Riceverai una CHIAMATA ISTANTANEA dopo l'invio del form. Il carroattrezzi avrà già posizione, veicolo e dettagli dell’intervento, così risparmierai tempo e non dovrai ripetere tutto a voce.",
   'Il carroattrezzi riceve subito mezzo, problema e dettagli essenziali, senza domande inutili.',
   'Possiamo contattare il carroattrezzi più vicino senza perdere tempo, grazie alla posizione esatta.',
   'La centrale riceve una richiesta completa e può richiamarti in modo rapido e diretto.',
@@ -166,7 +166,7 @@ export function RichiestaBergamoClient() {
       index += 1
       setTypedAssistant(fullText.slice(0, index))
       if (index >= fullText.length) window.clearInterval(interval)
-    }, 24)
+    }, 12)
 
     return () => window.clearInterval(interval)
   }, [step])
@@ -379,7 +379,7 @@ export function RichiestaBergamoClient() {
                   <a
                     href={`tel:${tel}`}
                     onClick={trackCall}
-                    className="mt-2 inline-flex w-full justify-center rounded-2xl bg-[#facc15] px-3 py-3 text-center text-xs font-black text-[#07111f] shadow-[0_16px_42px_rgba(250,204,21,0.24)] sm:px-4 sm:py-4 sm:text-sm"
+                    className="mt-2 inline-flex w-full justify-center rounded-2xl bg-[#facc15] px-3 py-4 text-center text-xl font-black leading-tight text-[#07111f] shadow-[0_16px_42px_rgba(250,204,21,0.24)] sm:px-4 sm:py-5 sm:text-2xl"
                   >
                     Chiama Ora - Risposta Immediata
                   </a>
@@ -409,7 +409,7 @@ export function RichiestaBergamoClient() {
                   <p
                     className={`mt-2 min-h-12 text-sm font-extrabold leading-snug tracking-[0.02em] sm:min-h-14 sm:text-lg ${
                       step === 0
-                        ? 'text-[#b45309]'
+                        ? 'text-[#dc2626]'
                         : 'text-slate-700'
                     }`}
                   >
