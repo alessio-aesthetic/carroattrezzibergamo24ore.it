@@ -379,9 +379,11 @@ export function RichiestaBergamoClient() {
                   <a
                     href={`tel:${tel}`}
                     onClick={trackCall}
-                    className="mt-2 inline-flex w-full justify-center rounded-2xl bg-[#facc15] px-3 py-4 text-center text-xl font-black leading-tight text-[#07111f] shadow-[0_16px_42px_rgba(250,204,21,0.24)] sm:px-4 sm:py-5 sm:text-2xl"
+                    className="call-premium mt-2 inline-flex w-full items-center justify-between gap-2 rounded-2xl border border-[#fff4b8] bg-[#facc15] px-2.5 py-3.5 text-center text-[16px] font-black leading-none text-[#07111f] shadow-[0_18px_48px_rgba(250,204,21,0.32),inset_0_1px_0_rgba(255,255,255,0.75),inset_0_-8px_18px_rgba(180,83,9,0.20)] sm:px-4 sm:py-5 sm:text-2xl"
                   >
-                    Chiama Ora - Risposta Immediata
+                    <span className="phone-ring" aria-hidden="true">☎</span>
+                    <span className="whitespace-nowrap">Chiama Ora - Risposta Immediata</span>
+                    <span className="phone-ring phone-ring-delay" aria-hidden="true">☎</span>
                   </a>
                 </div>
               </div>
@@ -653,6 +655,41 @@ export function RichiestaBergamoClient() {
           animation:
             fadeMessage 3.2s ease-in-out infinite,
             caretBlink 0.8s steps(1) infinite;
+        }
+        .call-premium {
+          transform: translateZ(0);
+        }
+        .phone-ring {
+          display: inline-grid;
+          width: 1.75rem;
+          height: 1.75rem;
+          place-items: center;
+          flex: 0 0 auto;
+          border-radius: 999px;
+          background: rgba(7, 17, 31, 0.1);
+          box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.55),
+            0 8px 18px rgba(7, 17, 31, 0.12);
+          font-size: 1rem;
+          animation: phonePulse 1.15s ease-in-out infinite;
+        }
+        .phone-ring-delay {
+          animation-delay: 0.32s;
+        }
+        @keyframes phonePulse {
+          0%,
+          100% {
+            transform: rotate(-8deg) scale(1);
+          }
+          20% {
+            transform: rotate(10deg) scale(1.08);
+          }
+          40% {
+            transform: rotate(-10deg) scale(1.05);
+          }
+          60% {
+            transform: rotate(7deg) scale(1.08);
+          }
         }
         @keyframes caretBlink {
           0%,
