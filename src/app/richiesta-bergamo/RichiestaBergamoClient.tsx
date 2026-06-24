@@ -310,7 +310,7 @@ export function RichiestaBergamoClient() {
   }
 
   return (
-    <main className="min-h-screen overflow-hidden bg-[#07111f] text-slate-950">
+    <main className="min-h-screen overflow-x-hidden bg-[#07111f] text-slate-950">
       <div className="fixed inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(45,212,191,0.22),transparent_30%),radial-gradient(circle_at_84%_12%,rgba(245,158,11,0.20),transparent_28%),linear-gradient(135deg,#07111f_0%,#0f2742_44%,#042f2e_100%)]" />
       <div className="fixed inset-x-0 top-0 h-64 bg-[linear-gradient(180deg,rgba(255,255,255,0.12),transparent)]" />
 
