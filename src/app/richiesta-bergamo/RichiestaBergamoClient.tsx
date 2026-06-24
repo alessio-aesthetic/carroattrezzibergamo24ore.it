@@ -81,7 +81,7 @@ const vehicles = ['Auto', 'Moto o scooter', 'Furgone', 'SUV o 4x4', 'Camper', 'A
 const fuels = ['Benzina', 'Diesel', 'GPL', 'Metano', 'Elettrica', 'Ibrida', 'Non lo so']
 
 const assistantMessages = [
-  "Riceverai una CHIAMATA ISTANTANEA dopo l'invio del form. Il carroattrezzi avrà già posizione, veicolo e dettagli dell’intervento, così risparmierai tempo e non dovrai ripetere tutto a voce.",
+  "Riceverai una CHIAMATA ISTANTANEA dopo l'invio del form. Risparmierai tempo e non dovrai dire tutto a voce.",
   'Così il carroattrezzi capirà quale mezzo utilizzare per il tuo caso specifico.',
   'Grazie alla posizione esatta, ti richiamerà immediatamente il carroattrezzi più vicino in assoluto.',
   'Scegli un numero con WhatsApp ed attendi pochi istanti, saremo velocissimi.',
@@ -393,7 +393,7 @@ export function RichiestaBergamoClient() {
           <div className="p-2 sm:p-7 lg:flex lg:min-h-full lg:flex-col lg:p-10">
             <div className="mx-auto w-full max-w-5xl rounded-[1.3rem] border border-slate-200 bg-white p-3 shadow-[0_18px_60px_rgba(15,23,42,0.10)] sm:rounded-[1.8rem] sm:p-5">
               <div className="flex items-center gap-3 sm:gap-5">
-                <div className="grid size-20 shrink-0 place-items-center rounded-2xl border border-slate-200 bg-white shadow-[inset_0_1px_0_rgba(255,255,255,0.95),0_14px_34px_rgba(15,23,42,0.08)] sm:size-28">
+                <div className="grid size-20 shrink-0 place-items-center sm:size-28">
                   <LottieAsset
                     src="/lottie/request/uomo-sopra.json"
                     className="h-20 w-20 sm:h-28 sm:w-28"
@@ -659,7 +659,6 @@ export function RichiestaBergamoClient() {
           isolation: isolate;
           overflow: hidden;
           transform: translateZ(0);
-          animation: executivePulse 2.4s ease-in-out infinite;
         }
         .call-premium::before {
           content: '';
@@ -680,23 +679,6 @@ export function RichiestaBergamoClient() {
           transform: rotate(18deg);
           background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.62), transparent);
           animation: executiveSweep 3.2s ease-in-out infinite;
-        }
-        @keyframes executivePulse {
-          0%,
-          100% {
-            transform: translateY(0) scale(1);
-            box-shadow:
-              0 18px 48px rgba(250, 204, 21, 0.32),
-              inset 0 1px 0 rgba(255, 255, 255, 0.75),
-              inset 0 -8px 18px rgba(180, 83, 9, 0.20);
-          }
-          50% {
-            transform: translateY(-1px) scale(1.012);
-            box-shadow:
-              0 24px 62px rgba(250, 204, 21, 0.46),
-              inset 0 1px 0 rgba(255, 255, 255, 0.85),
-              inset 0 -8px 18px rgba(180, 83, 9, 0.18);
-          }
         }
         @keyframes executiveSweep {
           0%,
