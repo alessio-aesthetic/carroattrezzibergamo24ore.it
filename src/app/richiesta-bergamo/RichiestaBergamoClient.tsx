@@ -379,9 +379,8 @@ export function RichiestaBergamoClient() {
                   <a
                     href={`tel:${tel}`}
                     onClick={trackCall}
-                    className="call-premium mt-2 inline-flex w-full items-center justify-between gap-2 rounded-2xl border border-[#fff4b8] bg-[#facc15] px-2.5 py-3.5 text-center text-[16px] font-black leading-none text-[#07111f] shadow-[0_18px_48px_rgba(250,204,21,0.32),inset_0_1px_0_rgba(255,255,255,0.75),inset_0_-8px_18px_rgba(180,83,9,0.20)] sm:px-4 sm:py-5 sm:text-2xl"
+                    className="call-premium mt-2 inline-flex w-full items-center justify-center rounded-2xl border border-[#fff4b8] bg-[#facc15] px-3 py-3.5 text-center text-[15px] font-black leading-none text-[#07111f] shadow-[0_18px_48px_rgba(250,204,21,0.32),inset_0_1px_0_rgba(255,255,255,0.75),inset_0_-8px_18px_rgba(180,83,9,0.20)] sm:px-4 sm:py-5 sm:text-2xl"
                   >
-                    <span className="phone-ring" aria-hidden="true">☎</span>
                     <span className="whitespace-nowrap">Chiama Ora - Risposta Immediata</span>
                   </a>
                 </div>
@@ -656,36 +655,62 @@ export function RichiestaBergamoClient() {
             caretBlink 0.8s steps(1) infinite;
         }
         .call-premium {
+          position: relative;
+          isolation: isolate;
+          overflow: hidden;
           transform: translateZ(0);
+          animation: executivePulse 2.4s ease-in-out infinite;
         }
-        .phone-ring {
-          display: inline-grid;
-          width: 2.15rem;
-          height: 2.15rem;
-          place-items: center;
-          flex: 0 0 auto;
-          border-radius: 999px;
-          background: rgba(7, 17, 31, 0.08);
-          box-shadow:
-            inset 0 1px 0 rgba(255, 255, 255, 0.62),
-            0 8px 18px rgba(7, 17, 31, 0.10);
-          font-size: 1.35rem;
-          line-height: 1;
-          animation: phonePulse 1.35s ease-in-out infinite;
+        .call-premium::before {
+          content: '';
+          position: absolute;
+          inset: 1px;
+          z-index: -1;
+          border-radius: inherit;
+          background:
+            linear-gradient(180deg, rgba(255, 255, 255, 0.62), transparent 34%),
+            radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.55), transparent 42%);
+          opacity: 0.9;
         }
-        @keyframes phonePulse {
+        .call-premium::after {
+          content: '';
+          position: absolute;
+          inset: -60% auto -60% -45%;
+          width: 42%;
+          transform: rotate(18deg);
+          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.62), transparent);
+          animation: executiveSweep 3.2s ease-in-out infinite;
+        }
+        @keyframes executivePulse {
           0%,
           100% {
-            transform: rotate(-4deg) scale(1);
-          }
-          25% {
-            transform: rotate(5deg) scale(1.04);
+            transform: translateY(0) scale(1);
+            box-shadow:
+              0 18px 48px rgba(250, 204, 21, 0.32),
+              inset 0 1px 0 rgba(255, 255, 255, 0.75),
+              inset 0 -8px 18px rgba(180, 83, 9, 0.20);
           }
           50% {
-            transform: rotate(-5deg) scale(1.03);
+            transform: translateY(-1px) scale(1.012);
+            box-shadow:
+              0 24px 62px rgba(250, 204, 21, 0.46),
+              inset 0 1px 0 rgba(255, 255, 255, 0.85),
+              inset 0 -8px 18px rgba(180, 83, 9, 0.18);
           }
-          75% {
-            transform: rotate(4deg) scale(1.04);
+        }
+        @keyframes executiveSweep {
+          0%,
+          42% {
+            left: -55%;
+            opacity: 0;
+          }
+          52% {
+            opacity: 0.9;
+          }
+          72%,
+          100% {
+            left: 112%;
+            opacity: 0;
           }
         }
         @keyframes caretBlink {
