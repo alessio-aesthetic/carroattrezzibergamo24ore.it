@@ -82,9 +82,9 @@ const fuels = ['Benzina', 'Diesel', 'GPL', 'Metano', 'Elettrica', 'Ibrida', 'Non
 
 const assistantMessages = [
   "Riceverai una CHIAMATA ISTANTANEA dopo l'invio del form. Il carroattrezzi avrà già posizione, veicolo e dettagli dell’intervento, così risparmierai tempo e non dovrai ripetere tutto a voce.",
-  'Il carroattrezzi riceve subito mezzo, problema e dettagli essenziali, senza domande inutili.',
-  'Possiamo contattare il carroattrezzi più vicino senza perdere tempo, grazie alla posizione esatta.',
-  'La centrale riceve una richiesta completa e può richiamarti in modo rapido e diretto.',
+  'Così il carroattrezzi capirà quale mezzo utilizzare per il tuo caso specifico.',
+  'Grazie alla posizione esatta, ti richiamerà immediatamente il carroattrezzi più vicino in assoluto.',
+  'Scegli un numero con WhatsApp ed attendi pochi istanti, saremo velocissimi.',
 ]
 
 const stepCopy = [
