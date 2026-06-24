@@ -383,7 +383,6 @@ export function RichiestaBergamoClient() {
                   >
                     <span className="phone-ring" aria-hidden="true">☎</span>
                     <span className="whitespace-nowrap">Chiama Ora - Risposta Immediata</span>
-                    <span className="phone-ring phone-ring-delay" aria-hidden="true">☎</span>
                   </a>
                 </div>
               </div>
@@ -661,34 +660,32 @@ export function RichiestaBergamoClient() {
         }
         .phone-ring {
           display: inline-grid;
-          width: 1.75rem;
-          height: 1.75rem;
+          width: 2.15rem;
+          height: 2.15rem;
           place-items: center;
           flex: 0 0 auto;
           border-radius: 999px;
-          background: rgba(7, 17, 31, 0.1);
+          background: rgba(7, 17, 31, 0.08);
           box-shadow:
-            inset 0 1px 0 rgba(255, 255, 255, 0.55),
-            0 8px 18px rgba(7, 17, 31, 0.12);
-          font-size: 1rem;
-          animation: phonePulse 1.15s ease-in-out infinite;
-        }
-        .phone-ring-delay {
-          animation-delay: 0.32s;
+            inset 0 1px 0 rgba(255, 255, 255, 0.62),
+            0 8px 18px rgba(7, 17, 31, 0.10);
+          font-size: 1.35rem;
+          line-height: 1;
+          animation: phonePulse 1.35s ease-in-out infinite;
         }
         @keyframes phonePulse {
           0%,
           100% {
-            transform: rotate(-8deg) scale(1);
+            transform: rotate(-4deg) scale(1);
           }
-          20% {
-            transform: rotate(10deg) scale(1.08);
+          25% {
+            transform: rotate(5deg) scale(1.04);
           }
-          40% {
-            transform: rotate(-10deg) scale(1.05);
+          50% {
+            transform: rotate(-5deg) scale(1.03);
           }
-          60% {
-            transform: rotate(7deg) scale(1.08);
+          75% {
+            transform: rotate(4deg) scale(1.04);
           }
         }
         @keyframes caretBlink {
