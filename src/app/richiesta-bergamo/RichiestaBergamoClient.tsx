@@ -435,7 +435,7 @@ export function RichiestaBergamoClient() {
                             src={item.lottie}
                             className={
                               item.zoom
-                                ? 'absolute left-1/2 top-1/2 h-40 w-40 -translate-x-1/2 -translate-y-1/2 scale-[1.25] sm:h-72 sm:w-72'
+                                ? 'h-24 w-24 sm:h-40 sm:w-40'
                                 : 'h-20 w-20 sm:h-36 sm:w-36'
                             }
                           />
