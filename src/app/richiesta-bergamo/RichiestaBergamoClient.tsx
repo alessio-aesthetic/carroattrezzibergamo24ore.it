@@ -154,7 +154,7 @@ export function RichiestaBergamoClient() {
   const [typedAssistant, setTypedAssistant] = useState('')
   const [showGpsInfo, setShowGpsInfo] = useState(false)
   const [gpsCallStatus, setGpsCallStatus] = useState<
-    'idle' | 'loading' | 'success' | 'error'
+    'idle' | 'loading' | 'success' | 'sent' | 'error'
   >('idle')
   const [gpsCallPhone, setGpsCallPhone] = useState('')
 
@@ -306,8 +306,7 @@ export function RichiestaBergamoClient() {
         body: JSON.stringify(payload),
       })
       trackLead()
-      setGpsCallStatus('success')
-      setShowGpsInfo(false)
+      setGpsCallStatus('sent')
       setGpsCallPhone('')
       setStatus('success')
       setMessage(
@@ -720,23 +719,31 @@ export function RichiestaBergamoClient() {
             <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[#0f766e]">
               {gpsCallStatus === 'loading'
                 ? 'Rilevamento GPS'
-                : gpsCallStatus === 'success'
-                  ? 'GPS rilevato'
+                : gpsCallStatus === 'success' || gpsCallStatus === 'sent'
+                  ? 'Successo'
                   : 'GPS non disponibile'}
             </p>
-            <h2 className="mt-2 text-2xl font-black leading-tight text-[#07111f] sm:text-3xl">
-              {gpsCallStatus === 'loading'
-                ? 'Stiamo rilevando la tua posizione.'
-                : gpsCallStatus === 'success'
-                  ? 'Posizione rilevata correttamente.'
-                  : 'Puoi chiamare subito e comunicare la posizione a voce.'}
+            <h2 className={`mt-2 text-2xl font-black leading-tight sm:text-3xl ${
+              gpsCallStatus === 'success' || gpsCallStatus === 'sent'
+                ? 'text-[#0f766e]'
+                : 'text-[#07111f]'
+            }`}>
+              {gpsCallStatus === 'sent'
+                ? 'Richiesta inviata correttamente.'
+                : gpsCallStatus === 'loading'
+                  ? 'Stiamo rilevando la tua posizione.'
+                  : gpsCallStatus === 'success'
+                    ? 'Posizione rilevata correttamente.'
+                    : 'Puoi chiamare subito e comunicare la posizione a voce.'}
             </h2>
             <p className="mt-4 text-sm font-bold leading-relaxed text-slate-700 sm:text-base">
-              {gpsCallStatus === 'success'
-                ? 'Inserisci solo il tuo numero: verrai ricontattato immediatamente dal carroattrezzi più vicino a te, con un risparmio garantito di tempo e costi.'
-                : gpsCallStatus === 'loading'
-                  ? 'Mantieni aperta questa schermata per pochi secondi e consenti l’accesso alla posizione dal browser.'
-                  : 'Se il GPS non viene concesso, puoi comunque telefonare: ti guideremo rapidamente per capire dove intervenire.'}
+              {gpsCallStatus === 'sent'
+                ? 'Attendi qualche istante con il telefono. Ti abbiamo inviato un WhatsApp per seguire la richiesta.'
+                : gpsCallStatus === 'success'
+                  ? 'Inserisci solo il tuo numero: verrai chiamato immediatamente dal carroattrezzi più vicino a te.'
+                  : gpsCallStatus === 'loading'
+                    ? 'Mantieni aperta questa schermata per pochi secondi e consenti l’accesso alla posizione dal browser.'
+                    : 'Se il GPS non viene concesso, puoi comunque telefonare: ti guideremo rapidamente per capire dove intervenire.'}
             </p>
             {gpsCallStatus === 'success' && (
               <input
@@ -750,10 +757,20 @@ export function RichiestaBergamoClient() {
             <div className="mt-5 grid gap-2">
               <button
                 type="button"
-                onClick={gpsCallStatus === 'success' ? submitGpsCallRequest : prepareGpsCall}
+                onClick={
+                  gpsCallStatus === 'sent'
+                    ? () => setShowGpsInfo(false)
+                    : gpsCallStatus === 'success'
+                      ? submitGpsCallRequest
+                      : prepareGpsCall
+                }
                 className="rounded-2xl bg-[#0f766e] px-5 py-4 text-base font-black text-white shadow-[0_20px_54px_rgba(15,118,110,0.28)]"
               >
-                {gpsCallStatus === 'loading' ? 'Rilevamento...' : 'Invia'}
+                {gpsCallStatus === 'sent'
+                  ? 'Chiudi'
+                  : gpsCallStatus === 'loading'
+                    ? 'Rilevamento...'
+                    : 'Invia'}
               </button>
               <button
                 type="button"
