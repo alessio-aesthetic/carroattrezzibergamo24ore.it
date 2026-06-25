@@ -412,62 +412,69 @@ export function RichiestaBergamoClient() {
                 </a>
               </div>
 
-              <div className="mt-2 sm:mt-6">
-                <p className="text-[10px] font-black uppercase tracking-[0.18em] text-teal-100 sm:text-xs">
+              <div className="mt-3 sm:mt-8">
+                <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#facc15] sm:text-xs">
+                  assistenza immediata
+                </p>
+                <h2 className="mt-3 text-[1.7rem] font-black leading-[0.95] tracking-tight text-white sm:text-5xl">
+                  Eliminiamo tempi di attesa e telefonate inutili.
+                </h2>
+                <p className="mt-4 text-sm font-bold leading-relaxed text-white/78 sm:text-lg">
+                  Chiama con risposta immediata oppure fatti richiamare
+                  istantaneamente dal carroattrezzi più vicino.
+                  <span className="block pt-2 text-[#facc15]">
+                    Risparmierai tempo e costi.
+                  </span>
+                </p>
+
+                <div className="mt-5 grid gap-2 sm:mt-7">
+                  <button
+                    type="button"
+                    onClick={prepareGpsCall}
+                    className="call-premium inline-flex min-h-16 w-full items-center justify-center rounded-[1.35rem] border border-[#fff4b8] bg-[#facc15] px-4 text-center text-[15px] font-black leading-tight text-[#07111f] shadow-[0_24px_62px_rgba(250,204,21,0.42),inset_0_1px_0_rgba(255,255,255,0.82),inset_0_-10px_22px_rgba(180,83,9,0.22)] sm:min-h-20 sm:text-lg"
+                  >
+                    Chiama Ora - Con Invio GPS
+                  </button>
+                  <a
+                    href={`tel:${tel}`}
+                    onClick={trackCall}
+                    className="inline-flex min-h-12 w-full items-center justify-center rounded-2xl border border-white/20 bg-white/92 px-4 text-center text-[12px] font-black leading-tight text-[#07111f] shadow-[0_14px_34px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.9)] transition hover:-translate-y-0.5 sm:min-h-14 sm:text-sm"
+                  >
+                    Chiama ora - Senza GPS
+                  </a>
+                </div>
+
+                <div className="mt-5 text-center sm:mt-7">
+                  <p className="text-[11px] font-black uppercase tracking-[0.16em] text-white/72">
+                    Oppure completa il form qui sotto
+                  </p>
+                  <p className="mt-2 rounded-2xl border border-[#facc15]/30 bg-[#facc15]/12 px-3 py-2 text-center text-[10px] font-black uppercase leading-tight tracking-[0.08em] text-[#facc15] shadow-[0_14px_34px_rgba(250,204,21,0.08)] sm:text-xs">
+                    Tempo di completamento stimato: 13 secondi
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-auto pt-5 sm:pt-8">
+                <p className="text-[9px] font-black uppercase tracking-[0.2em] text-white/35">
                   avanzamento
                 </p>
-                <div className="mt-2 grid grid-cols-4 gap-1.5 sm:mt-3 sm:block sm:space-y-2">
+                <div className="mt-2 grid grid-cols-4 gap-1">
                   {['Problema', 'Veicolo', 'Posizione', 'Telefono'].map(
                     (item, index) => (
-                      <div
-                        key={item}
-                        className={`flex flex-col items-center gap-1 rounded-xl border p-1.5 text-center transition sm:flex-row sm:gap-2 sm:p-2 sm:text-left ${
-                          index <= step
-                            ? 'border-[#2dd4bf]/50 bg-[#2dd4bf]/12'
-                            : 'border-white/10 bg-white/[0.04]'
-                        }`}
-                      >
-                        <span
-                          className={`flex size-6 items-center justify-center rounded-lg text-[11px] font-black sm:size-7 sm:text-xs ${
-                            index <= step
-                              ? 'bg-[#2dd4bf] text-[#07111f]'
-                              : 'bg-white/10 text-white/60'
+                      <div key={item} className="min-w-0">
+                        <div
+                          className={`h-1 rounded-full ${
+                            index <= step ? 'bg-[#2dd4bf]/70' : 'bg-white/10'
                           }`}
-                        >
-                          {index + 1}
-                        </span>
-                        <span className="text-[10px] font-bold leading-tight sm:text-sm">{item}</span>
+                        />
+                        <p className="mt-1 truncate text-[8px] font-bold text-white/35">
+                          {item}
+                        </p>
                       </div>
                     ),
                   )}
                 </div>
-                <p className="mt-2 rounded-2xl border border-[#facc15]/35 bg-[#facc15]/16 px-3 py-2 text-center text-[11px] font-black uppercase leading-tight tracking-[0.08em] text-[#facc15] shadow-[0_14px_34px_rgba(250,204,21,0.10)] sm:mt-4 sm:px-4 sm:py-3 sm:text-sm">
-                  Tempo di completamento stimato: 13 secondi
-                </p>
-                <div className="mt-2 text-center">
-                  <p className="text-[10px] font-black uppercase tracking-[0.18em] text-white/70">
-                    Oppure
-                  </p>
-                  <div className="mt-2 grid grid-cols-2 gap-2">
-                    <a
-                      href={`tel:${tel}`}
-                      onClick={trackCall}
-                      className="inline-flex min-h-14 items-center justify-center rounded-2xl border border-white/20 bg-white px-2.5 text-center text-[11px] font-black leading-tight text-[#07111f] shadow-[0_14px_34px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.9)] transition hover:-translate-y-0.5 sm:min-h-16 sm:px-4 sm:text-sm"
-                    >
-                      Chiama ora - Senza GPS
-                    </a>
-                    <button
-                      type="button"
-                      onClick={prepareGpsCall}
-                      className="call-premium inline-flex min-h-14 items-center justify-center rounded-2xl border border-[#fff4b8] bg-[#facc15] px-2.5 text-center text-[11px] font-black leading-tight text-[#07111f] shadow-[0_18px_48px_rgba(250,204,21,0.32),inset_0_1px_0_rgba(255,255,255,0.75),inset_0_-8px_18px_rgba(180,83,9,0.20)] sm:min-h-16 sm:px-4 sm:text-sm"
-                    >
-                      Chiama Ora - Con Invio GPS
-                    </button>
-                  </div>
-                </div>
               </div>
-
-              <div className="mt-auto hidden pt-8 sm:block" />
             </div>
           </aside>
 
