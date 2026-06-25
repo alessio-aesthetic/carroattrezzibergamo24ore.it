@@ -412,13 +412,15 @@ export function RichiestaBergamoClient() {
                 </a>
               </div>
 
-              <div className="flex flex-1 flex-col justify-center text-center">
+              <div className="mt-3 text-center sm:flex sm:flex-1 sm:flex-col sm:justify-center">
                 <h2 className="mx-auto max-w-xl text-[1.55rem] font-black leading-[1.02] tracking-tight text-white sm:text-4xl">
                   Chiama con <span className="text-[#facc15]">RISPOSTA IMMEDIATA</span>
                 </h2>
                 <p className="mx-auto mt-4 max-w-md text-sm font-bold leading-relaxed text-white/78 sm:text-base">
                   Con l’invio automatico del GPS oppure con chiamata normale.
-                  In ogni caso riceverai una risposta istantanea.
+                  <span className="block text-center">
+                    In ogni caso riceverai una risposta istantanea.
+                  </span>
                 </p>
 
                 <div className="mx-auto mt-5 grid w-full max-w-md gap-2 sm:mt-7">
@@ -448,7 +450,7 @@ export function RichiestaBergamoClient() {
                 </div>
               </div>
 
-              <div className="pt-5 sm:pt-8">
+              <div className="hidden pt-5 sm:block sm:pt-8">
                 <p className="text-center text-[9px] font-black uppercase tracking-[0.2em] text-white/35">
                   avanzamento
                 </p>
@@ -539,6 +541,24 @@ export function RichiestaBergamoClient() {
                       </h2>
                     </button>
                   ))}
+                </div>
+              )}
+              {step === 0 && (
+                <div className="mx-auto mt-3 grid max-w-xs grid-cols-4 gap-1 sm:hidden">
+                  {['Problema', 'Veicolo', 'Posizione', 'Telefono'].map(
+                    (item, index) => (
+                      <div key={item} className="min-w-0">
+                        <div
+                          className={`h-1 rounded-full ${
+                            index <= step ? 'bg-[#0f766e]/70' : 'bg-slate-200'
+                          }`}
+                        />
+                        <p className="mt-1 truncate text-center text-[8px] font-bold text-slate-400">
+                          {item}
+                        </p>
+                      </div>
+                    ),
+                  )}
                 </div>
               )}
 
