@@ -434,7 +434,7 @@ export function RichiestaBergamoClient() {
                           <LottieAsset
                             src={item.lottie}
                             className={`h-20 w-20 sm:h-36 sm:w-36 ${
-                              item.zoom ? 'scale-[1.15]' : ''
+                              item.zoom ? 'scale-[1.3]' : ''
                             }`}
                           />
                         </div>
