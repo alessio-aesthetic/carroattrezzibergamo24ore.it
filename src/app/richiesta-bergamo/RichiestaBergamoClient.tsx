@@ -153,6 +153,9 @@ export function RichiestaBergamoClient() {
   const [tracking, setTracking] = useState<TrackingData>(emptyTracking)
   const [typedAssistant, setTypedAssistant] = useState('')
   const [showGpsInfo, setShowGpsInfo] = useState(false)
+  const [gpsCallStatus, setGpsCallStatus] = useState<
+    'idle' | 'loading' | 'success' | 'error'
+  >('idle')
 
   const cleanPhone = useMemo(
     () => customerPhone.replace(/[^\d+]/g, ''),
@@ -236,6 +239,30 @@ export function RichiestaBergamoClient() {
       () => {
         setStatus('error')
         setMessage('Posizione non concessa. Riprova o chiama direttamente.')
+      },
+      { enableHighAccuracy: true, timeout: 12000, maximumAge: 0 },
+    )
+  }
+
+  function prepareGpsCall() {
+    setShowGpsInfo(true)
+
+    if (!navigator.geolocation) {
+      setGpsCallStatus('error')
+      return
+    }
+
+    setGpsCallStatus('loading')
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        setCoordinates({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+        })
+        setGpsCallStatus('success')
+      },
+      () => {
+        setGpsCallStatus('error')
       },
       { enableHighAccuracy: true, timeout: 12000, maximumAge: 0 },
     )
@@ -382,7 +409,7 @@ export function RichiestaBergamoClient() {
                     </a>
                     <button
                       type="button"
-                      onClick={() => setShowGpsInfo(true)}
+                      onClick={prepareGpsCall}
                       className="call-premium inline-flex min-h-14 items-center justify-center rounded-2xl border border-[#fff4b8] bg-[#facc15] px-2.5 text-center text-[11px] font-black leading-tight text-[#07111f] shadow-[0_18px_48px_rgba(250,204,21,0.32),inset_0_1px_0_rgba(255,255,255,0.75),inset_0_-8px_18px_rgba(180,83,9,0.20)] sm:min-h-16 sm:px-4 sm:text-sm"
                     >
                       Chiama Ora - Con Invio GPS
@@ -641,27 +668,40 @@ export function RichiestaBergamoClient() {
         <div className="fixed inset-0 z-50 grid place-items-center bg-[#07111f]/72 px-4 backdrop-blur-md">
           <div className="w-full max-w-md rounded-[1.6rem] border border-white/70 bg-white p-5 text-center shadow-[0_34px_110px_rgba(0,0,0,0.38),inset_0_1px_0_rgba(255,255,255,0.95)] sm:p-7">
             <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[#0f766e]">
-              Invio GPS consigliato
+              {gpsCallStatus === 'loading'
+                ? 'Rilevamento GPS'
+                : gpsCallStatus === 'success'
+                  ? 'GPS rilevato'
+                  : 'GPS non disponibile'}
             </p>
             <h2 className="mt-2 text-2xl font-black leading-tight text-[#07111f] sm:text-3xl">
-              Ti richiama il carroattrezzi più vicino possibile.
+              {gpsCallStatus === 'loading'
+                ? 'Stiamo rilevando la tua posizione.'
+                : gpsCallStatus === 'success'
+                  ? 'Adesso chiama per ricevere il carroattrezzi più vicino disponibile.'
+                  : 'Puoi chiamare subito e comunicare la posizione a voce.'}
             </h2>
             <p className="mt-4 text-sm font-bold leading-relaxed text-slate-700 sm:text-base">
-              Con la posizione esatta possiamo individuare il mezzo disponibile
-              più vicino a te, riducendo tempi di attesa, tragitto e costi
-              dell’intervento.
+              {gpsCallStatus === 'success'
+                ? 'La posizione è stata acquisita correttamente: questo ci aiuta a individuare il mezzo più vicino a te, riducendo tempi di attesa e costi dell’intervento.'
+                : gpsCallStatus === 'loading'
+                  ? 'Mantieni aperta questa schermata per pochi secondi e consenti l’accesso alla posizione dal browser.'
+                  : 'Se il GPS non viene concesso, puoi comunque telefonare: ti guideremo rapidamente per capire dove intervenire.'}
             </p>
             <div className="mt-5 grid gap-2">
-              <button
-                type="button"
-                onClick={() => setShowGpsInfo(false)}
+              <a
+                href={`tel:${tel}`}
+                onClick={trackCall}
                 className="rounded-2xl bg-[#0f766e] px-5 py-4 text-base font-black text-white shadow-[0_20px_54px_rgba(15,118,110,0.28)]"
               >
-                Ok, compilo il form
-              </button>
+                Chiama ora
+              </a>
               <button
                 type="button"
-                onClick={() => setShowGpsInfo(false)}
+                onClick={() => {
+                  setShowGpsInfo(false)
+                  setGpsCallStatus('idle')
+                }}
                 className="rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-black text-slate-600"
               >
                 Chiudi
