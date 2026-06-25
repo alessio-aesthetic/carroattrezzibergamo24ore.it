@@ -740,7 +740,7 @@ export function RichiestaBergamoClient() {
               {gpsCallStatus === 'sent'
                 ? 'Attendi qualche istante con il telefono. Ti abbiamo inviato un WhatsApp per seguire la richiesta.'
                 : gpsCallStatus === 'success'
-                  ? 'Inserisci solo il tuo numero: verrai chiamato immediatamente dal carroattrezzi più vicino a te.'
+                  ? 'Inserisci solo il tuo numero: verrai chiamato immediatamente dal carroattrezzi più vicino.'
                   : gpsCallStatus === 'loading'
                     ? 'Mantieni aperta questa schermata per pochi secondi e consenti l’accesso alla posizione dal browser.'
                     : 'Se il GPS non viene concesso, puoi comunque telefonare: ti guideremo rapidamente per capire dove intervenire.'}
