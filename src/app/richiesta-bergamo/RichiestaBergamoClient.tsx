@@ -439,9 +439,9 @@ export function RichiestaBergamoClient() {
                   </a>
                 </div>
 
-                <div className="mt-3 text-center sm:mt-7">
+                <div className="mt-10 text-center sm:mt-7">
                   <p className="text-[11px] font-black uppercase tracking-[0.16em] text-white/72">
-                    Oppure completa il form qui sotto
+                    Oppure completa il form
                   </p>
                   <p className="mt-1.5 rounded-2xl border border-[#facc15]/30 bg-[#facc15]/12 px-3 py-1.5 text-center text-[10px] font-black uppercase leading-tight tracking-[0.08em] text-[#facc15] shadow-[0_14px_34px_rgba(250,204,21,0.08)] sm:mt-2 sm:py-2 sm:text-xs">
                     Tempo di completamento stimato: 13 secondi
