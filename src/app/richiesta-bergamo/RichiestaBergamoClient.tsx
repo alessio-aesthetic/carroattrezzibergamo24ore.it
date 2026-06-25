@@ -412,14 +412,14 @@ export function RichiestaBergamoClient() {
                 </a>
               </div>
 
-              <div className="mt-3 sm:mt-8">
+              <div className="flex flex-1 flex-col justify-center text-center">
                 <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#facc15] sm:text-xs">
                   assistenza immediata
                 </p>
-                <h2 className="mt-3 text-[1.7rem] font-black leading-[0.95] tracking-tight text-white sm:text-5xl">
+                <h2 className="mx-auto mt-3 max-w-xl text-[1.7rem] font-black leading-[0.95] tracking-tight text-white sm:text-5xl">
                   Eliminiamo tempi di attesa e telefonate inutili.
                 </h2>
-                <p className="mt-4 text-sm font-bold leading-relaxed text-white/78 sm:text-lg">
+                <p className="mx-auto mt-4 max-w-md text-sm font-bold leading-relaxed text-white/78 sm:text-lg">
                   Chiama con risposta immediata oppure fatti richiamare
                   istantaneamente dal carroattrezzi più vicino.
                   <span className="block pt-2 text-[#facc15]">
@@ -427,7 +427,7 @@ export function RichiestaBergamoClient() {
                   </span>
                 </p>
 
-                <div className="mt-5 grid gap-2 sm:mt-7">
+                <div className="mx-auto mt-5 grid w-full max-w-md gap-2 sm:mt-7">
                   <button
                     type="button"
                     onClick={prepareGpsCall}
@@ -454,11 +454,11 @@ export function RichiestaBergamoClient() {
                 </div>
               </div>
 
-              <div className="mt-auto pt-5 sm:pt-8">
-                <p className="text-[9px] font-black uppercase tracking-[0.2em] text-white/35">
+              <div className="pt-5 sm:pt-8">
+                <p className="text-center text-[9px] font-black uppercase tracking-[0.2em] text-white/35">
                   avanzamento
                 </p>
-                <div className="mt-2 grid grid-cols-4 gap-1">
+                <div className="mx-auto mt-2 grid max-w-xs grid-cols-4 gap-1">
                   {['Problema', 'Veicolo', 'Posizione', 'Telefono'].map(
                     (item, index) => (
                       <div key={item} className="min-w-0">
