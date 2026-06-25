@@ -48,6 +48,7 @@ const problems = [
     value: 'Gomma forata',
     title: 'Gomma danneggiata',
     lottie: '/lottie/request/gomme.json',
+    zoom: true,
   },
   {
     value: 'Guasto meccanico',
@@ -58,11 +59,13 @@ const problems = [
     value: 'Incidente',
     title: 'Incidente',
     lottie: '/lottie/request/incidente.json',
+    zoom: true,
   },
   {
     value: 'Veicolo bloccato',
     title: 'Auto bloccata',
     lottie: '/lottie/request/auto-bloccata.json',
+    zoom: true,
   },
   {
     value: 'Carburante esaurito',
@@ -315,7 +318,7 @@ export function RichiestaBergamoClient() {
       <div className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-[linear-gradient(180deg,rgba(255,255,255,0.12),transparent)]" />
 
       <div className="relative mx-auto flex w-full max-w-[1800px] items-start px-2 py-2 pb-8 sm:px-4 sm:py-4 sm:pb-10 lg:px-6 lg:py-6 lg:pb-12">
-        <section className="mx-auto grid w-full rounded-[1.4rem] border border-white/25 bg-white/94 shadow-[0_34px_120px_rgba(0,0,0,0.46),inset_0_1px_0_rgba(255,255,255,0.9)] backdrop-blur-xl sm:rounded-[2rem] lg:min-h-[calc(100dvh-3rem)] lg:grid-cols-[0.34fr_0.66fr]">
+        <section className="mx-auto grid w-full overflow-hidden rounded-[1.4rem] border border-white/25 bg-white/94 shadow-[0_34px_120px_rgba(0,0,0,0.46),inset_0_1px_0_rgba(255,255,255,0.9)] backdrop-blur-xl sm:rounded-[2rem] lg:min-h-[calc(100dvh-3rem)] lg:grid-cols-[0.34fr_0.66fr]">
           <aside className="relative overflow-hidden bg-[#07111f] p-2 text-white sm:p-6 lg:p-10">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(45,212,191,0.32),transparent_32%),radial-gradient(circle_at_100%_22%,rgba(255,204,0,0.20),transparent_28%)]" />
             <div className="relative flex h-full flex-col">
@@ -430,7 +433,9 @@ export function RichiestaBergamoClient() {
                         <div className="relative flex h-20 items-center justify-center rounded-[0.8rem] border border-slate-100 bg-[#f8fafc] sm:h-36 sm:rounded-[1.2rem]">
                           <LottieAsset
                             src={item.lottie}
-                            className="h-20 w-20 sm:h-36 sm:w-36"
+                            className={`h-20 w-20 sm:h-36 sm:w-36 ${
+                              item.zoom ? 'scale-[1.15]' : ''
+                            }`}
                           />
                         </div>
                       )}
