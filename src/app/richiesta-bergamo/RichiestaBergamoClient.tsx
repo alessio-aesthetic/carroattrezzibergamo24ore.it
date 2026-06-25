@@ -396,35 +396,29 @@ export function RichiestaBergamoClient() {
 
       <div className="relative mx-auto flex w-full max-w-[1800px] items-start px-2 py-2 pb-8 sm:px-4 sm:py-4 sm:pb-10 lg:px-6 lg:py-6 lg:pb-12">
         <section className="mx-auto grid w-full overflow-hidden rounded-[1.4rem] border border-white/25 bg-white/94 shadow-[0_34px_120px_rgba(0,0,0,0.46),inset_0_1px_0_rgba(255,255,255,0.9)] backdrop-blur-xl sm:rounded-[2rem] lg:min-h-[calc(100dvh-3rem)] lg:grid-cols-[0.34fr_0.66fr]">
-          <aside className="relative overflow-hidden bg-[#07111f] p-2 text-white sm:p-6 lg:p-10">
+          <aside className="relative min-h-[100dvh] overflow-hidden bg-[#07111f] p-3 text-white sm:min-h-0 sm:p-6 lg:p-10">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(45,212,191,0.32),transparent_32%),radial-gradient(circle_at_100%_22%,rgba(255,204,0,0.20),transparent_28%)]" />
             <div className="relative flex h-full flex-col">
-              <div className="flex items-center justify-between gap-3">
+              <div className="flex items-center justify-center">
                 <a
                   href="/landing"
-                  className="block rounded-2xl border border-white/55 bg-white/95 px-3 py-2 shadow-[0_18px_48px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(255,255,255,0.9)] backdrop-blur"
+                  className="block"
                 >
                   <img
                     src="/images/logo-bergamo-24ore.png"
                     alt="Carroattrezzi Bergamo 24 Ore"
-                    className="h-10 w-auto max-w-[140px] object-contain sm:h-16 sm:max-w-[260px]"
+                    className="h-8 w-auto max-w-[130px] object-contain drop-shadow-[0_14px_30px_rgba(0,0,0,0.48)] sm:h-14 sm:max-w-[220px]"
                   />
                 </a>
               </div>
 
               <div className="flex flex-1 flex-col justify-center text-center">
-                <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#facc15] sm:text-xs">
-                  assistenza immediata
-                </p>
-                <h2 className="mx-auto mt-3 max-w-xl text-[1.7rem] font-black leading-[0.95] tracking-tight text-white sm:text-5xl">
-                  Eliminiamo tempi di attesa e telefonate inutili.
+                <h2 className="mx-auto max-w-xl text-[1.55rem] font-black leading-[1.02] tracking-tight text-white sm:text-4xl">
+                  Chiama con <span className="text-[#facc15]">RISPOSTA IMMEDIATA</span>
                 </h2>
-                <p className="mx-auto mt-4 max-w-md text-sm font-bold leading-relaxed text-white/78 sm:text-lg">
-                  Chiama con risposta immediata oppure fatti richiamare
-                  istantaneamente dal carroattrezzi più vicino.
-                  <span className="block pt-2 text-[#facc15]">
-                    Risparmierai tempo e costi.
-                  </span>
+                <p className="mx-auto mt-4 max-w-md text-sm font-bold leading-relaxed text-white/78 sm:text-base">
+                  Con l’invio automatico del GPS oppure con chiamata normale.
+                  In ogni caso riceverai una risposta istantanea.
                 </p>
 
                 <div className="mx-auto mt-5 grid w-full max-w-md gap-2 sm:mt-7">
