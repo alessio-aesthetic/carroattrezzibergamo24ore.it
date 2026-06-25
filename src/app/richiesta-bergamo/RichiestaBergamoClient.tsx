@@ -156,6 +156,7 @@ export function RichiestaBergamoClient() {
   const [gpsCallStatus, setGpsCallStatus] = useState<
     'idle' | 'loading' | 'success' | 'error'
   >('idle')
+  const [gpsCallPhone, setGpsCallPhone] = useState('')
 
   const cleanPhone = useMemo(
     () => customerPhone.replace(/[^\d+]/g, ''),
@@ -266,6 +267,55 @@ export function RichiestaBergamoClient() {
       },
       { enableHighAccuracy: true, timeout: 12000, maximumAge: 0 },
     )
+  }
+
+  async function submitGpsCallRequest() {
+    const popupPhone = gpsCallPhone.replace(/[^\d+]/g, '')
+
+    if (popupPhone.replace(/[^\d]/g, '').length < 8) {
+      setGpsCallStatus('error')
+      return
+    }
+
+    if (!coordinates) {
+      prepareGpsCall()
+      return
+    }
+
+    setGpsCallStatus('loading')
+
+    const popupMapsLink = `https://www.google.com/maps?q=${coordinates.latitude},${coordinates.longitude}`
+    const payload = {
+      telefono_cliente: popupPhone,
+      telefono_centrale: phone,
+      latitudine: coordinates.latitude,
+      longitudine: coordinates.longitude,
+      google_maps_link: popupMapsLink,
+      citta: 'Bergamo',
+      sorgente: 'google_ads_gps_call_popup',
+      pagina: '/richiesta-bergamo',
+      timestamp: new Date().toISOString(),
+      ...tracking,
+    }
+
+    try {
+      const webhook = process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL || webhookFallback
+      await fetch(webhook, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+      trackLead()
+      setGpsCallStatus('success')
+      setShowGpsInfo(false)
+      setGpsCallPhone('')
+      setStatus('success')
+      setMessage(
+        'Richiesta inviata. Tieni il telefono libero: il carroattrezzi più vicino ti richiamerà rapidamente.',
+      )
+    } catch {
+      setGpsCallStatus('error')
+    }
   }
 
   function continueFromLocation() {
@@ -678,24 +728,33 @@ export function RichiestaBergamoClient() {
               {gpsCallStatus === 'loading'
                 ? 'Stiamo rilevando la tua posizione.'
                 : gpsCallStatus === 'success'
-                  ? 'Adesso chiama per ricevere il carroattrezzi più vicino disponibile.'
+                  ? 'Posizione rilevata correttamente.'
                   : 'Puoi chiamare subito e comunicare la posizione a voce.'}
             </h2>
             <p className="mt-4 text-sm font-bold leading-relaxed text-slate-700 sm:text-base">
               {gpsCallStatus === 'success'
-                ? 'La posizione è stata acquisita correttamente: questo ci aiuta a individuare il mezzo più vicino a te, riducendo tempi di attesa e costi dell’intervento.'
+                ? 'Inserisci solo il tuo numero: verrai ricontattato immediatamente dal carroattrezzi più vicino a te, con un risparmio garantito di tempo e costi.'
                 : gpsCallStatus === 'loading'
                   ? 'Mantieni aperta questa schermata per pochi secondi e consenti l’accesso alla posizione dal browser.'
                   : 'Se il GPS non viene concesso, puoi comunque telefonare: ti guideremo rapidamente per capire dove intervenire.'}
             </p>
+            {gpsCallStatus === 'success' && (
+              <input
+                type="tel"
+                value={gpsCallPhone}
+                onChange={(event) => setGpsCallPhone(event.target.value)}
+                placeholder="Il tuo numero di telefono"
+                className="mt-5 h-14 w-full rounded-2xl border-2 border-slate-300 bg-white px-5 text-center text-base font-black text-[#07111f] shadow-[0_18px_42px_rgba(15,23,42,0.12)] outline-none focus:border-[#0f766e] focus:ring-4 focus:ring-teal-100"
+              />
+            )}
             <div className="mt-5 grid gap-2">
-              <a
-                href={`tel:${tel}`}
-                onClick={trackCall}
+              <button
+                type="button"
+                onClick={gpsCallStatus === 'success' ? submitGpsCallRequest : prepareGpsCall}
                 className="rounded-2xl bg-[#0f766e] px-5 py-4 text-base font-black text-white shadow-[0_20px_54px_rgba(15,118,110,0.28)]"
               >
-                Chiama ora
-              </a>
+                {gpsCallStatus === 'loading' ? 'Rilevamento...' : 'Invia'}
+              </button>
               <button
                 type="button"
                 onClick={() => {
