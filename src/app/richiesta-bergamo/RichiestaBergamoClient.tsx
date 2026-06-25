@@ -433,9 +433,11 @@ export function RichiestaBergamoClient() {
                         <div className="relative flex h-20 items-center justify-center rounded-[0.8rem] border border-slate-100 bg-[#f8fafc] sm:h-36 sm:rounded-[1.2rem]">
                           <LottieAsset
                             src={item.lottie}
-                            className={`h-20 w-20 sm:h-36 sm:w-36 ${
-                              item.zoom ? 'scale-[1.3]' : ''
-                            }`}
+                            className={
+                              item.zoom
+                                ? 'h-28 w-28 scale-[1.18] sm:h-52 sm:w-52'
+                                : 'h-20 w-20 sm:h-36 sm:w-36'
+                            }
                           />
                         </div>
                       )}
