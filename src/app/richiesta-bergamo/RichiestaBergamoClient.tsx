@@ -414,13 +414,12 @@ export function RichiestaBergamoClient() {
 
               <div className="mt-3 text-center sm:flex sm:flex-1 sm:flex-col sm:justify-center">
                 <h2 className="mx-auto max-w-xl text-[1.55rem] font-black leading-[1.02] tracking-tight text-white sm:text-4xl">
-                  Chiama con <span className="text-[#facc15]">RISPOSTA IMMEDIATA</span>
+                  <span className="block">Chiama con</span>
+                  <span className="block text-[#facc15]">RISPOSTA IMMEDIATA</span>
+                  <span className="block">del nostro soccorso stradale</span>
                 </h2>
                 <p className="mx-auto mt-4 max-w-md text-sm font-bold leading-relaxed text-white/78 sm:text-base">
                   Con l’invio automatico del GPS oppure con chiamata normale.
-                  <span className="block text-center">
-                    In ogni caso riceverai una risposta istantanea.
-                  </span>
                 </p>
 
                 <div className="mx-auto mt-5 grid w-full max-w-md gap-2 sm:mt-7">
@@ -440,11 +439,11 @@ export function RichiestaBergamoClient() {
                   </a>
                 </div>
 
-                <div className="mt-5 text-center sm:mt-7">
+                <div className="mt-3 text-center sm:mt-7">
                   <p className="text-[11px] font-black uppercase tracking-[0.16em] text-white/72">
                     Oppure completa il form qui sotto
                   </p>
-                  <p className="mt-2 rounded-2xl border border-[#facc15]/30 bg-[#facc15]/12 px-3 py-2 text-center text-[10px] font-black uppercase leading-tight tracking-[0.08em] text-[#facc15] shadow-[0_14px_34px_rgba(250,204,21,0.08)] sm:text-xs">
+                  <p className="mt-1.5 rounded-2xl border border-[#facc15]/30 bg-[#facc15]/12 px-3 py-1.5 text-center text-[10px] font-black uppercase leading-tight tracking-[0.08em] text-[#facc15] shadow-[0_14px_34px_rgba(250,204,21,0.08)] sm:mt-2 sm:py-2 sm:text-xs">
                     Tempo di completamento stimato: 13 secondi
                   </p>
                 </div>
@@ -474,7 +473,7 @@ export function RichiestaBergamoClient() {
             </div>
           </aside>
 
-          <div className="p-2 sm:p-7 lg:flex lg:min-h-full lg:flex-col lg:p-10">
+          <div className="p-1.5 sm:p-7 lg:flex lg:min-h-full lg:flex-col lg:p-10">
             <div className="mx-auto w-full max-w-5xl rounded-[1.3rem] border border-slate-200 bg-white p-3 shadow-[0_18px_60px_rgba(15,23,42,0.10)] sm:rounded-[1.8rem] sm:p-5">
               <div className="flex items-center gap-3 sm:gap-5">
                 <div className="grid size-20 shrink-0 place-items-center sm:size-28">
@@ -503,7 +502,7 @@ export function RichiestaBergamoClient() {
               </div>
             </div>
 
-            <div className="mt-2 lg:flex-1 sm:mt-8">
+            <div className="mt-1 lg:flex-1 sm:mt-8">
               {step === 0 && (
                 <div className="grid grid-cols-2 gap-2 sm:gap-4 xl:grid-cols-3">
                   {problems.map((item) => (
