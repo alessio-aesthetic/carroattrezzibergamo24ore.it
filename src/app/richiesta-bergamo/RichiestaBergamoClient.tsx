@@ -396,7 +396,7 @@ export function RichiestaBergamoClient() {
 
       <div className="relative mx-auto flex w-full max-w-[1800px] items-start px-2 py-2 pb-8 sm:px-4 sm:py-4 sm:pb-10 lg:px-6 lg:py-6 lg:pb-12">
         <section className="mx-auto grid w-full overflow-hidden rounded-[1.4rem] border border-white/25 bg-white/94 shadow-[0_34px_120px_rgba(0,0,0,0.46),inset_0_1px_0_rgba(255,255,255,0.9)] backdrop-blur-xl sm:rounded-[2rem] lg:min-h-[calc(100dvh-3rem)] lg:grid-cols-[0.34fr_0.66fr]">
-          <aside className="relative min-h-[100dvh] overflow-hidden bg-[#07111f] p-3 text-white sm:min-h-0 sm:p-6 lg:p-10">
+          <aside className="relative overflow-hidden bg-[#07111f] p-3 text-white sm:p-6 lg:p-10">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(45,212,191,0.32),transparent_32%),radial-gradient(circle_at_100%_22%,rgba(255,204,0,0.20),transparent_28%)]" />
             <div className="relative flex h-full flex-col">
               <div className="flex items-center justify-center">
