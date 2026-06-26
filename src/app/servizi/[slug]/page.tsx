@@ -36,7 +36,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
       '@type': 'AutomotiveBusiness',
       name: site.name,
       telephone: site.tel,
-      address: site.address,
+      vatID: site.vatNumber,
     },
     areaServed: site.city,
     url: `https://${site.domain}/servizi/${service.slug}/`,

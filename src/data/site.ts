@@ -6,7 +6,7 @@ export const site = {
   tel: '+390350683839',
   whatsapp: '390350683839',
   email: 'assistenza@carroattrezzibergamo24ore.it',
-  address: 'Via Carlo Serassi, 15 - 24125 Bergamo BG',
+  vatNumber: '02606820690',
   title: 'Carroattrezzi a Bergamo 24H',
   description:
     'Carroattrezzi a Bergamo per soccorso stradale, traino auto, moto e furgoni. Assistenza rapida, chiara e disponibile 24 ore.',

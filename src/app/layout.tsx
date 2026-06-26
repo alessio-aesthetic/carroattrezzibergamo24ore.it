@@ -50,7 +50,7 @@ export default function RootLayout({
     url: `https://${site.domain}`,
     telephone: site.tel,
     email: site.email,
-    address: site.address,
+    vatID: site.vatNumber,
     areaServed: site.city,
     image: `https://${site.domain}/images/hero-bergamo.webp`,
   }

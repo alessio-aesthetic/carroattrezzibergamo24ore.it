@@ -22,7 +22,7 @@ export default function LandingPage() {
     url: `https://${site.domain}/landing/`,
     telephone: site.tel,
     email: site.email,
-    address: site.address,
+    vatID: site.vatNumber,
     areaServed: ['Bergamo', 'Bergamo e provincia'],
     openingHours: 'Mo-Su 00:00-23:59',
     image: `https://${site.domain}/images/logo-bergamo-24ore.png`,

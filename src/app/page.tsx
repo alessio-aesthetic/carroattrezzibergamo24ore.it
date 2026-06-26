@@ -441,16 +441,25 @@ function Footer() {
         <div>
           <Brand />
           <p className="mt-5 text-sm leading-6 text-slate-300">
-            Soccorso stradale, traino e trasporto veicoli per Bergamo e
-            provincia.
+            Il sito mette in contatto chi necessita di assistenza con diversi
+            carroattrezzi indipendenti disponibili nella rete. Operiamo come
+            intermediario e non come singolo carroattrezzi.
           </p>
         </div>
         <div>
           <p className="font-bold">Contatti</p>
           <div className="mt-4 space-y-2 text-sm text-slate-300">
-            <p>{site.address}</p>
+            <p>P. IVA {site.vatNumber}</p>
             <p>{site.phone}</p>
             <p>{site.email}</p>
+            <div className="pt-2">
+              <Link href="/privacy/" className="block hover:text-white">
+                Privacy policy
+              </Link>
+              <Link href="/termini/" className="mt-2 block hover:text-white">
+                Termini e condizioni
+              </Link>
+            </div>
           </div>
         </div>
         <div>
