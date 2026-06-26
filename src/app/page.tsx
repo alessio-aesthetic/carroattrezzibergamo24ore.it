@@ -459,6 +459,9 @@ function Footer() {
               <Link href="/termini/" className="mt-2 block hover:text-white">
                 Termini e condizioni
               </Link>
+              <Link href="/cookie/" className="mt-2 block hover:text-white">
+                Cookie policy
+              </Link>
             </div>
           </div>
         </div>
