@@ -407,7 +407,7 @@ export function RichiestaBergamoClient() {
                   <img
                     src="/images/logo-bergamo-24ore.png"
                     alt="Carroattrezzi Bergamo 24 Ore"
-                    className="h-8 w-auto max-w-[130px] object-contain drop-shadow-[0_14px_30px_rgba(0,0,0,0.48)] sm:h-14 sm:max-w-[220px]"
+                    className="h-8 w-auto max-w-[130px] object-contain brightness-110 contrast-125 drop-shadow-[0_0_22px_rgba(250,204,21,0.45)] sm:h-14 sm:max-w-[220px]"
                   />
                 </a>
               </div>
@@ -418,24 +418,35 @@ export function RichiestaBergamoClient() {
                   <span className="block text-[#facc15]">RISPOSTA IMMEDIATA</span>
                   <span className="block">del nostro soccorso stradale</span>
                 </h2>
-                <p className="mx-auto mt-4 max-w-md text-sm font-bold leading-relaxed text-white/78 sm:text-base">
-                  Con l’invio automatico del GPS oppure con chiamata normale.
-                </p>
+                <div className="mx-auto mt-4 max-w-md rounded-[1.35rem] border border-white/15 bg-white/10 px-4 py-3 text-center shadow-[0_20px_54px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.14)] backdrop-blur-md">
+                  <p className="text-sm font-black leading-relaxed text-white sm:text-base">
+                    Ti richiamiamo in pochi secondi. Nessuna attesa.
+                    <span className="mt-1 block text-[#facc15]">
+                      Oltre 20 carroattrezzi in zona, selezioniamo il più veloce ed economico per te.
+                    </span>
+                  </p>
+                </div>
 
                 <div className="mx-auto mt-5 grid w-full max-w-md gap-2 sm:mt-7">
                   <button
                     type="button"
                     onClick={prepareGpsCall}
-                    className="call-premium inline-flex min-h-16 w-full items-center justify-center rounded-[1.35rem] border border-[#fff4b8] bg-[#facc15] px-4 text-center text-[15px] font-black leading-tight text-[#07111f] shadow-[0_24px_62px_rgba(250,204,21,0.42),inset_0_1px_0_rgba(255,255,255,0.82),inset_0_-10px_22px_rgba(180,83,9,0.22)] sm:min-h-20 sm:text-lg"
+                    className="call-premium inline-flex min-h-16 w-full flex-col items-center justify-center gap-1 rounded-[1.35rem] border border-[#fff4b8] bg-[#facc15] px-4 text-center text-[15px] font-black leading-tight text-[#07111f] shadow-[0_24px_62px_rgba(250,204,21,0.42),inset_0_1px_0_rgba(255,255,255,0.82),inset_0_-10px_22px_rgba(180,83,9,0.22)] sm:min-h-20 sm:text-lg"
                   >
                     Chiama Ora - Con Invio GPS
+                    <span className="rounded-full bg-[#07111f]/12 px-2 py-1 text-[10px] uppercase tracking-[0.08em] sm:text-xs">
+                      Risposta Immediata
+                    </span>
                   </button>
                   <a
                     href={`tel:${tel}`}
                     onClick={trackCall}
-                    className="inline-flex min-h-12 w-full items-center justify-center rounded-2xl border border-white/20 bg-white/92 px-4 text-center text-[12px] font-black leading-tight text-[#07111f] shadow-[0_14px_34px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.9)] transition hover:-translate-y-0.5 sm:min-h-14 sm:text-sm"
+                    className="inline-flex min-h-12 w-full flex-col items-center justify-center gap-1 rounded-2xl border border-white/20 bg-white/92 px-4 text-center text-[12px] font-black leading-tight text-[#07111f] shadow-[0_14px_34px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.9)] transition hover:-translate-y-0.5 sm:min-h-14 sm:text-sm"
                   >
                     Chiama ora - Senza GPS
+                    <span className="rounded-full bg-[#07111f]/8 px-2 py-1 text-[9px] uppercase tracking-[0.08em] sm:text-[10px]">
+                      Risposta Immediata
+                    </span>
                   </a>
                 </div>
 
