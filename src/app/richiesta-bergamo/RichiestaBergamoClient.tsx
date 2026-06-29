@@ -152,11 +152,6 @@ export function RichiestaBergamoClient() {
   const [message, setMessage] = useState('')
   const [tracking, setTracking] = useState<TrackingData>(emptyTracking)
   const [typedAssistant, setTypedAssistant] = useState('')
-  const [showGpsInfo, setShowGpsInfo] = useState(false)
-  const [gpsCallStatus, setGpsCallStatus] = useState<
-    'idle' | 'loading' | 'success' | 'sent' | 'error'
-  >('idle')
-  const [gpsCallPhone, setGpsCallPhone] = useState('')
 
   const cleanPhone = useMemo(
     () => customerPhone.replace(/[^\d+]/g, ''),
@@ -245,78 +240,6 @@ export function RichiestaBergamoClient() {
     )
   }
 
-  function prepareGpsCall() {
-    setShowGpsInfo(true)
-
-    if (!navigator.geolocation) {
-      setGpsCallStatus('error')
-      return
-    }
-
-    setGpsCallStatus('loading')
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        setCoordinates({
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude,
-        })
-        setGpsCallStatus('success')
-      },
-      () => {
-        setGpsCallStatus('error')
-      },
-      { enableHighAccuracy: true, timeout: 12000, maximumAge: 0 },
-    )
-  }
-
-  async function submitGpsCallRequest() {
-    const popupPhone = gpsCallPhone.replace(/[^\d+]/g, '')
-
-    if (popupPhone.replace(/[^\d]/g, '').length < 8) {
-      setGpsCallStatus('error')
-      return
-    }
-
-    if (!coordinates) {
-      prepareGpsCall()
-      return
-    }
-
-    setGpsCallStatus('loading')
-
-    const popupMapsLink = `https://www.google.com/maps?q=${coordinates.latitude},${coordinates.longitude}`
-    const payload = {
-      telefono_cliente: popupPhone,
-      telefono_centrale: phone,
-      latitudine: coordinates.latitude,
-      longitudine: coordinates.longitude,
-      google_maps_link: popupMapsLink,
-      citta: 'Bergamo',
-      sorgente: 'google_ads_gps_call_popup',
-      pagina: '/richiesta-bergamo',
-      timestamp: new Date().toISOString(),
-      ...tracking,
-    }
-
-    try {
-      const webhook = process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL || webhookFallback
-      await fetch(webhook, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      })
-      trackLead()
-      setGpsCallStatus('sent')
-      setGpsCallPhone('')
-      setStatus('success')
-      setMessage(
-        'Richiesta inviata. Tieni il telefono libero: il carroattrezzi più vicino ti richiamerà rapidamente.',
-      )
-    } catch {
-      setGpsCallStatus('error')
-    }
-  }
-
   function continueFromLocation() {
     if (!highway) {
       setStatus('error')
@@ -396,18 +319,18 @@ export function RichiestaBergamoClient() {
 
       <div className="relative mx-auto flex w-full max-w-[1800px] items-start px-2 py-2 pb-8 sm:px-4 sm:py-4 sm:pb-10 lg:px-6 lg:py-6 lg:pb-12">
         <section className="mx-auto grid w-full overflow-hidden rounded-[1.4rem] border border-white/25 bg-white/94 shadow-[0_34px_120px_rgba(0,0,0,0.46),inset_0_1px_0_rgba(255,255,255,0.9)] backdrop-blur-xl sm:rounded-[2rem] lg:min-h-[calc(100dvh-3rem)] lg:grid-cols-[0.34fr_0.66fr]">
-          <aside className="relative overflow-hidden bg-[#07111f] p-3 text-white sm:p-6 lg:p-10">
+          <aside className="relative min-h-[calc(100svh-1rem)] overflow-hidden bg-[#07111f] p-3 text-white sm:min-h-0 sm:p-6 lg:p-10">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(45,212,191,0.32),transparent_32%),radial-gradient(circle_at_100%_22%,rgba(255,204,0,0.20),transparent_28%)]" />
             <div className="relative flex h-full flex-col">
               <div className="flex items-center justify-center">
                 <a
                   href="/landing"
-                  className="block"
+                  className="block rounded-2xl bg-white/95 px-3 py-2 shadow-[0_14px_34px_rgba(0,0,0,0.24)]"
                 >
                   <img
                     src="/images/logo-bergamo-24ore.png"
                     alt="Carroattrezzi Bergamo 24 Ore"
-                    className="h-8 w-auto max-w-[130px] object-contain brightness-110 contrast-125 drop-shadow-[0_0_22px_rgba(250,204,21,0.45)] sm:h-14 sm:max-w-[220px]"
+                    className="h-auto w-[min(72vw,260px)] object-contain sm:w-[220px]"
                   />
                 </a>
               </div>
@@ -427,37 +350,27 @@ export function RichiestaBergamoClient() {
                   </p>
                 </div>
 
-                <div className="mx-auto mt-5 grid w-full max-w-md gap-2 sm:mt-7">
-                  <button
-                    type="button"
-                    onClick={prepareGpsCall}
-                    className="call-premium inline-flex min-h-16 w-full flex-col items-center justify-center gap-1 rounded-[1.35rem] border border-[#fff4b8] bg-[#facc15] px-4 text-center text-[15px] font-black leading-tight text-[#07111f] shadow-[0_24px_62px_rgba(250,204,21,0.42),inset_0_1px_0_rgba(255,255,255,0.82),inset_0_-10px_22px_rgba(180,83,9,0.22)] sm:min-h-20 sm:text-lg"
-                  >
-                    Chiama Ora - Con Invio GPS
-                    <span className="rounded-full bg-[#07111f]/12 px-2 py-1 text-[10px] uppercase tracking-[0.08em] sm:text-xs">
-                      Risposta Immediata
-                    </span>
-                  </button>
+                <div className="mx-auto mt-5 grid w-full max-w-md sm:mt-7">
                   <a
                     href={`tel:${tel}`}
                     onClick={trackCall}
-                    className="inline-flex min-h-12 w-full flex-col items-center justify-center gap-1 rounded-2xl border border-white/20 bg-white/92 px-4 text-center text-[12px] font-black leading-tight text-[#07111f] shadow-[0_14px_34px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.9)] transition hover:-translate-y-0.5 sm:min-h-14 sm:text-sm"
+                    className="call-premium inline-flex min-h-16 w-full flex-col items-center justify-center gap-1 rounded-[1.35rem] border border-[#fff4b8] bg-[#facc15] px-4 text-center text-[15px] font-black leading-tight text-[#07111f] shadow-[0_24px_62px_rgba(250,204,21,0.42),inset_0_1px_0_rgba(255,255,255,0.82),inset_0_-10px_22px_rgba(180,83,9,0.22)] sm:min-h-20 sm:text-lg"
                   >
-                    Chiama ora - Senza GPS
-                    <span className="rounded-full bg-[#07111f]/8 px-2 py-1 text-[9px] uppercase tracking-[0.08em] sm:text-[10px]">
-                      Risposta Immediata
+                    Chiama Ora - Attivi 24/7
+                    <span className="rounded-full bg-[#07111f]/12 px-2 py-1 text-[10px] uppercase tracking-[0.08em] sm:text-xs">
+                      RISPOSTA IMMEDIATA
                     </span>
                   </a>
                 </div>
 
-                <div className="mx-auto mt-4 grid w-full max-w-md gap-1.5 rounded-[1.2rem] border border-white/12 bg-white/[0.08] px-3 py-3 text-left shadow-[0_18px_44px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-md sm:mt-5 sm:grid-cols-3 sm:gap-2 sm:px-4">
+                <div className="mx-auto mt-7 grid w-full max-w-md gap-2 px-1 text-left sm:mt-5 sm:grid-cols-3 sm:gap-3">
                   {[
                     'Nessun obbligo di accettare il servizio',
                     "Preventivo prima dell'uscita del mezzo",
                     'Richiesta gratuita',
                   ].map((item) => (
-                    <div key={item} className="flex items-center gap-2 text-[10px] font-extrabold leading-snug text-white/88 sm:block sm:text-center sm:text-[11px]">
-                      <span className="grid size-4 shrink-0 place-items-center rounded-full bg-[#facc15] text-[10px] font-black text-[#07111f] sm:mx-auto sm:mb-1">
+                    <div key={item} className="flex items-center gap-2 text-[10px] font-semibold leading-snug text-white/65 sm:block sm:text-center sm:text-[11px]">
+                      <span className="shrink-0 text-[11px] font-bold text-white/65 sm:mx-auto sm:mb-1 sm:block">
                         ✓
                       </span>
                       <span>{item}</span>
@@ -759,80 +672,6 @@ export function RichiestaBergamoClient() {
         </section>
       </div>
 
-      {showGpsInfo && (
-        <div className="fixed inset-0 z-50 grid place-items-center bg-[#07111f]/72 px-4 backdrop-blur-md">
-          <div className="w-full max-w-md rounded-[1.6rem] border border-white/70 bg-white p-5 text-center shadow-[0_34px_110px_rgba(0,0,0,0.38),inset_0_1px_0_rgba(255,255,255,0.95)] sm:p-7">
-            <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[#0f766e]">
-              {gpsCallStatus === 'loading'
-                ? 'Rilevamento GPS'
-                : gpsCallStatus === 'success' || gpsCallStatus === 'sent'
-                  ? 'Successo'
-                  : 'GPS non disponibile'}
-            </p>
-            <h2 className={`mt-2 text-2xl font-black leading-tight sm:text-3xl ${
-              gpsCallStatus === 'success' || gpsCallStatus === 'sent'
-                ? 'text-[#0f766e]'
-                : 'text-[#07111f]'
-            }`}>
-              {gpsCallStatus === 'sent'
-                ? 'Richiesta inviata correttamente.'
-                : gpsCallStatus === 'loading'
-                  ? 'Stiamo rilevando la tua posizione.'
-                  : gpsCallStatus === 'success'
-                    ? 'Posizione rilevata correttamente.'
-                    : 'Puoi chiamare subito e comunicare la posizione a voce.'}
-            </h2>
-            <p className="mt-4 text-sm font-bold leading-relaxed text-slate-700 sm:text-base">
-              {gpsCallStatus === 'sent'
-                ? 'Attendi qualche istante con il telefono. Ti abbiamo inviato un WhatsApp per seguire la richiesta.'
-                : gpsCallStatus === 'success'
-                  ? 'Inserisci solo il tuo numero: verrai chiamato immediatamente dal carroattrezzi più vicino.'
-                  : gpsCallStatus === 'loading'
-                    ? 'Mantieni aperta questa schermata per pochi secondi e consenti l’accesso alla posizione dal browser.'
-                    : 'Se il GPS non viene concesso, puoi comunque telefonare: ti guideremo rapidamente per capire dove intervenire.'}
-            </p>
-            {gpsCallStatus === 'success' && (
-              <input
-                type="tel"
-                value={gpsCallPhone}
-                onChange={(event) => setGpsCallPhone(event.target.value)}
-                placeholder="Il tuo numero di telefono"
-                className="mt-5 h-14 w-full rounded-2xl border-2 border-slate-300 bg-white px-5 text-center text-base font-black text-[#07111f] shadow-[0_18px_42px_rgba(15,23,42,0.12)] outline-none focus:border-[#0f766e] focus:ring-4 focus:ring-teal-100"
-              />
-            )}
-            <div className="mt-5 grid gap-2">
-              <button
-                type="button"
-                onClick={
-                  gpsCallStatus === 'sent'
-                    ? () => setShowGpsInfo(false)
-                    : gpsCallStatus === 'success'
-                      ? submitGpsCallRequest
-                      : prepareGpsCall
-                }
-                className="rounded-2xl bg-[#0f766e] px-5 py-4 text-base font-black text-white shadow-[0_20px_54px_rgba(15,118,110,0.28)]"
-              >
-                {gpsCallStatus === 'sent'
-                  ? 'Chiudi'
-                  : gpsCallStatus === 'loading'
-                    ? 'Rilevamento...'
-                    : 'Invia'}
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  setShowGpsInfo(false)
-                  setGpsCallStatus('idle')
-                }}
-                className="rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-black text-slate-600"
-              >
-                Chiudi
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
       <style jsx global>{`
         html,
         body {
@@ -864,6 +703,7 @@ export function RichiestaBergamoClient() {
           isolation: isolate;
           overflow: hidden;
           transform: translateZ(0);
+          animation: callBreath 2.8s ease-in-out infinite;
         }
         .call-premium::before {
           content: '';
@@ -876,28 +716,18 @@ export function RichiestaBergamoClient() {
             radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.55), transparent 42%);
           opacity: 0.9;
         }
-        .call-premium::after {
-          content: '';
-          position: absolute;
-          inset: -60% auto -60% -45%;
-          width: 42%;
-          transform: rotate(18deg);
-          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.62), transparent);
-          animation: executiveSweep 3.2s ease-in-out infinite;
-        }
-        @keyframes executiveSweep {
+        @keyframes callBreath {
           0%,
-          42% {
-            left: -55%;
-            opacity: 0;
-          }
-          52% {
-            opacity: 0.9;
-          }
-          72%,
           100% {
-            left: 112%;
-            opacity: 0;
+            transform: scale(1);
+          }
+          50% {
+            transform: scale(1.02);
+          }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .call-premium {
+            animation: none;
           }
         }
         @keyframes caretBlink {
