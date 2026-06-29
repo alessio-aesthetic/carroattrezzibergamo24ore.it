@@ -450,7 +450,22 @@ export function RichiestaBergamoClient() {
                   </a>
                 </div>
 
-                <div className="mt-10 text-center sm:mt-7">
+                <div className="mx-auto mt-4 grid w-full max-w-md gap-1.5 rounded-[1.2rem] border border-white/12 bg-white/[0.08] px-3 py-3 text-left shadow-[0_18px_44px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-md sm:mt-5 sm:grid-cols-3 sm:gap-2 sm:px-4">
+                  {[
+                    'Nessun obbligo di accettare il servizio',
+                    "Preventivo prima dell'uscita del mezzo",
+                    'Richiesta gratuita',
+                  ].map((item) => (
+                    <div key={item} className="flex items-center gap-2 text-[10px] font-extrabold leading-snug text-white/88 sm:block sm:text-center sm:text-[11px]">
+                      <span className="grid size-4 shrink-0 place-items-center rounded-full bg-[#facc15] text-[10px] font-black text-[#07111f] sm:mx-auto sm:mb-1">
+                        ✓
+                      </span>
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-6 text-center sm:mt-6">
                   <p className="text-[11px] font-black uppercase tracking-[0.16em] text-white/72">
                     Oppure completa il form
                   </p>
