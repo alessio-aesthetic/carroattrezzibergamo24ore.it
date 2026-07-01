@@ -335,24 +335,24 @@ export function RichiestaBergamoClient() {
                 </a>
               </div>
 
-              <div className="mt-2 flex flex-1 flex-col justify-evenly text-center sm:mt-3 sm:justify-center">
-                <h2 className="mx-auto max-w-xl text-[1.55rem] font-black leading-[1.02] tracking-tight text-white sm:text-4xl">
+              <div className="mt-3 flex flex-1 flex-col gap-3 text-center sm:mt-5 sm:justify-center sm:gap-5">
+                <h2 className="mx-auto max-w-xl text-[1.5rem] font-black leading-[1.08] tracking-tight text-white sm:text-4xl">
                   <span className="block">Chiama con</span>
-                  <span className="block text-white">RISPOSTA IMMEDIATA</span>
+                  <span className="block text-[1.08em] font-black text-white">RISPOSTA IMMEDIATA</span>
                   <span className="block">del nostro soccorso stradale</span>
                 </h2>
-                <p className="mx-auto max-w-md text-sm font-bold leading-relaxed text-white/82 sm:mt-4 sm:text-base">
-                  <strong className="font-black text-white">Nessuna attesa. Nessuna telefonata a vuoto.</strong>
-                  <span className="mt-1 block text-white/72">
-                    Una sola chiamata è tutto ciò che serve: Solo carroattrezzi disponibili.
+                <p className="mx-auto max-w-md border-y border-white/15 py-3 text-sm font-semibold leading-[1.45] text-white/72 sm:py-4 sm:text-base">
+                  <strong className="block font-black text-white">Nessuna attesa. Nessuna telefonata a vuoto.</strong>
+                  <span className="mt-0.5 block">
+                    <strong className="font-extrabold text-white">Una sola chiamata</strong> è tutto ciò che serve: solo <strong className="font-extrabold text-white">carroattrezzi disponibili.</strong>
                   </span>
                 </p>
 
-                <div className="mx-auto grid w-full max-w-md sm:mt-7">
+                <div className="mx-auto grid w-full max-w-md">
                   <a
                     href={`tel:${tel}`}
                     onClick={trackCall}
-                    className="call-premium inline-flex min-h-16 w-full flex-col items-center justify-center gap-1 rounded-[1.35rem] border border-[#fff4b8] bg-[#facc15] px-4 text-center text-lg font-black leading-tight text-[#07111f] shadow-[0_24px_62px_rgba(250,204,21,0.42),inset_0_1px_0_rgba(255,255,255,0.82),inset_0_-10px_22px_rgba(180,83,9,0.22)] sm:min-h-20 sm:text-xl"
+                    className="call-premium inline-flex min-h-[4.4rem] w-full flex-col items-center justify-center gap-1 rounded-[1.2rem] border border-[#fff4b8] bg-[#facc15] px-4 text-center text-lg font-black leading-tight text-[#07111f] shadow-[0_20px_54px_rgba(250,204,21,0.34),inset_0_1px_0_rgba(255,255,255,0.88),inset_0_-8px_18px_rgba(180,83,9,0.18)] sm:min-h-20 sm:rounded-[1.35rem] sm:text-xl"
                   >
                     Chiama Ora - Attivi 24/7
                     <span className="rounded-full bg-[#07111f]/12 px-2 py-1 text-[9px] uppercase tracking-[0.08em] sm:text-[10px]">
@@ -361,14 +361,14 @@ export function RichiestaBergamoClient() {
                   </a>
                 </div>
 
-                <div className="mx-auto grid w-full max-w-md gap-2 px-1 text-left sm:mt-5 sm:grid-cols-3 sm:gap-3">
+                <div className="mx-auto grid w-full max-w-md grid-cols-3 divide-x divide-white/15 border-y border-white/10 py-2.5 text-center sm:py-3">
                   {[
                     'Nessun obbligo di accettare il servizio',
                     "Preventivo prima dell'uscita del mezzo",
                     'Richiesta gratuita',
                   ].map((item) => (
-                    <div key={item} className="flex items-center gap-2 text-[10px] font-semibold leading-snug text-white/65 sm:block sm:text-center sm:text-[11px]">
-                      <span className="shrink-0 text-[11px] font-bold text-white/65 sm:mx-auto sm:mb-1 sm:block">
+                    <div key={item} className="flex min-w-0 flex-col items-center justify-start px-1.5 text-[8px] font-bold leading-[1.25] text-white/68 sm:px-3 sm:text-[11px]">
+                      <span className="mb-1 grid size-4 shrink-0 place-items-center rounded-full border border-white/25 text-[9px] font-black text-white/85">
                         ✓
                       </span>
                       <span>{item}</span>
@@ -376,11 +376,11 @@ export function RichiestaBergamoClient() {
                   ))}
                 </div>
 
-                <div className="text-center sm:mt-6">
+                <div className="text-center">
                   <p className="text-[11px] font-black uppercase tracking-[0.16em] text-white/72">
                     Oppure completa il form
                   </p>
-                  <p className="mt-1.5 px-3 py-1.5 text-center text-[10px] font-black uppercase leading-tight tracking-[0.08em] text-white/62 sm:mt-2 sm:py-2 sm:text-xs">
+                  <p className="mt-1 px-3 text-center text-[9px] font-bold uppercase leading-tight tracking-[0.1em] text-white/48 sm:mt-2 sm:text-xs">
                     Tempo di completamento stimato: 13 secondi
                   </p>
                 </div>
