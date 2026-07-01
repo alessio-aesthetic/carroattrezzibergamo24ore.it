@@ -344,7 +344,7 @@ export function RichiestaBergamoClient() {
                 <p className="mx-auto max-w-md text-sm font-bold leading-relaxed text-white/82 sm:mt-4 sm:text-base">
                   <strong className="font-black text-white">Nessuna attesa. Nessuna telefonata a vuoto.</strong>
                   <span className="mt-1 block text-white/72">
-                    Una sola chiamata è tutto ciò che serve: solo carroattrezzi disponibili.
+                    Una sola chiamata è tutto ciò che serve: Solo carroattrezzi disponibili.
                   </span>
                 </p>
 
