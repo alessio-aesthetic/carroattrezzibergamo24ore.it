@@ -1,5 +1,6 @@
 import { type Metadata } from 'next'
-import { Inter, Lexend } from 'next/font/google'
+import { Inter } from 'next/font/google'
+import { GeistSans } from 'geist/font/sans'
 import Script from 'next/script'
 import clsx from 'clsx'
 
@@ -32,12 +33,6 @@ const inter = Inter({
   variable: '--font-inter',
 })
 
-const lexend = Lexend({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-lexend',
-})
-
 export default function RootLayout({
   children,
 }: {
@@ -61,7 +56,7 @@ export default function RootLayout({
       className={clsx(
         'h-full scroll-smooth bg-white antialiased',
         inter.variable,
-        lexend.variable,
+        GeistSans.variable,
       )}
     >
       <body className="flex h-full flex-col">

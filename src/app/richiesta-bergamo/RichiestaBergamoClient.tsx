@@ -313,13 +313,13 @@ export function RichiestaBergamoClient() {
   }
 
   return (
-    <main className="relative min-h-dvh overflow-x-hidden bg-[#07111f] text-slate-950">
+    <main className="request-landing relative min-h-dvh overflow-x-hidden bg-[#07111f] text-slate-950">
       <div className="pointer-events-none absolute inset-0 min-h-full bg-[radial-gradient(circle_at_50%_8%,rgba(255,255,255,0.10),transparent_32%),linear-gradient(135deg,#07111f_0%,#111827_52%,#07111f_100%)]" />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-[linear-gradient(180deg,rgba(255,255,255,0.12),transparent)]" />
 
       <div className="relative mx-auto flex w-full max-w-[1800px] items-start px-2 py-2 pb-8 sm:px-4 sm:py-4 sm:pb-10 lg:px-6 lg:py-6 lg:pb-12">
         <section className="mx-auto grid w-full overflow-hidden rounded-[1.4rem] border border-white/25 bg-white/94 shadow-[0_34px_120px_rgba(0,0,0,0.46),inset_0_1px_0_rgba(255,255,255,0.9)] backdrop-blur-xl sm:rounded-[2rem] lg:min-h-[calc(100dvh-3rem)] lg:grid-cols-[0.34fr_0.66fr]">
-          <aside className="relative overflow-hidden bg-[#07111f] p-3 text-white sm:p-6 lg:p-10">
+          <aside className="relative overflow-hidden bg-[#07111f] p-4 text-white sm:p-6 lg:p-10">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_8%,rgba(255,255,255,0.10),transparent_36%)]" />
             <div className="relative flex flex-col sm:h-full">
               <div className="flex items-center justify-center">
@@ -335,7 +335,7 @@ export function RichiestaBergamoClient() {
                 </a>
               </div>
 
-              <div className="mt-3 flex flex-1 flex-col gap-3 text-center sm:mt-5 sm:justify-center sm:gap-5">
+              <div className="mt-4 flex flex-1 flex-col gap-4 text-center sm:mt-6 sm:justify-center sm:gap-6">
                 <h2 className="mx-auto max-w-xl text-[1.5rem] font-black leading-[1.08] tracking-tight text-white sm:text-4xl">
                   <span className="block">Chiama con</span>
                   <span className="block text-[1.08em] font-black text-white">RISPOSTA IMMEDIATA</span>
@@ -352,7 +352,7 @@ export function RichiestaBergamoClient() {
                   <a
                     href={`tel:${tel}`}
                     onClick={trackCall}
-                    className="call-premium inline-flex min-h-[4.4rem] w-full flex-col items-center justify-center gap-1 rounded-[1.2rem] border border-[#fff4b8] bg-[#facc15] px-4 text-center text-lg font-black leading-tight text-[#07111f] shadow-[0_20px_54px_rgba(250,204,21,0.34),inset_0_1px_0_rgba(255,255,255,0.88),inset_0_-8px_18px_rgba(180,83,9,0.18)] sm:min-h-20 sm:rounded-[1.35rem] sm:text-xl"
+                    className="call-premium inline-flex min-h-[4.4rem] w-full flex-col items-center justify-center gap-1 rounded-[1.2rem] border border-[#fff4b8] bg-[#facc15] px-4 text-center text-lg font-bold leading-tight text-[#07111f] shadow-[0_20px_54px_rgba(250,204,21,0.34),inset_0_1px_0_rgba(255,255,255,0.88),inset_0_-8px_18px_rgba(180,83,9,0.18)] sm:min-h-20 sm:rounded-[1.35rem] sm:text-xl"
                   >
                     Chiama Ora - Attivi 24/7
                     <span className="rounded-full bg-[#07111f]/12 px-2 py-1 text-[9px] uppercase tracking-[0.08em] sm:text-[10px]">
@@ -671,6 +671,21 @@ export function RichiestaBergamoClient() {
       </div>
 
       <style jsx global>{`
+        .request-landing {
+          font-family: var(--font-inter), Inter, system-ui, sans-serif;
+        }
+
+        .request-landing h1,
+        .request-landing h2,
+        .request-landing h3 {
+          font-family: var(--font-geist-sans), Geist, system-ui, sans-serif;
+        }
+
+        .request-landing .call-premium {
+          font-family: var(--font-inter), Inter, system-ui, sans-serif;
+          font-weight: 700;
+        }
+
         html,
         body {
           min-height: 100%;
