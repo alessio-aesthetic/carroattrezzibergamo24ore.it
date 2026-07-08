@@ -379,46 +379,48 @@ export function RichiestaBergamoClient() {
                 </a>
               </div>
 
-              <div className="mt-4 flex flex-1 flex-col gap-4 text-center sm:mt-6 sm:justify-center sm:gap-6">
-                <h2 className="mx-auto max-w-xl text-[1.5rem] font-black leading-[1.08] tracking-tight text-[#07111f] sm:text-4xl">
-                  <span className="block">Chiama con</span>
-                  <span className="block text-[1.08em] font-black text-[#0f766e]">RISPOSTA IMMEDIATA</span>
-                  <span className="block">del nostro soccorso stradale</span>
-                </h2>
-                <p className="mx-auto max-w-md border-y border-[#0f766e]/16 py-3 text-sm font-semibold leading-[1.45] text-slate-700 sm:py-4 sm:text-base">
-                  Con noi hai meno attesa e costi contenuti rispetto ad altri carroattrezzi in zona Bergamo e provincia.
-                  <span className="mt-0.5 block font-black">Risposta garantita!</span>
-                </p>
+              <div className="mt-4 flex flex-1 flex-col gap-3 text-center sm:mt-6 sm:justify-center sm:gap-4">
+                <div className="mx-auto w-full max-w-md rounded-[1rem] border-2 border-slate-200 bg-white p-3 shadow-[0_14px_34px_rgba(15,23,42,0.08)] sm:rounded-[1.6rem] sm:p-5">
+                  <h2 className="mx-auto max-w-xl text-[1.5rem] font-black leading-[1.08] tracking-tight text-[#07111f] sm:text-4xl">
+                    <span className="block">Chiama con</span>
+                    <span className="block text-[1.08em] font-black text-[#0f766e]">RISPOSTA IMMEDIATA</span>
+                    <span className="block">del nostro soccorso stradale</span>
+                  </h2>
+                  <p className="mx-auto mt-3 max-w-md border-y border-[#0f766e]/16 py-3 text-sm font-semibold leading-[1.45] text-slate-700 sm:mt-4 sm:py-4 sm:text-base">
+                    Con noi hai meno attesa e costi contenuti rispetto ad altri carroattrezzi in zona Bergamo e provincia.
+                    <span className="mt-0.5 block font-black">Risposta garantita!</span>
+                  </p>
 
-                <div className="mx-auto grid w-full max-w-md">
-                  <a
-                    href={`tel:${tel}`}
-                    onClick={trackCall}
-                    className="call-premium inline-flex min-h-[4.4rem] w-full flex-col items-center justify-center gap-1 rounded-[1.2rem] border border-[#fff4b8] bg-[#facc15] px-4 text-center text-lg font-bold leading-tight text-[#07111f] shadow-[0_20px_54px_rgba(250,204,21,0.34),inset_0_1px_0_rgba(255,255,255,0.88),inset_0_-8px_18px_rgba(180,83,9,0.18)] sm:min-h-20 sm:rounded-[1.35rem] sm:text-xl"
-                  >
-                    Chiama Ora - Attivi 24/7
-                    <span className="rounded-full bg-[#07111f]/12 px-2 py-1 text-[9px] uppercase tracking-[0.08em] sm:text-[10px]">
-                      RISPOSTA IMMEDIATA
-                    </span>
-                  </a>
-                </div>
-
-                <div className="mx-auto grid w-full max-w-md grid-cols-3 divide-x divide-[#0f766e]/14 border-y border-[#0f766e]/12 py-2.5 text-center sm:py-3">
-                  {[
-                    'Nessun obbligo di accettare il servizio',
-                    "Preventivo prima dell'uscita del mezzo",
-                    'Richiesta gratuita',
-                  ].map((item) => (
-                    <div key={item} className="flex min-w-0 flex-col items-center justify-start px-1.5 text-[8px] font-bold leading-[1.25] text-slate-600 sm:px-3 sm:text-[11px]">
-                      <span className="mb-1 grid size-4 shrink-0 place-items-center rounded-full border border-[#0f766e]/20 text-[9px] font-black text-[#0f766e]">
-                        ✓
+                  <div className="mx-auto mt-3 grid w-full max-w-md sm:mt-4">
+                    <a
+                      href={`tel:${tel}`}
+                      onClick={trackCall}
+                      className="call-premium inline-flex min-h-[4.4rem] w-full flex-col items-center justify-center gap-1 rounded-[1.2rem] border border-[#fff4b8] bg-[#facc15] px-4 text-center text-lg font-bold leading-tight text-[#07111f] shadow-[inset_0_1px_0_rgba(255,255,255,0.88),inset_0_-8px_18px_rgba(180,83,9,0.18)] sm:min-h-20 sm:rounded-[1.35rem] sm:text-xl"
+                    >
+                      Chiama Ora - Attivi 24/7
+                      <span className="rounded-full bg-[#07111f]/12 px-2 py-1 text-[9px] uppercase tracking-[0.08em] sm:text-[10px]">
+                        RISPOSTA IMMEDIATA
                       </span>
-                      <span>{item}</span>
-                    </div>
-                  ))}
+                    </a>
+                  </div>
+
+                  <div className="mx-auto mt-3 grid w-full max-w-md grid-cols-3 divide-x divide-[#0f766e]/14 border-y border-[#0f766e]/12 py-2.5 text-center sm:mt-4 sm:py-3">
+                    {[
+                      'Nessun obbligo di accettare il servizio',
+                      "Preventivo prima dell'uscita del mezzo",
+                      'Richiesta gratuita',
+                    ].map((item) => (
+                      <div key={item} className="flex min-w-0 flex-col items-center justify-start px-1.5 text-[8px] font-bold leading-[1.25] text-slate-600 sm:px-3 sm:text-[11px]">
+                        <span className="mb-1 grid size-4 shrink-0 place-items-center rounded-full border border-[#0f766e]/20 text-[9px] font-black text-[#0f766e]">
+                          ✓
+                        </span>
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
 
-                <div className="text-center">
+                <div className="mx-auto w-full max-w-md rounded-[1rem] border-2 border-slate-200 bg-white p-3 text-center shadow-[0_14px_34px_rgba(15,23,42,0.08)] sm:rounded-[1.6rem] sm:p-4">
                   <p className="text-[11px] font-black uppercase tracking-[0.16em] text-[#0f766e]">
                     Oppure completa il form
                   </p>
