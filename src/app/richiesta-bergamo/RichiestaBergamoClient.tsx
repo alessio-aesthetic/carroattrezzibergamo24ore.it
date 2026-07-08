@@ -357,14 +357,14 @@ export function RichiestaBergamoClient() {
   }
 
   return (
-    <main className="request-landing relative min-h-dvh overflow-x-hidden bg-[#07111f] text-slate-950">
-      <div className="pointer-events-none absolute inset-0 min-h-full bg-[radial-gradient(circle_at_50%_8%,rgba(255,255,255,0.10),transparent_32%),linear-gradient(135deg,#07111f_0%,#111827_52%,#07111f_100%)]" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-[linear-gradient(180deg,rgba(255,255,255,0.12),transparent)]" />
+    <main className="request-landing relative min-h-dvh overflow-x-hidden bg-[#ecfdf5] text-slate-950">
+      <div className="pointer-events-none absolute inset-0 min-h-full bg-[radial-gradient(circle_at_50%_8%,rgba(20,184,166,0.18),transparent_32%),linear-gradient(135deg,#f8fafc_0%,#ecfdf5_48%,#e0f2fe_100%)]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-[linear-gradient(180deg,rgba(255,255,255,0.86),transparent)]" />
 
       <div className="relative mx-auto flex w-full max-w-[1800px] items-start px-2 py-2 pb-8 sm:px-4 sm:py-4 sm:pb-10 lg:px-6 lg:py-6 lg:pb-12">
-        <section className="mx-auto grid w-full overflow-hidden rounded-[1.4rem] border border-white/25 bg-white/94 shadow-[0_34px_120px_rgba(0,0,0,0.46),inset_0_1px_0_rgba(255,255,255,0.9)] backdrop-blur-xl sm:rounded-[2rem] lg:min-h-[calc(100dvh-3rem)] lg:grid-cols-[0.34fr_0.66fr]">
-          <aside className="relative overflow-hidden bg-[#07111f] p-4 text-white sm:p-6 lg:p-10">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_8%,rgba(255,255,255,0.10),transparent_36%)]" />
+        <section className="mx-auto grid w-full overflow-hidden rounded-[1.4rem] border border-white/75 bg-white/96 shadow-[0_34px_120px_rgba(15,118,110,0.18),inset_0_1px_0_rgba(255,255,255,0.95)] backdrop-blur-xl sm:rounded-[2rem] lg:min-h-[calc(100dvh-3rem)] lg:grid-cols-[0.34fr_0.66fr]">
+          <aside className="relative overflow-hidden bg-[linear-gradient(160deg,#ffffff_0%,#ecfdf5_48%,#dff7f2_100%)] p-4 text-[#07111f] sm:p-6 lg:p-10">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_8%,rgba(20,184,166,0.18),transparent_38%)]" />
             <div className="relative flex flex-col sm:h-full">
               <div className="flex items-center justify-center">
                 <a
@@ -380,12 +380,12 @@ export function RichiestaBergamoClient() {
               </div>
 
               <div className="mt-4 flex flex-1 flex-col gap-4 text-center sm:mt-6 sm:justify-center sm:gap-6">
-                <h2 className="mx-auto max-w-xl text-[1.5rem] font-black leading-[1.08] tracking-tight text-white sm:text-4xl">
+                <h2 className="mx-auto max-w-xl text-[1.5rem] font-black leading-[1.08] tracking-tight text-[#07111f] sm:text-4xl">
                   <span className="block">Chiama con</span>
-                  <span className="block text-[1.08em] font-black text-white">RISPOSTA IMMEDIATA</span>
+                  <span className="block text-[1.08em] font-black text-[#0f766e]">RISPOSTA IMMEDIATA</span>
                   <span className="block">del nostro soccorso stradale</span>
                 </h2>
-                <p className="mx-auto max-w-md border-y border-white/15 py-3 text-sm font-semibold leading-[1.45] text-white/82 sm:py-4 sm:text-base">
+                <p className="mx-auto max-w-md border-y border-[#0f766e]/16 py-3 text-sm font-semibold leading-[1.45] text-slate-700 sm:py-4 sm:text-base">
                   Con noi hai meno attesa e costi contenuti rispetto ad altri carroattrezzi in zona Bergamo e provincia.
                   <span className="mt-0.5 block font-black">Risposta garantita!</span>
                 </p>
@@ -403,14 +403,14 @@ export function RichiestaBergamoClient() {
                   </a>
                 </div>
 
-                <div className="mx-auto grid w-full max-w-md grid-cols-3 divide-x divide-white/15 border-y border-white/10 py-2.5 text-center sm:py-3">
+                <div className="mx-auto grid w-full max-w-md grid-cols-3 divide-x divide-[#0f766e]/14 border-y border-[#0f766e]/12 py-2.5 text-center sm:py-3">
                   {[
                     'Nessun obbligo di accettare il servizio',
                     "Preventivo prima dell'uscita del mezzo",
                     'Richiesta gratuita',
                   ].map((item) => (
-                    <div key={item} className="flex min-w-0 flex-col items-center justify-start px-1.5 text-[8px] font-bold leading-[1.25] text-white/68 sm:px-3 sm:text-[11px]">
-                      <span className="mb-1 grid size-4 shrink-0 place-items-center rounded-full border border-white/25 text-[9px] font-black text-white/85">
+                    <div key={item} className="flex min-w-0 flex-col items-center justify-start px-1.5 text-[8px] font-bold leading-[1.25] text-slate-600 sm:px-3 sm:text-[11px]">
+                      <span className="mb-1 grid size-4 shrink-0 place-items-center rounded-full border border-[#0f766e]/20 text-[9px] font-black text-[#0f766e]">
                         ✓
                       </span>
                       <span>{item}</span>
@@ -419,17 +419,17 @@ export function RichiestaBergamoClient() {
                 </div>
 
                 <div className="text-center">
-                  <p className="text-[11px] font-black uppercase tracking-[0.16em] text-white/72">
+                  <p className="text-[11px] font-black uppercase tracking-[0.16em] text-[#0f766e]">
                     Oppure completa il form
                   </p>
-                  <p className="mt-1 px-3 text-center text-[9px] font-bold uppercase leading-tight tracking-[0.1em] text-white/48 sm:mt-2 sm:text-xs">
+                  <p className="mt-1 px-3 text-center text-[9px] font-bold uppercase leading-tight tracking-[0.1em] text-slate-500 sm:mt-2 sm:text-xs">
                     Tempo di completamento stimato: 13 secondi
                   </p>
                 </div>
               </div>
 
               <div className="hidden pt-5 sm:block sm:pt-8">
-                <p className="text-center text-[9px] font-black uppercase tracking-[0.2em] text-white/35">
+                <p className="text-center text-[9px] font-black uppercase tracking-[0.2em] text-slate-400">
                   avanzamento
                 </p>
                 <div className="mx-auto mt-2 grid max-w-xs grid-cols-4 gap-1">
@@ -438,10 +438,10 @@ export function RichiestaBergamoClient() {
                       <div key={item} className="min-w-0">
                         <div
                           className={`h-1 rounded-full ${
-                            index <= step ? 'bg-white/55' : 'bg-white/10'
+                            index <= step ? 'bg-[#0f766e]/70' : 'bg-[#0f766e]/14'
                           }`}
                         />
-                        <p className="mt-1 truncate text-[8px] font-bold text-white/35">
+                        <p className="mt-1 truncate text-[8px] font-bold text-slate-400">
                           {item}
                         </p>
                       </div>
