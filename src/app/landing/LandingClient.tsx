@@ -19,6 +19,9 @@ type TrackingData = Record<TrackingKey, string>
 const n8nWebhookUrl =
   process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL ||
   'https://alessiothrasos.app.n8n.cloud/webhook/landing-carroattrezzi-bergamo'
+const phoneClickWebhookUrl =
+  process.env.NEXT_PUBLIC_PHONE_CLICK_WEBHOOK_URL ||
+  'https://alessiothrasos.app.n8n.cloud/webhook/click-telefono-carroattrezzi-bergamo'
 const telHref = `tel:${site.tel}`
 
 declare global {
@@ -29,6 +32,12 @@ declare global {
 
 function conversione_click_telefono() {
   console.log('conversione_click_telefono')
+  trackSponsoredPhoneClick({
+    city: 'Bergamo',
+    page: '/landing',
+    phone: site.tel,
+    phoneLabel: site.phone,
+  })
   // TODO Google Ads: inserisci qui ID conversione click telefono.
   // window.gtag?.('event', 'conversion', { send_to: 'AW-XXXX/TELEFONO' })
 }
@@ -50,6 +59,46 @@ function getStoredTracking(): TrackingData {
         : window.localStorage.getItem(`ads_${key}`) || ''
     return acc
   }, {} as TrackingData)
+}
+
+function trackSponsoredPhoneClick({
+  city,
+  page,
+  phone,
+  phoneLabel,
+}: {
+  city: string
+  page: string
+  phone: string
+  phoneLabel: string
+}) {
+  if (typeof window === 'undefined') return
+
+  const payload = {
+    evento: 'click_telefono',
+    fonte: 'sponsorizzata_landing',
+    page_type: 'landing_lottie_ads',
+    citta: city,
+    pagina: page,
+    telefono: phone,
+    telefono_label: phoneLabel,
+    url: window.location.href,
+    dominio: window.location.hostname,
+    user_agent: window.navigator.userAgent,
+    timestamp: new Date().toISOString(),
+    ...getStoredTracking(),
+  }
+  const body = JSON.stringify(payload)
+  const blob = new Blob([body], { type: 'application/json' })
+
+  if (!navigator.sendBeacon?.(phoneClickWebhookUrl, blob)) {
+    void fetch(phoneClickWebhookUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body,
+      keepalive: true,
+    }).catch(() => {})
+  }
 }
 
 function PhoneButton({

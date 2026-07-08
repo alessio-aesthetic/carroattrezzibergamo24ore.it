@@ -7,6 +7,9 @@ const phone = '035 068 3839'
 const tel = '+390350683839'
 const webhookFallback =
   'https://alessiothrasos.app.n8n.cloud/webhook/landing-carroattrezzi-bergamo'
+const phoneClickWebhookUrl =
+  process.env.NEXT_PUBLIC_PHONE_CLICK_WEBHOOK_URL ||
+  'https://alessiothrasos.app.n8n.cloud/webhook/click-telefono-carroattrezzi-bergamo'
 
 const trackingKeys = [
   'gclid',
@@ -106,10 +109,51 @@ function emptyTracking(): TrackingData {
 
 function trackCall() {
   console.log('conversione_click_telefono_bergamo_richiesta')
+  trackSponsoredPhoneClick()
 }
 
 function trackLead() {
   console.log('conversione_invio_richiesta_bergamo')
+}
+
+function readStoredTracking(): TrackingData {
+  return trackingKeys.reduce((acc, key) => {
+    acc[key] =
+      typeof window === 'undefined'
+        ? ''
+        : window.localStorage.getItem(`ads_${key}`) || ''
+    return acc
+  }, {} as TrackingData)
+}
+
+function trackSponsoredPhoneClick() {
+  if (typeof window === 'undefined') return
+
+  const payload = {
+    evento: 'click_telefono',
+    fonte: 'sponsorizzata_landing',
+    page_type: 'landing_lottie_ads',
+    citta: 'Bergamo',
+    pagina: '/richiesta-bergamo',
+    telefono: tel,
+    telefono_label: phone,
+    url: window.location.href,
+    dominio: window.location.hostname,
+    user_agent: window.navigator.userAgent,
+    timestamp: new Date().toISOString(),
+    ...readStoredTracking(),
+  }
+  const body = JSON.stringify(payload)
+  const blob = new Blob([body], { type: 'application/json' })
+
+  if (!navigator.sendBeacon?.(phoneClickWebhookUrl, blob)) {
+    void fetch(phoneClickWebhookUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body,
+      keepalive: true,
+    }).catch(() => {})
+  }
 }
 
 function LottieAsset({
