@@ -387,8 +387,7 @@ export function RichiestaBergamoClient() {
                     <span className="block">del nostro soccorso stradale</span>
                   </h2>
                   <p className="mx-auto mt-3 max-w-md border-y border-[#0f766e]/16 py-3 text-sm font-semibold leading-[1.45] text-slate-700 sm:mt-4 sm:py-4 sm:text-base">
-                    Con noi hai meno attesa e costi contenuti rispetto ad altri carroattrezzi in zona Bergamo e provincia.
-                    <span className="mt-0.5 block font-black">Risposta garantita!</span>
+                    Con noi hai meno attesa e costi inferiori rispetto agli altri carroattrezzi in zona Bergamo e provincia.
                   </p>
 
                   <div className="mx-auto mt-3 grid w-full max-w-md sm:mt-4">
