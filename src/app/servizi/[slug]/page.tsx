@@ -2,18 +2,17 @@ import { type Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
+import { ConsentBanner } from '@/components/ConsentBanner'
 import { Container } from '@/components/Container'
-import { services, site } from '@/data/site'
+import { Reveal } from '@/components/Reveal'
+import { CallDock, SiteFooter, SiteHeader } from '@/components/SiteChrome'
+import { services, site, zones } from '@/data/site'
 
 export function generateStaticParams() {
   return services.map((service) => ({ slug: service.slug }))
 }
 
-export function generateMetadata({
-  params,
-}: {
-  params: { slug: string }
-}): Metadata {
+export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const service = services.find((item) => item.slug === params.slug)
   if (!service) return {}
   const title = `${service.title} a Bergamo`
@@ -27,128 +26,72 @@ export function generateMetadata({
 export default function ServicePage({ params }: { params: { slug: string } }) {
   const service = services.find((item) => item.slug === params.slug)
   if (!service) notFound()
-
+  const others = services.filter((item) => item.slug !== service.slug).slice(0, 6)
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Service',
     name: `${service.title} a Bergamo`,
-    provider: {
-      '@type': 'AutomotiveBusiness',
-      name: site.name,
-      telephone: site.tel,
-      vatID: site.vatNumber,
-    },
+    provider: { '@type': 'AutomotiveBusiness', name: site.name, telephone: site.tel, vatID: site.vatNumber },
     areaServed: site.city,
     url: `https://${site.domain}/servizi/${service.slug}/`,
   }
 
   return (
-    <main className="bg-white">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <section className="bg-[#F7FAFF] py-14">
-        <Container>
-          <div className="grid overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-2xl shadow-slate-950/10 lg:grid-cols-[0.95fr_1.05fr]">
-            <div className="p-8 lg:p-12">
-              <p className="text-sm font-bold uppercase tracking-[0.22em] text-[#1D4ED8]">
-                servizio dedicato
-              </p>
-              <h1 className="mt-4 max-w-4xl font-display text-5xl font-bold tracking-tight text-slate-950">
-                {service.title} a Bergamo
-              </h1>
-              <div className="mt-6 max-w-3xl space-y-5 text-lg leading-8 text-slate-700">
-                <p>
-                  <strong>{service.text}</strong>
-                </p>
-                <p>{service.detail}</p>
-                <p>
-                  Una buona richiesta parte da poche informazioni precise:
-                  posizione, modello del veicolo, problema riscontrato e
-                  destinazione desiderata. Con questi dati possiamo impostare il
-                  recupero in modo più ordinato e ridurre perdite di tempo.
-                </p>
-              </div>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Link
-                  href={`tel:${site.tel}`}
-                  className="rounded-full bg-[#1D4ED8] px-6 py-3 text-center text-sm font-bold text-white shadow-lg shadow-blue-900/20"
-                >
-                  Chiama {site.phone}
-                </Link>
-                <Link
-                  href="/landing/"
-                  className="rounded-full border border-slate-300 bg-white px-6 py-3 text-center text-sm font-bold text-slate-950"
-                >
-                  Invia posizione
-                </Link>
-              </div>
-            </div>
-            <img
-              src={service.image}
-              alt={`${service.title} a Bergamo con carroattrezzi professionale`}
-              className="h-full min-h-[420px] w-full object-cover"
-            />
-          </div>
-        </Container>
-      </section>
-
-      <section className="py-20">
-        <Container>
-          <div className="grid gap-6 lg:grid-cols-3">
-            {[
-              [
-                'Prima capiamo il contesto',
-                'Accessi, traffico, posizione del veicolo e condizioni del mezzo cambiano il modo in cui conviene procedere.',
-              ],
-              [
-                'Poi concordiamo la destinazione',
-                'Officina, carrozzeria, deposito o indirizzo privato: il punto di arrivo viene deciso prima del recupero.',
-              ],
-              [
-                'Infine proteggiamo il veicolo',
-                'Il carico viene gestito con attenzione, soprattutto quando il mezzo è danneggiato, basso, bloccato o in spazi stretti.',
-              ],
-            ].map(([title, text]) => (
-              <div
-                key={title}
-                className="rounded-[1.5rem] border border-slate-200 bg-[#F8FAFC] p-7"
-              >
-                <h2 className="text-2xl font-bold text-slate-950">{title}</h2>
-                <p className="mt-3 text-base leading-7 text-slate-700">
-                  {text}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-14 grid gap-10 rounded-[2rem] bg-slate-950 p-8 text-white lg:grid-cols-[0.75fr_1.25fr] lg:p-12">
+    <div className="bergamo-site">
+      <SiteHeader active="inner" />
+      <main>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <section className="ber-inner-hero">
+          <Container className="ber-container ber-inner-content">
             <div>
-              <p className="text-sm font-bold uppercase tracking-[0.22em] text-blue-300">
-                quando chiamare
-              </p>
-              <h2 className="mt-4 font-display text-4xl font-bold">
-                Meglio fermarsi prima di peggiorare il danno.
-              </h2>
+              <div className="ber-breadcrumb"><Link href="/">Home</Link><span>/</span><Link href="/#servizi">Servizi</Link><span>/</span><span>{service.title}</span></div>
+              <p className="ber-kicker" style={{marginTop:26}}>Soccorso stradale · Bergamo e provincia</p>
+              <h1>{service.title}<br/><span>a Bergamo</span></h1>
+              <p className="ber-inner-content-copy">{service.text}</p>
+              <div className="ber-inner-actions"><a href={`tel:${site.tel}`}>☎ Chiama ora</a><Link href="/landing/">⌖ Invia posizione</Link></div>
+              <div className="ber-inner-pillrow"><span>Intervento 24 ore</span><span>Preventivo concordato</span><span>Destinazione definita prima</span></div>
             </div>
-            <div className="space-y-5 text-lg leading-8 text-slate-200">
-              <p>
-                Se l’auto perde liquidi, il motore si spegne, le spie rimangono
-                accese o il mezzo vibra in modo anomalo, continuare a guidare
-                può trasformare un guasto gestibile in una riparazione più
-                pesante.
-              </p>
-              <p>
-                Chiamare subito permette di valutare se serve un traino, un
-                recupero in sicurezza o un trasporto programmato. È una scelta
-                prudente, soprattutto in città, su strade trafficate o in punti
-                con poco spazio.
-              </p>
-            </div>
-          </div>
-        </Container>
-      </section>
-    </main>
+            <Reveal className="ber-inner-photo"><img src={service.image} alt={`${service.title} a Bergamo`} fetchPriority="high"/><span>{service.title} · Bergamo e provincia</span></Reveal>
+          </Container>
+        </section>
+
+        <section className="ber-section ber-section-soft">
+          <Container className="ber-container ber-detail-grid">
+            <Reveal className="ber-detail-aside"><b>Richiedi assistenza</b><p>Parla con l’operatore e descrivi veicolo, problema e punto di recupero.</p><a href={`tel:${site.tel}`}>☎ Chiama {site.phone}</a><p style={{marginTop:12}}>Disponibilità e tempi vanno confermati al telefono. Concorda il preventivo prima dell’intervento.</p></Reveal>
+            <Reveal className="ber-prose" delay={90}>
+              <p className="ber-eyebrow">Il servizio</p>
+              <h2 className="ber-section-title" style={{fontSize:'clamp(34px,4vw,52px)',marginBottom:23}}>{service.title} a Bergamo:<br/>come organizzarci.</h2>
+              <p><strong>{service.text}</strong></p>
+              <p>{service.detail}</p>
+              <p>Per preparare correttamente l’intervento comunica la posizione, marca e modello del veicolo, il problema riscontrato e l’indirizzo di destinazione. Se ci sono danni alle ruote, accessi stretti, rampe o limitazioni per i mezzi, descrivili prima di confermare il recupero.</p>
+              <p>Disponibilità, tempi e costo dipendono dal punto in cui si trova il veicolo e dalle caratteristiche dell’intervento. Chiedi un preventivo e concorda il trasporto prima della partenza del carroattrezzi.</p>
+            </Reveal>
+          </Container>
+        </section>
+
+        <section className="ber-section ber-section-white">
+          <Container className="ber-container">
+            <Reveal><p className="ber-eyebrow">Un intervento ben preparato</p><h2 className="ber-section-title">Dalla chiamata alla destinazione.</h2><p className="ber-section-intro">Poche informazioni complete aiutano a scegliere come raggiungere il veicolo e caricarlo con attenzione.</p></Reveal>
+            <div className="ber-detail-steps">{[['01','Descrivi il veicolo','Tipo, modello, condizioni di marcia e ogni danno visibile.'],['02','Indica il punto esatto','Via, comune, direzione e accessi disponibili per il mezzo di soccorso.'],['03','Concorda dove portarlo','Scegli officina, carrozzeria o altro indirizzo e chiedi il costo del trasporto.']].map(([number,title,text],index)=><Reveal key={number} delay={index*90}><article className="ber-detail-step"><span>{number} / ASSISTENZA</span><h3>{title}</h3><p>{text}</p></article></Reveal>)}</div>
+          </Container>
+        </section>
+
+        <section className="ber-section ber-section-soft">
+          <Container className="ber-container">
+            <Reveal><p className="ber-eyebrow">Servizi collegati</p><h2 className="ber-section-title">Altre soluzioni di soccorso stradale.</h2></Reveal>
+            <div className="ber-related-grid">{others.map((item)=><Link className="ber-related-card" href={`/servizi/${item.slug}/`} key={item.slug}><span>{item.title}</span><span className="ber-arrow">↗</span></Link>)}</div>
+          </Container>
+        </section>
+
+        <section className="ber-section ber-section-white">
+          <Container className="ber-container">
+            <Reveal><p className="ber-eyebrow">Bergamo e provincia</p><h2 className="ber-section-title">Soccorso vicino al tuo veicolo.</h2></Reveal>
+            <div className="ber-related-grid">{zones.slice(0,6).map((zone)=><Link className="ber-related-card" href={`/zone/${zone.slug}/`} key={zone.slug}><span>Carroattrezzi a {zone.name}</span><span className="ber-arrow">↗</span></Link>)}</div>
+          </Container>
+        </section>
+        <section className="ber-final"><Container className="ber-container ber-final-inner"><div><p className="ber-eyebrow">Assistenza stradale · Bergamo</p><h2>La tua auto è ferma?<br/>Organizziamo il recupero.</h2><p>Chiama per comunicare il problema, concordare la disponibilità e definire la destinazione.</p></div><div className="ber-final-actions"><a href={`tel:${site.tel}`}>☎ Chiama ora</a><Link href="/landing/">⌖ Invia la posizione</Link></div></Container></section>
+      </main>
+      <SiteFooter /><CallDock /><ConsentBanner />
+    </div>
   )
 }

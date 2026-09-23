@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import './bergamo-premium.css';
 
 @plugin '@tailwindcss/forms';
 
