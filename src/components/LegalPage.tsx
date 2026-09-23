@@ -1,6 +1,8 @@
 import Link from 'next/link'
 
 import { Container } from '@/components/Container'
+import { ConsentBanner } from '@/components/ConsentBanner'
+import { CallDock, SiteFooter, SiteHeader } from '@/components/SiteChrome'
 import { site } from '@/data/site'
 
 export function LegalPage({
@@ -11,23 +13,27 @@ export function LegalPage({
   children: React.ReactNode
 }) {
   return (
-    <main className="min-h-screen bg-slate-50 py-12 text-slate-900 sm:py-20">
-      <Container>
-        <Link href="/" className="text-sm font-bold text-[#1D4ED8]">
-          Torna alla home
-        </Link>
-        <div className="mt-8 max-w-3xl rounded-3xl border border-slate-200 bg-white p-7 shadow-xl shadow-slate-950/5 sm:p-10">
-          <h1 className="font-display text-4xl font-bold tracking-tight sm:text-5xl">
-            {title}
-          </h1>
-          <div className="mt-8 space-y-6 text-base leading-8 text-slate-700">
-            {children}
-          </div>
-          <p className="mt-10 border-t border-slate-200 pt-6 text-sm text-slate-500">
-            P. IVA {site.vatNumber}
-          </p>
-        </div>
-      </Container>
-    </main>
+    <div className="bergamo-site">
+      <SiteHeader active="inner" />
+      <main>
+        <section className="ber-inner-hero ber-legal-hero">
+          <Container className="ber-container ber-legal-heading">
+            <div className="ber-breadcrumb"><Link href="/">Home</Link><span>/</span><span>Informazioni</span></div>
+            <p className="ber-kicker" style={{marginTop:24}}>Trasparenza · Informazioni legali</p>
+            <h1>{title}</h1>
+            <p className="ber-inner-content-copy">I dettagli sul servizio, sul trattamento dei dati e sulle condizioni d’uso del sito.</p>
+          </Container>
+        </section>
+        <section className="ber-section ber-section-soft">
+          <Container className="ber-container">
+            <article className="ber-legal-card">
+              <div className="ber-prose ber-legal-copy">{children}</div>
+              <p className="ber-legal-vat">P. IVA {site.vatNumber}</p>
+            </article>
+          </Container>
+        </section>
+      </main>
+      <SiteFooter /><CallDock /><ConsentBanner />
+    </div>
   )
 }
