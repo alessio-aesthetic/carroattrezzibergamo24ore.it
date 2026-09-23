@@ -110,13 +110,15 @@
 .bergamo-site .ber-urgent-item:hover .ber-urgent-arrow { transform:translate(3px,-3px); }
 
 .bergamo-site .ber-services-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; margin-top:46px; }
-.bergamo-site .ber-service-card { position:relative; min-height:365px; overflow:hidden; border-radius:16px; color:#fff; isolation:isolate; text-decoration:none; background:#20262c; }
-.bergamo-site .ber-service-card img { position:absolute; z-index:-2; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .75s cubic-bezier(.2,.8,.2,1),filter .5s ease; }
-.bergamo-site .ber-service-card::before { position:absolute; z-index:-1; inset:0; content:""; background:linear-gradient(0deg,rgba(13,17,21,.91),rgba(13,17,21,.02) 74%); transition:background .35s ease; }
+.bergamo-site .ber-services-grid>.ber-reveal { display:flex; min-width:0; height:100%; }
+.bergamo-site .ber-service-card { position:relative; display:block; width:100%; min-height:365px; overflow:hidden; border:1px solid rgb(255 255 255 / 10%); border-radius:16px; color:#fff; isolation:isolate; text-decoration:none; background:#20262c; box-shadow:0 14px 34px rgb(16 21 27 / 12%); transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease; }
+.bergamo-site .ber-service-card img { position:absolute; z-index:0; display:block; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .75s cubic-bezier(.2,.8,.2,1),filter .5s ease; }
+.bergamo-site .ber-service-card::before { position:absolute; z-index:1; inset:0; content:""; pointer-events:none; background:linear-gradient(0deg,rgba(13,17,21,.94) 0%,rgba(13,17,21,.46) 43%,rgba(13,17,21,.02) 100%); transition:background .35s ease; }
+.bergamo-site .ber-service-card:hover { transform:translateY(-5px); box-shadow:0 24px 46px rgb(16 21 27 / 20%); }
 .bergamo-site .ber-service-card:hover img { transform:scale(1.06); filter:saturate(1.18); }
 .bergamo-site .ber-service-card:hover::before { background:linear-gradient(0deg,rgba(13,17,21,.95),rgba(13,17,21,.18) 82%); }
-.bergamo-site .ber-service-num { position:absolute; top:18px; left:18px; display:grid; width:37px; height:37px; place-items:center; color:#12171c; border-radius:11px; background:var(--ber-signal); font-size:11px; font-weight:900; }
-.bergamo-site .ber-service-body { position:absolute; right:20px; bottom:20px; left:20px; }
+.bergamo-site .ber-service-num { position:absolute; z-index:2; top:18px; left:18px; display:grid; width:37px; height:37px; place-items:center; color:#12171c; border-radius:11px; background:var(--ber-signal); font-size:11px; font-weight:900; box-shadow:0 5px 18px rgb(0 0 0 / 20%); }
+.bergamo-site .ber-service-body { position:absolute; z-index:2; right:20px; bottom:20px; left:20px; }
 .bergamo-site .ber-service-label { color:#ffcf59; font-size:10px; font-weight:850; letter-spacing:.16em; text-transform:uppercase; }
 .bergamo-site .ber-service-card h3 { margin:9px 0 0; font-size:clamp(20px,2vw,27px); font-weight:820; letter-spacing:-.045em; line-height:1.05; }
 .bergamo-site .ber-service-card p { display:-webkit-box; overflow:hidden; margin:9px 0 0; color:rgb(255 255 255 / 76%); font-size:12px; line-height:1.55; -webkit-box-orient:vertical; -webkit-line-clamp:2; }
@@ -364,6 +366,15 @@
   .bergamo-site .ber-service-card { min-height:265px; }
   .bergamo-site .ber-service-card h3 { font-size:14px; }
   .bergamo-site .ber-final-actions a { font-size:9px; }
+}
+@media (max-width:420px) {
+  .bergamo-site .ber-services-grid { grid-template-columns:1fr; gap:12px; }
+  .bergamo-site .ber-service-card { min-height:320px; border-radius:14px; }
+  .bergamo-site .ber-service-body { right:16px; bottom:16px; left:16px; }
+  .bergamo-site .ber-service-card h3 { font-size:21px; }
+  .bergamo-site .ber-service-card p { font-size:12px; }
+  .bergamo-site .ber-service-label { font-size:9px; }
+  .bergamo-site .ber-service-link { font-size:11px; }
 }
 @media (prefers-reduced-motion:reduce) {
   .bergamo-site *, .bergamo-site *::before, .bergamo-site *::after { scroll-behavior:auto!important; animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; }

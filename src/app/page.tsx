@@ -55,7 +55,7 @@ function EmergencySection() {
     <section className="ber-section ber-section-soft">
       <Container className="ber-container ber-emergency-grid">
         <Reveal className="ber-emergency-photo">
-          <img src="/images/services/recupero-auto-in-panne.webp" alt="Intervento con carroattrezzi per auto in panne a Bergamo" loading="lazy" />
+          <img src="/images/recupero-bergamo-premium.webp" alt="Carroattrezzi che recupera un’auto lungo una strada di Bergamo" loading="lazy" />
           <div className="ber-photo-note"><b>Fermo in città o fuori Bergamo?</b><span>Comunicaci il punto e che cosa è successo: organizziamo insieme il passaggio successivo.</span></div>
         </Reveal>
         <Reveal className="ber-emergency-copy" delay={100}>
