@@ -1,7 +1,6 @@
 import { type Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { GeistSans } from 'geist/font/sans'
-import Script from 'next/script'
 import clsx from 'clsx'
 
 import { site } from '@/data/site'
@@ -60,23 +59,12 @@ export default function RootLayout({
       )}
     >
       <body className="flex h-full flex-col">
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=AW-972513984"
-          strategy="afterInteractive"
-        />
-        <Script id="google-ads-tag" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'AW-972513984');
-          `}
-        </Script>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         {children}
+      <script defer src="/privacy-notice.js" data-ads="AW-972513984" />
       </body>
     </html>
   )
